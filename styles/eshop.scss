@@ -4,6 +4,11 @@
 @import './base/fonts.scss';
 @import './base/mixins.scss';
 
+// Libraries
+@import '~primeng/primeicons/primeicons.css';
+@import '~primeng/primeng/resources/themes/saga-blue/theme.css';
+@import '~primeng/primeng/resources/primeng.min.css';
+
 // Pages
 @import './apps/shop/pages/home-page.scss';
 @import './apps/shop/pages/products-list.scss';
