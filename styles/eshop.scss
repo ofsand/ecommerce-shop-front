@@ -1,13 +1,14 @@
 // Base
 @import './base/colors.scss';
+@import './base/mixins.scss';
 @import './base/configuration.scss';
 @import './base/fonts.scss';
-@import './base/mixins.scss';
 
 // Libraries
-@import '~primeng/primeicons/primeicons.css';
-@import '~primeng/primeng/resources/themes/saga-blue/theme.css';
-@import '~primeng/primeng/resources/primeng.min.css';
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/themes/saga-blue/theme.css';
+@import '~primeng/resources/primeng.min.css';
+
 
 // Pages
 @import './apps/shop/pages/home-page.scss';
@@ -17,7 +18,7 @@
 @import './apps/shop/shared/footer.scss';
 @import './apps/shop/shared/header.scss';
 
-// Libraries
+// Libs
 @import './libs/ui/ui.scss';
 
 
