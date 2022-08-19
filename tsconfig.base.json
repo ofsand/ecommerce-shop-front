@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ecommerce-brands/products": ["libs/products/src/index.ts"],
       "@ecommerce-brands/ui": ["libs/ui/src/index.ts"]
     }
   },
