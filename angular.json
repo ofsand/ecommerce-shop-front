@@ -7,6 +7,7 @@
     "eshop": "apps/eshop",
     "eshop-e2e": "apps/eshop-e2e",
     "products": "libs/products",
-    "ui": "libs/ui"
+    "ui": "libs/ui",
+    "users": "libs/users"
   }
 }
