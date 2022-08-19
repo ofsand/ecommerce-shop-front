@@ -18,12 +18,18 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/eshop-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/eshop-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["eshop"]
+  "implicitDependencies": [
+    "eshop"
+  ]
 }
