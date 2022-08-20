@@ -6,6 +6,7 @@ import { CategoriesService, Category } from '@ecommerce-brands/products';
 import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'admin-categories-form',
@@ -18,14 +19,24 @@ export class CategoriesFormComponent implements OnInit {
 
   form: FormGroup;
   isSubmitted: boolean = false;
+  editMode: boolean = false;
 
-  constructor(private location: Location,private messageService: MessageService ,private formBuilder: FormBuilder, private categoriesService: CategoriesService) { }
+  constructor(
+        private location: Location,
+        private messageService: MessageService ,
+        private formBuilder: FormBuilder,
+        private categoriesService: CategoriesService,
+        private route: ActivatedRoute
+        ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       icon: ['', Validators.required]
     });
+
+    this._checkEditMode();
+
   }
 
   onSubmit() {
@@ -52,6 +63,14 @@ export class CategoriesFormComponent implements OnInit {
 
     console.log(this.form.controls['name'].value);
     console.log(this.form.controls['icon'].value);
+  }
+
+  private _checkEditMode() {
+    this.route.params.subscribe(params => {
+      if(params['id']) {
+        this.editMode = true;
+      }
+    })
   }
 
 }

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoriesService, Category } from '@ecommerce-brands/products';
 import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
 
@@ -11,10 +12,19 @@ export class CategoryListComponent implements OnInit {
 
 categories: Category[] = [];
 
-  constructor(private confirmationService: ConfirmationService,private categoriesService: CategoriesService, private messageService: MessageService) { }
+  constructor(
+      private router: Router,
+      private confirmationService: ConfirmationService,
+      private categoriesService: CategoriesService, 
+      private messageService: MessageService
+      ) {}
 
   ngOnInit(): void {
     this._getCategories();
+  }
+
+  updateCategory(categoryId: string) {
+    this.router.navigateByUrl(`categories/form/${categoryId}`);
   }
 
   deleteCategory(categoryId: string) {
@@ -26,10 +36,18 @@ categories: Category[] = [];
       accept: () => {
         this.categoriesService.deleteCategory(categoryId).subscribe(response => {
           this._getCategories();
-          this.messageService.add({severity:'success', summary:'Success', detail:'Category deleted successfully'});
+          this.messageService.add({
+                  severity:'success', 
+                  summary:'Success', 
+                  detail:'Category deleted successfully'
+                });
         },
         (error) => {
-          this.messageService.add({severity:'error', summary:'Error', detail:'Category is not deleted'});
+          this.messageService.add({
+                  severity:'error', 
+                  summary:'Error', 
+                  detail:'Category is not deleted'
+                });
         })
       },
       reject: (type: any) => {
