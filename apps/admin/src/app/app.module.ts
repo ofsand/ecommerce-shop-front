@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -13,13 +15,15 @@ import {CardModule} from 'primeng/card';
 import {ToolbarModule} from 'primeng/toolbar';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
+import {ToastModule} from 'primeng/toast';
+
 import { CategoriesService } from '@ecommerce-brands/products';
 import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 
 const UX_MODULE = [
-  CardModule, ToolbarModule, ButtonModule, TableModule
+  CardModule, ToolbarModule, ButtonModule, TableModule, ToastModule,
 ]
 
 const routes: Routes = [
@@ -55,8 +59,9 @@ const routes: Routes = [
     UX_MODULE, 
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule],
-  providers: [CategoriesService],
+    ReactiveFormsModule,
+    BrowserAnimationsModule],
+  providers: [CategoriesService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
