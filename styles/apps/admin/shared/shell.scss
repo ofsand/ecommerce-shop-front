@@ -48,7 +48,7 @@
                         }
 
                         &.logout {
-                            color: rgb(55, 55, 216);
+                            color: rgb(115, 140, 227);
                             bottom: 0;
                             
                             &:hover {
@@ -68,7 +68,7 @@
     &-content {
         width: calc(100% - 175px);
         margin-left: 175px;
-        background-color: blue;
+        background-color: rgb(233, 233, 251);
     }
 
     &-page {

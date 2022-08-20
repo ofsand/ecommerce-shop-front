@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService, Category } from '@ecommerce-brands/products';
+import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'admin-category-list',
@@ -9,12 +11,37 @@ export class CategoryListComponent implements OnInit {
 
 categories: Category[] = [];
 
-  constructor(private categoriesService: CategoriesService) { }
+  constructor(private confirmationService: ConfirmationService,private categoriesService: CategoriesService, private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this._getCategories();
+  }
+
+  deleteCategory(categoryId: string) {
+
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this category?',
+      header: 'Delete Category',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.categoriesService.deleteCategory(categoryId).subscribe(response => {
+          this._getCategories();
+          this.messageService.add({severity:'success', summary:'Success', detail:'Category deleted successfully'});
+        },
+        (error) => {
+          this.messageService.add({severity:'error', summary:'Error', detail:'Category is not deleted'});
+        })
+      },
+      reject: (type: any) => {
+      }
+  });
+
+  }
+
+  private _getCategories() {
     this.categoriesService.getCategories().subscribe(cats => {
       this.categories = cats;
-    })
+    });
   }
 
 }
