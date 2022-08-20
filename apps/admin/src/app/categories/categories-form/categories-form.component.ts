@@ -20,6 +20,7 @@ export class CategoriesFormComponent implements OnInit {
   form: FormGroup;
   isSubmitted: boolean = false;
   editMode: boolean = false;
+  currentCategoryId: string = '';
 
   constructor(
         private location: Location,
@@ -46,29 +47,75 @@ export class CategoriesFormComponent implements OnInit {
     }
 
     const category : Category = {
+      id: this.currentCategoryId,
       name: this.form.controls['name'].value,
       icon: this.form.controls['icon'].value
 
     }
 
-    this.categoriesService.createCategory(category).subscribe(response => {
-      this.messageService.add({severity:'success', summary:'Success', detail:'Category added successfully'});
-      timer(1500).toPromise().then( done => {
-        this.location.back()
-      });
-    },
-    (error) => {
-      this.messageService.add({severity:'error', summary:'Error', detail:'Category is not added'});
-    });
+    if(this.editMode) {
+        this._editCategory(category);
+    }else {
+        this._addCategory(category);
+    }
+
 
     console.log(this.form.controls['name'].value);
     console.log(this.form.controls['icon'].value);
   }
 
+  private _addCategory(category: Category) {
+    this.categoriesService.createCategory(category).subscribe(response => {
+      this.messageService.add({
+              severity:'success', 
+              summary:'Success', 
+              detail:'Category added successfully'
+            });
+
+      timer(1500).toPromise().then( done => {
+        this.location.back()
+      });
+    },
+    (error) => {
+      this.messageService.add({
+              severity:'error', 
+              summary:'Error', 
+              detail:'Category is not added'
+            });
+    });
+  }
+
+  private _editCategory(category: Category) {
+    this.categoriesService.updateCategory(category).subscribe(response => {
+      this.messageService.add({
+              severity:'success', 
+              summary:'Success', 
+              detail:'Category updated successfully'
+            });
+
+      timer(1500).toPromise().then( done => {
+        this.location.back()
+      });
+    },
+    (error) => {
+      this.messageService.add({
+              severity:'error', 
+              summary:'Error', 
+              detail:'Category is not updated'
+            });
+    });
+  }
+
+
   private _checkEditMode() {
     this.route.params.subscribe(params => {
       if(params['id']) {
         this.editMode = true;
+        this.currentCategoryId = params['id'];
+        this.categoriesService.getCategory(params['id']).subscribe(category => {
+          this.form.controls['name'].setValue(category.name);
+          this.form.controls['icon'].setValue(category.icon);
+        })
       }
     })
   }
