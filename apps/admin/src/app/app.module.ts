@@ -6,7 +6,17 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { CategoryListComponent } from './categories/category-list/category-list.component';
 
+import {CardModule} from 'primeng/card';
+import {ToolbarModule} from 'primeng/toolbar';
+import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
+
+
+const UX_MODULE = [
+  CardModule, ToolbarModule, ButtonModule, TableModule
+]
 
 const routes: Routes = [
   {
@@ -19,7 +29,7 @@ const routes: Routes = [
       },
       {
         path:'categories',
-        component: ShellComponent
+        component: CategoryListComponent
       },
       {
         path:'products',
@@ -34,8 +44,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoryListComponent],
+  imports: [BrowserModule, RouterModule.forRoot(routes), UX_MODULE],
   providers: [],
   bootstrap: [AppComponent],
 })
