@@ -16,6 +16,18 @@ const routes: Routes = [
       {
         path:'dashboard',
         component: DashboardComponent
+      },
+      {
+        path:'categories',
+        component: ShellComponent
+      },
+      {
+        path:'products',
+        component: DashboardComponent
+      },
+      {
+        path:'users',
+        component: DashboardComponent
       }
     ]
   }

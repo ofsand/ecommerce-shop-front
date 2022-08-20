@@ -1,0 +1,73 @@
+.admin {
+    &-wrapper {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    &-sidebar {
+        position: fixed;
+        width: 175px;
+        height: 100%;
+        background-color: rgb(0, 4, 51);
+        top: 0;
+
+        .logo {
+            width: 100%;
+            padding: 20px;
+
+            img {
+                max-width: 100%;
+            }
+        }
+
+        .links {
+            ul {
+                margin: 0;
+                padding: 0;
+
+                li {
+                    display: block;
+                    list-style: none;
+                    width: 100%;
+
+                    a {
+                        color: white;
+                        padding: 10px 15px;
+                        display: block;
+                        width: 100%;
+                        
+                        &:hover {
+                            color: burlywood;
+                            background-color: rgb(55, 55, 216);
+                        }
+
+                        i {
+                            margin: 0 10px;
+                            float: left;
+                        }
+
+                        &.logout {
+                            color: rgb(55, 55, 216);
+                            bottom: 0;
+                            
+                            &:hover {
+                                color: rgb(10, 10, 116);
+                                background-color: rgb(255, 255, 255);
+                            }
+                        }
+                    }
+
+
+                }
+
+            }
+        }
+    }
+
+    &-content {
+        width: calc(100% - 175px);
+        margin-left: 175px;
+        background-color: blue;
+    }
+}
