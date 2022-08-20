@@ -14,6 +14,8 @@ import {ToolbarModule} from 'primeng/toolbar';
 import {ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 import { CategoriesService } from '@ecommerce-brands/products';
+import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const UX_MODULE = [
@@ -34,8 +36,8 @@ const routes: Routes = [
         component: CategoryListComponent
       },
       {
-        path:'products',
-        component: DashboardComponent
+        path:'categories/form',
+        component: CategoriesFormComponent
       },
       {
         path:'users',
@@ -46,8 +48,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoryListComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes, { initialNavigation: 'enabledNonBlocking'}), UX_MODULE, HttpClientModule],
+  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoryListComponent, CategoriesFormComponent],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes, { initialNavigation: 'enabledNonBlocking'}),
+    UX_MODULE, 
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule],
   providers: [CategoriesService],
   bootstrap: [AppComponent],
 })
