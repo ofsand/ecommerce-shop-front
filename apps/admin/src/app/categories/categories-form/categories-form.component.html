@@ -16,12 +16,14 @@
                <form [formGroup] = "form">
                     <div class="formgrid grid">
                         <div class="field col">
-                            <label for="name">Firstname</label>
+                            <label for="name">Name</label>
                             <input formControlName="name" id="name" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                            <small *ngIf="form.controls['name'].invalid && isSubmitted" class="p-error" >Name is required</small>
                         </div>
                         <div class="field col">
-                            <label for="icon">Lastname</label>
+                            <label for="icon">Icon</label>
                             <input formControlName="icon" id="icon" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                            <small *ngIf="form.controls['icon'].invalid && isSubmitted" class="p-error" >Icon is required</small>
                         </div>
                     </div>
                </form>
