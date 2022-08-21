@@ -34,23 +34,21 @@ categories: Category[] = [];
       header: 'Delete Category',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.categoriesService.deleteCategory(categoryId).subscribe(response => {
+        this.categoriesService.deleteCategory(categoryId).subscribe((category: Category)=> {
           this._getCategories();
           this.messageService.add({
                   severity:'success', 
                   summary:'Success', 
-                  detail:'Category deleted successfully'
+                  detail:`Category ${category.name} deleted successfully`
                 });
         },
         (error) => {
           this.messageService.add({
                   severity:'error', 
                   summary:'Error', 
-                  detail:'Category is not deleted'
+                  detail:`Category is not deleted`
                 });
         })
-      },
-      reject: (type: any) => {
       }
   });
 
