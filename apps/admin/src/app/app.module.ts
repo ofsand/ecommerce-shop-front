@@ -23,11 +23,12 @@ import { CategoriesService } from '@ecommerce-brands/products';
 import { CategoriesFormComponent } from './categories/categories-form/categories-form.component';
 import { MessageService } from 'primeng/api';
 import {ConfirmationService} from 'primeng/api';
+import {ColorPickerModule} from 'primeng/colorpicker';
 
 
 
 const UX_MODULE = [
-  CardModule, ToolbarModule, ButtonModule, TableModule, ToastModule, ConfirmDialogModule
+  CardModule, ToolbarModule, ButtonModule, TableModule, ToastModule, ConfirmDialogModule, ColorPickerModule
 ]
 
 const routes: Routes = [
