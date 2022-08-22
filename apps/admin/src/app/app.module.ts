@@ -59,6 +59,10 @@ const routes: Routes = [
         path:'products',
         component: ProductsListComponent
       },
+      {
+        path:'products/form',
+        component: ProductsFormComponent
+      }
     ]
   }
 ];
