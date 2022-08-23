@@ -31,6 +31,8 @@ import {EditorModule} from 'primeng/editor';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import { UserListComponent } from './pages/users/user-list/user-list.component';
+import { UserFormComponent } from './pages/users/user-form/user-form.component';
 
 
 const UX_MODULE = [
@@ -88,7 +90,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoryListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent],
+  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoryListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent, UserListComponent, UserFormComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabledNonBlocking'}),
