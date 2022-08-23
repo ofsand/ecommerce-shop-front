@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from '@ecommerce-brands/products';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'admin-products-list',
@@ -33,6 +33,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   deleteProduct(productId: string) {
+    console.log('here !');
     this.confirmationService.confirm({
       message: 'Do you want to delete this Product?',
       header: 'Delete Product',
