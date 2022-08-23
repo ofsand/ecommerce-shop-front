@@ -1,49 +1,75 @@
+<p-toast></p-toast>
 <div class="admin-page">
-    <p-card header="Categories" subheader="Lists of all categories">
-        <div class="p-grid">
-            <div class="p-col-12">
-                <p-toolbar>
-                    <div class="p-toolbar-group-left">
-                        <p-button styleClass="p-button-success" label="New" icon="pi pi-plus" routerLink="form"></p-button>
-                    </div>
-                </p-toolbar>
-            </div>
-        </div>
-        <div class="p-grid mt-4">
-            <div class="p-col-12">
-                <p-table [value]="products" styleClass="p-datatable-gridlines" responsiveLayout="scroll">
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <!--<th>Id</th>-->
-                            <th pSortableColumn="name">name <p-sortIcon field="code"></p-sortIcon></th>
-                            <th >image</th>
-                            <th pSortableColumn="price">price <p-sortIcon field="code"></p-sortIcon></th>
-                            <th pSortableColumn="category">category <p-sortIcon field="code"></p-sortIcon></th>
-                            <th pSortableColumn="countInStock">countInStock <p-sortIcon field="code"></p-sortIcon></th>
-                            <th pSortableColumn="countInStock">brand <p-sortIcon field="code"></p-sortIcon></th>
-                            <th pSortableColumn="countInStock">Rating <p-sortIcon field="code"></p-sortIcon></th>
-                            <th pSortableColumn="dateCreated">dateCreated <p-sortIcon field="code"></p-sortIcon></th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-product>
-                        <tr>
-                            <!--<td>{{category.id}}</td> -->
-                            <td>{{product.name}}</td>
-                            <td><img [src]="product.image" style="table-layout: fixed; max-width: 120px;" alt=""></td>
-                            <td>{{product.price}}</td>
-                            <td>{{product.category.name}}</td>
-                            <td>{{product.countInStock}}</td>
-                            <td>{{product.brand}}</td>
-                            <td>{{product.rating}}</td>
-                            <td>{{product.dateCreated | date: 'short'}}</td>
-                            <td>
-                                <p-button styleClass="p-button-danger col-6 mr-2" icon="pi pi-trash"></p-button>
-                                <p-button styleClass="p-button-secondary col-6" icon="pi pi-pencil"></p-button>
-                            </td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-            </div>
-        </div>
-    </p-card>
+  <p-card header="Products" subheader="List of all products">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left">
+            <p-button
+              styleClass="p-button-success"
+              label="New"
+              icon="pi pi-plus"
+              routerLink="form"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="p-grid">
+      <div class="p-col-12">
+        <p-table
+          [paginator]="true"
+          [rows]="10"
+          [value]="products"
+          styleClass="p-datatable-gridlines"
+          [globalFilterFields]="['name']"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+              <th>Image</th>
+              <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+              <th pSortableColumn="stock">Stock <p-sortIcon field="stock"></p-sortIcon></th>
+              <th pSortableColumn="category">
+                Category <p-sortIcon field="category"></p-sortIcon>
+              </th>
+              <th pSortableColumn="created">
+                Created at <p-sortIcon field="created"></p-sortIcon>
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-product>
+            <tr>
+              <td>{{ product.name }}</td>
+              <td style="max-width: 145px;"><img [src]="product.image" style="width: 100%" alt="" /></td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.countInStock }}</td>
+              <td>{{ product.category.name }}</td>
+              <td>{{ product.dateCreated | date: 'short' }}</td>
+              <td>
+                <p-button
+                 
+                  styleClass="p-button-danger p-mr-2"
+                  icon="pi pi-trash"
+                ></p-button>
+                <p-button
+                  
+                  styleClass="p-button-success"
+                  icon="pi pi-pencil"
+                ></p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
 </div>
+<!--
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>
+-->
