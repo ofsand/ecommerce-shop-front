@@ -17,7 +17,7 @@ export class ProductsFormComponent implements OnInit {
   isSubmitted = false;
   products:any = [];
   categories:any = [];
-  imageDisplay: string;
+  imageDisplay: string | ArrayBuffer | null;
   currentProductId: string;
 
   constructor(
@@ -142,11 +142,12 @@ export class ProductsFormComponent implements OnInit {
   onImageUpload(event: any) {
     const file = event.target.files[0];
     if (file) {
+      const f = this.form.get('image');
       this.form.patchValue({ image: file });
-      //this.form.get('image').updateValueAndValidity();
+      if(f!=null) f.updateValueAndValidity();
       const fileReader = new FileReader();
       fileReader.onload = () => {
-       // this.imageDisplay = fileReader.result;
+        this.imageDisplay = fileReader.result;
       };
       fileReader.readAsDataURL(file);
     }
