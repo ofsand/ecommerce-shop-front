@@ -78,7 +78,11 @@ const routes: Routes = [
       {
         path:'products/form',
         component: ProductsFormComponent
-      }
+      },
+      {
+        path:'products/form/:id',
+        component: ProductsFormComponent
+      },
     ]
   }
 ];
