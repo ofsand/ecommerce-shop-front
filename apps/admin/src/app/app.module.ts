@@ -18,7 +18,7 @@ import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
-import { CategoriesService } from '@ecommerce-brands/products';
+import { CategoriesService, UsersService } from '@ecommerce-brands/products';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { MessageService } from 'primeng/api';
 import {ConfirmationService} from 'primeng/api';
@@ -85,6 +85,24 @@ const routes: Routes = [
         path:'products/form/:id',
         component: ProductsFormComponent
       },
+            //Product routes
+      {
+        path:'products',
+        component: ProductsListComponent
+      },
+      {
+        path:'products/form',
+        component: ProductsFormComponent
+      },
+      //Product routes
+      {
+        path:'users',
+        component: UserListComponent
+      },
+      {
+        path:'users/form',
+        component: UserFormComponent
+      },
     ]
   }
 ];
@@ -99,7 +117,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule],
-  providers: [CategoriesService, MessageService, ConfirmationService],
+  providers: [UsersService, CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

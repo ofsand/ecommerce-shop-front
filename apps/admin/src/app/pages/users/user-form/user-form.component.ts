@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ecommerce-brands-user-form',
+  selector: 'admin-user-form',
   templateUrl: './user-form.component.html',
   styles: [
   ]
