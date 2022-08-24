@@ -34,7 +34,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { TagModule } from 'primeng/tag';
-
+import {InputMaskModule} from 'primeng/inputmask';
 
 
 const UX_MODULE = [
@@ -52,7 +52,8 @@ const UX_MODULE = [
   InputSwitchModule,
   EditorModule,
   TagModule,
-  InputSwitchModule
+  InputSwitchModule,
+  InputMaskModule
 ];
 
 const routes: Routes = [

@@ -28,21 +28,21 @@
           <div class="formgrid grid">
             <div class="field col">
               <label for="name">Name</label>
-              <input class="ml-4" formControlName="name" id="name" type="text" pInputText />
+              <input class="ml-4" formControlName="name" id="name" type="text" pInputText /><br/>
               <small *ngIf="form.controls['name'].invalid && isSubmitted" class="p-error"
                 >Name is required</small
               >
             </div>
             <div class="field col">
               <label for="email">Email</label>
-              <input class="ml-4" formControlName="email" id="email" type="text" pInputText />
+              <input class="ml-4" formControlName="email" id="email" type="text" pInputText /><br/>
               <small *ngIf="form.controls['email'].invalid && isSubmitted" class="p-error">
               <span *ngIf="form.controls['email'].errors['required']">email is required</span>
                 <span *ngIf="form.controls['email'].errors['email']">email is invalid</span></small>
             </div>
             <div class="field col">
               <label for="password">Password</label>
-              <input class="ml-4" formControlName="password" id="password" type="password" pInputText />
+              <input class="ml-4" formControlName="password" id="password" type="password" pInputText /><br/>
               <small *ngIf="form.controls['password'].invalid && isSubmitted" class="p-error"
                 >Password is required</small
               >
@@ -52,19 +52,19 @@
           <div class="formgrid grid">
             <div class="field col">
               <label for="phone">Phone</label>
-              <input class="ml-4" formControlName="phone" id="phone" type="text" pInputText />
+              <p-inputMask class="ml-4" mask="(999) 999-999999" formControlName="phone" placeholder="(212) 999-999999"></p-inputMask><br/>
               <small *ngIf="form.controls['phone'].invalid && isSubmitted" class="p-error"
                 >Name is required</small
               >
             </div>
             <div class="field col">
               <label for="city">City</label>
-              <input class="ml-4" formControlName="city" id="city" type="text" pInputText />
+              <input class="ml-4" formControlName="city" id="city" type="text" pInputText /><br/>
               <small *ngIf="form.controls['city'].invalid && isSubmitted" class="p-error"></small>
             </div>
             <div class="field col">
               <label for="password">Address</label>
-              <input class="ml-4" formControlName="address" id="address" type="address" pInputText />
+              <input class="ml-4" formControlName="address" id="address" type="address" pInputText /><br/>
               <small *ngIf="form.controls['address'].invalid && isSubmitted" class="p-error"
                 >Password is required</small
               >

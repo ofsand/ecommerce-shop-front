@@ -37,7 +37,7 @@ export class UserFormComponent implements OnInit {
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      city: [''],
+      city: ['', Validators.required],
       address: ['', ],
       isAdmin: [false],
     });
