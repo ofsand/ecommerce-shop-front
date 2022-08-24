@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '@ecommerce-brands/products';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService, ConfirmEventType, MessageService} from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'admin-user-list',
@@ -15,7 +16,8 @@ export class UserListComponent implements OnInit {
   constructor(
     private usersServices: UsersService,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,7 +31,11 @@ export class UserListComponent implements OnInit {
     })
   }
 
-  deleteUser(userId) {
+  updateUser(userId: string) {
+    this.router.navigateByUrl(`users/form/${userId}`);
+  }
+
+  deleteUser(userId: string) {
       this.confirmationService.confirm({
         message: 'Are you sure that you want to proceed?',
         header: 'Confirmation',

@@ -16,26 +16,20 @@ export class UsersService {
     return this.http.get<User[]>(this.apiURLUsers);
   }
 
+  getUser(useId: string): Observable<User> {
+    return this.http.get<User>(`${this.apiURLUsers}/${useId}`)
+  }
+
   deleteUser(userId: string) :Observable<any> {
     return this.http.delete<any>(`${this.apiURLUsers}/${userId}`);
   }
 
-  /*
-
-  createProduct(productData: FormData): Observable<Product> {
-    return this.http.post<Product>(this.apiURLProducts, productData);
+  updateUser(userData: FormData, userId: string):Observable<User> {
+    return this.http.put<User>(`${this.apiURLUsers}/${userId}`, userData);
   }
 
-  getProduct(productId: string): Observable<Product> {
-    return this.http.get<Product>(`${this.apiURLProducts}/${productId}`);
+  addUser(userData: FormData): Observable<User> {
+    return this.http.post<User>(`${this.apiURLUsers}`, userData);
   }
 
-  updateProduct(productData: FormData, productid: string): Observable<Product> {
-    return this.http.put<Product>(`${this.apiURLProducts}/${productid}`, productData);
-  }
-
-  deleteProduct(productId: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiURLProducts}/${productId}`);
-  }
-  */
 }

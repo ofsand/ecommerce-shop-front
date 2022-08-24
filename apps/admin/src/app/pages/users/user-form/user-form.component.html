@@ -1,1 +1,42 @@
-<p>user-form works!</p>
+<p-toast></p-toast>
+<div class="admin-page">
+  <p-card
+    [header]="editmode ? 'Edit User' : 'Add User'"
+    subheader="You can add or edit products here"
+  >
+    <div class="p-grid p-mb-5">
+      <div class="p-col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left"></div>
+          <div class="p-toolbar-group-right">
+            <p-button
+              styleClass="p-button-primary mr-2"
+              [label]="editmode ? 'Update' : 'Create'"
+              icon="pi pi-plus"
+              (click)="onSubmit()"
+            ></p-button>
+            <p-button
+              styleClass="p-button-secondary"
+              label="Cancle"
+              icon="pi pi-arrow-circle-left"
+              routerLink="/users"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="p-grid">
+      <div class="p-col-12">
+        <form [formGroup]="form">
+            <div class="p-ui-fluid p-formgrid p-grid mt-5">
+                <div class="p-field p-col mt-5">
+                    <label for="name">Name</label>
+                    <input class="ml-4" formControlName="name" id="name" type="text" pInputText />
+                    <small *ngIf="form.controls['name'].invalid && isSubmitted" class="p-error ml-3">Name is required</small>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </p-card>
+</div>
