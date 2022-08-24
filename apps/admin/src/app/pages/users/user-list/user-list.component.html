@@ -41,7 +41,9 @@
               <td>{{ user.phone }}</td>
               <td>{{ user.city }}</td>
               <td>{{ user.address }}</td>
-              <td>{{ user.isAdmin }}</td>
+              <td>
+              <p-tag styleClass="mr-2" [icon]="user.isAdmin ? 'pi pi-check' : 'pi pi-times' " [severity]="user.isAdmin ? 'success' : 'danger'" [rounded]="true"></p-tag>
+              </td>
               <td>
                 <p-button
                   

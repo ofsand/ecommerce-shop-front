@@ -33,6 +33,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
+import { TagModule } from 'primeng/tag';
 
 
 const UX_MODULE = [
@@ -48,7 +49,8 @@ const UX_MODULE = [
   DropdownModule,
   InputTextareaModule,
   InputSwitchModule,
-  EditorModule
+  EditorModule,
+  TagModule
 ];
 
 const routes: Routes = [
