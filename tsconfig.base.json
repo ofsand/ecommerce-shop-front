@@ -16,10 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ecommerce-brands/orders": ["libs/orders/src/index.ts"],
       "@ecommerce-brands/products": ["libs/products/src/index.ts"],
       "@ecommerce-brands/ui": ["libs/ui/src/index.ts"],
-      "@ecommerce-brands/users": ["libs/users/src/index.ts"],
       "@env/*": ["environments/*"]
     }
   },

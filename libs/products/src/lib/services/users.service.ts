@@ -24,11 +24,11 @@ export class UsersService {
     return this.http.delete<any>(`${this.apiURLUsers}/${userId}`);
   }
 
-  updateUser(userData: FormData, userId: string):Observable<User> {
+  updateUser(userData: User, userId: string):Observable<User> {
     return this.http.put<User>(`${this.apiURLUsers}/${userId}`, userData);
   }
 
-  addUser(userData: FormData): Observable<User> {
+  addUser(userData: User): Observable<User> {
     return this.http.post<User>(`${this.apiURLUsers}`, userData);
   }
 

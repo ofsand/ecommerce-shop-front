@@ -1,9 +1,6 @@
 <p-toast></p-toast>
 <div class="admin-page">
-  <p-card
-    [header]="editmode ? 'Edit User' : 'Add User'"
-    subheader="You can add or edit products here"
-  >
+  <p-card [header]="editmode ? 'Edit User' : 'Add User'" subheader="You can add or edit users here">
     <div class="p-grid p-mb-5">
       <div class="p-col-12">
         <p-toolbar>
@@ -25,16 +22,60 @@
         </p-toolbar>
       </div>
     </div>
-    <div class="p-grid">
+    <div class="p-grid mt-5">
       <div class="p-col-12">
         <form [formGroup]="form">
-            <div class="p-ui-fluid p-formgrid p-grid mt-5">
-                <div class="p-field p-col mt-5">
-                    <label for="name">Name</label>
-                    <input class="ml-4" formControlName="name" id="name" type="text" pInputText />
-                    <small *ngIf="form.controls['name'].invalid && isSubmitted" class="p-error ml-3">Name is required</small>
-                </div>
+          <div class="formgrid grid">
+            <div class="field col">
+              <label for="name">Name</label>
+              <input class="ml-4" formControlName="name" id="name" type="text" pInputText />
+              <small *ngIf="form.controls['name'].invalid && isSubmitted" class="p-error"
+                >Name is required</small
+              >
             </div>
+            <div class="field col">
+              <label for="email">Email</label>
+              <input class="ml-4" formControlName="email" id="email" type="text" pInputText />
+              <small *ngIf="form.controls['email'].invalid && isSubmitted" class="p-error">
+              <span *ngIf="form.controls['email'].errors['required']">email is required</span>
+                <span *ngIf="form.controls['email'].errors['email']">email is invalid</span></small>
+            </div>
+            <div class="field col">
+              <label for="password">Password</label>
+              <input class="ml-4" formControlName="password" id="password" type="password" pInputText />
+              <small *ngIf="form.controls['password'].invalid && isSubmitted" class="p-error"
+                >Password is required</small
+              >
+            </div>
+          </div>
+
+          <div class="formgrid grid">
+            <div class="field col">
+              <label for="phone">Phone</label>
+              <input class="ml-4" formControlName="phone" id="phone" type="text" pInputText />
+              <small *ngIf="form.controls['phone'].invalid && isSubmitted" class="p-error"
+                >Name is required</small
+              >
+            </div>
+            <div class="field col">
+              <label for="city">City</label>
+              <input class="ml-4" formControlName="city" id="city" type="text" pInputText />
+              <small *ngIf="form.controls['city'].invalid && isSubmitted" class="p-error"></small>
+            </div>
+            <div class="field col">
+              <label for="password">Address</label>
+              <input class="ml-4" formControlName="address" id="address" type="address" pInputText />
+              <small *ngIf="form.controls['address'].invalid && isSubmitted" class="p-error"
+                >Password is required</small
+              >
+            </div>
+          </div>
+          <div class="formgrid grid">
+              <div class="field col">
+                <label for="isAdmin">Admin</label>
+                <p-inputSwitch class="ml-4" formControlName="isAdmin" id="isAdmin" type="isAdmin"></p-inputSwitch>
+              </div>
+          </div>
         </form>
       </div>
     </div>

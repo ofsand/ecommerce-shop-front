@@ -36,6 +36,7 @@ import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { TagModule } from 'primeng/tag';
 
 
+
 const UX_MODULE = [
   CardModule,
   ToastModule,
@@ -50,7 +51,8 @@ const UX_MODULE = [
   InputTextareaModule,
   InputSwitchModule,
   EditorModule,
-  TagModule
+  TagModule,
+  InputSwitchModule
 ];
 
 const routes: Routes = [
