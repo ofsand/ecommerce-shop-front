@@ -15,7 +15,7 @@
         </p-toolbar>
       </div>
     </div>
-    <div class="p-grid">
+    <div class="p-grid mt-5">
       <div class="p-col-12">
         <p-table
           [paginator]="true"
@@ -46,7 +46,7 @@
               </td>
               <td>
                 <p-button
-                  
+                  (click)="deleteUser(user.id)"
                   styleClass="p-button-danger mr-3"
                   icon="pi pi-trash"
                 ></p-button>

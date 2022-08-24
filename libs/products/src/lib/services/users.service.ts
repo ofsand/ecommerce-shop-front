@@ -16,6 +16,10 @@ export class UsersService {
     return this.http.get<User[]>(this.apiURLUsers);
   }
 
+  deleteUser(userId: string) :Observable<any> {
+    return this.http.delete<any>(`${this.apiURLUsers}/${userId}`);
+  }
+
   /*
 
   createProduct(productData: FormData): Observable<Product> {
