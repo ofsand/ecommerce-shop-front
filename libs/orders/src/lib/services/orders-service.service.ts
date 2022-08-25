@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
@@ -25,6 +26,10 @@ export class OrdersService {
 
   updateOrder(orderStatus: {status: string}, orderId: string): Observable<Order> {
     return this.http.put<Order>(`${this.apiUrlOrders}/${orderId}`, orderStatus)
+  }
+
+  deleteOrder(orderId: string) :Observable<Object> {
+    return this.http.delete<Object>(`${this.apiUrlOrders}/${orderId}`);
   }
 }
 

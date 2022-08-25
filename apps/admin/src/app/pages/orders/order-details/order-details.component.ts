@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { timer } from 'rxjs';
 import { Order, OrdersService } from '@ecommerce-brands/orders';
 import { STATUS } from '../order.status';
 
@@ -43,6 +42,7 @@ export class OrderDetailsComponent implements OnInit {
       if(params['id']) {
         this.ordersService.getOrder(params['id']).subscribe((order) => {
           this.order = order;
+          this.selectedStatus = order.status;
         })
       }
     })
