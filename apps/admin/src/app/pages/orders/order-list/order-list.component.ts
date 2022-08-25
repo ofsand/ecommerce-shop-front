@@ -1,21 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Order, OrdersService } from '@ecommerce-brands/orders';
+import { STATUS } from '../order.status';
 
-const STATUS = {
-  0: {
-    name: 'pending',
-    color: 'warning'
-  },
-  1: {
-    name: 'delivered',
-    color: 'success'
-  },
-  2: {
-    name: 'failed',
-    color: 'danger'
-  }
-}
 
 @Component({
   selector: 'admin-order-list',

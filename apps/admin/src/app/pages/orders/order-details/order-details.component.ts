@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { timer } from 'rxjs';
 import { Order, OrdersService } from '@ecommerce-brands/orders';
-
-interface Status {
-  name: string,
-  num: number
-}
+import { STATUS } from '../order.status';
 
 @Component({
   selector: 'admin-order-details',
@@ -15,33 +13,57 @@ interface Status {
 })
 export class OrderDetailsComponent implements OnInit {
   order: Order;
-  status: Status[];
-  selectedStatus: number;
+  orderStatuses: any;
+  selectedStatus: any;
 
   constructor(
     private ordersService: OrdersService,
-    private route: ActivatedRoute
-  ) {
-    this.status = [
-      {name: 'Pending', num: 0},
-      {name: 'Delivered', num: 1},
-      {name: 'Failed', num: 2 }
-  ];
-  }
+    private route: ActivatedRoute,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
+    this._mapOrderStatus();
     this._showOrder();
   }
+
+  private _mapOrderStatus() {
+    this.orderStatuses = Object.keys(STATUS).map((key) => {
+      return {
+        id: key,
+        name: STATUS[key].name
+      };
+    });
+    console.log(this.orderStatuses);
+  }
+  
 
   private _showOrder() {
     this.route.params.subscribe((params) => {
       if(params['id']) {
         this.ordersService.getOrder(params['id']).subscribe((order) => {
           this.order = order;
-          console.log(order);
         })
       }
     })
+  }
+
+  onStatusChange(event) {
+    this.ordersService.updateOrder({status: event.value}, this.order.id).subscribe(() => {
+      this.messageService.add({
+        severity:'success',
+        summary:'Success', 
+        detail:`Status is modified`
+      });
+
+      },
+      () => {
+      this.messageService.add({
+              severity:'error', 
+              summary:'Error', 
+              detail:`Status is not modified`
+            });
+      });
   }
 
 }

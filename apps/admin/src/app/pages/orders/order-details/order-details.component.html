@@ -15,11 +15,12 @@
                     <div class="col-4">
                         <h5>Order status</h5>
                         <p-dropdown 
-                            [options]="status" 
+                            [options]="orderStatuses" 
                             [(ngModel)]="selectedStatus" 
-                            placeholder="Select a City" 
+                            placeholder="Select a Status" 
                             optionLabel="name" 
-                            [showClear]="true">
+                            optionValue="id"
+                            (onChange)="onStatusChange($event)">
                         </p-dropdown>
                     </div>
                     <div class="col-4">
