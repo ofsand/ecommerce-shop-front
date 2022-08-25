@@ -1,8 +1,9 @@
-import { OrderItem } from "@ecommerce-brands/orders";
+import { OrderItem } from "./order-item";
 import { User } from "@ecommerce-brands/products";
 
 export class Order {
-    orderItem?: OrderItem;
+    id?: string;
+    orderItems?: OrderItem[];
     shippingAddress?: string;
     city?: string;
     zipCode?: string;

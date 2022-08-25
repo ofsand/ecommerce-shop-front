@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Order, OrdersService } from '@ecommerce-brands/orders';
 
 const STATUS = {
@@ -29,11 +30,16 @@ export class OrderListComponent implements OnInit {
   orderStatus = STATUS;
 
   constructor(
-    private orderService: OrdersService
+    private orderService: OrdersService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this._getOrders();
+  }
+
+  showOrder(orderId: string) {
+    this.router.navigateByUrl(`orders/${orderId}`);
   }
 
   private _getOrders() {
@@ -41,4 +47,5 @@ export class OrderListComponent implements OnInit {
       this.orders = orders;
     })
   }
+
 }

@@ -68,7 +68,7 @@ export class CategoriesFormComponent implements OnInit {
   private _addCategory(category: Category) {
     this.categoriesService.createCategory(category).subscribe((category: Category) => {
       this.messageService.add({
-              severity:'success', 
+              severity:'success',
               summary:'Success', 
               detail:`Category ${category.name} added successfully`
             });

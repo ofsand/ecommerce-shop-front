@@ -18,25 +18,27 @@ import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
-import { CategoriesService, UsersService } from '@ecommerce-brands/products';
+import { OrderDetailsComponent } from './pages/orders/order-details/order-details.component';
+import { OrderListComponent } from './pages/orders/order-list/order-list.component';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import { UserListComponent } from './pages/users/user-list/user-list.component';
+import { UserFormComponent } from './pages/users/user-form/user-form.component';
+
+import { CategoriesService, UsersService } from '@ecommerce-brands/products';
 import { MessageService } from 'primeng/api';
 import {ConfirmationService} from 'primeng/api';
 import {ColorPickerModule} from 'primeng/colorpicker';
-import { ProductsListComponent } from './pages/products/products-list/products-list.component';
-import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {DropdownModule} from 'primeng/dropdown';
 import {EditorModule} from 'primeng/editor';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {InputSwitchModule} from 'primeng/inputswitch';
-import { UserListComponent } from './pages/users/user-list/user-list.component';
-import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { TagModule } from 'primeng/tag';
 import {InputMaskModule} from 'primeng/inputmask';
-import { OrderListComponent } from './pages/orders/order-list/order-list.component';
-import { OrderDetailsComponent } from './pages/orders/order-details/order-details.component';
+import {FieldsetModule} from 'primeng/fieldset';
 
 
 const UX_MODULE = [
@@ -55,7 +57,9 @@ const UX_MODULE = [
   EditorModule,
   TagModule,
   InputSwitchModule,
-  InputMaskModule
+  InputMaskModule,
+  FieldsetModule
+
 ];
 
 const routes: Routes = [

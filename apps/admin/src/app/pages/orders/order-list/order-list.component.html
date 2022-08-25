@@ -28,6 +28,9 @@
                             <td>
                                 <p-tag  [severity]="orderStatus[order.status].color" [value]="orderStatus[order.status].name"></p-tag>                       
                             </td>
+                            <td>
+                                <p-button (click)="showOrder(order.id)" styleClass="p-button-info mr-2" icon="pi pi-eye"></p-button>
+                            </td>
                         </tr>
                     </ng-template>
                 </p-table>
