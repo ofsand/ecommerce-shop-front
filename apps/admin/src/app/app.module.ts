@@ -101,7 +101,7 @@ const routes: Routes = [
         path:'products/form',
         component: ProductsFormComponent
       },
-      //Product routes
+      //User routes
       {
         path:'users',
         component: UserListComponent
@@ -114,6 +114,28 @@ const routes: Routes = [
         path:'users/form/:id',
         component: UserFormComponent
       },
+            //Product routes
+      {
+        path:'users',
+        component: UserListComponent
+      },
+      {
+        path:'users/form',
+        component: UserFormComponent
+      },
+      {
+        path:'users/form/:id',
+        component: UserFormComponent
+      },
+      //Orders routes
+      {
+        path:'orders',
+        component: OrderListComponent
+      },
+      {
+        path:'orders/:id',
+        component: OrderDetailsComponent
+      }
     ]
   }
 ];

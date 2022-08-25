@@ -1,9 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Product } from "@ecommerce-brands/products";
 
-@Injectable({
-  providedIn: 'root'
-})
-export class OrdersService {
-
-  constructor() { }
+export class OrderItem {
+    quantity?: number;
+    product?: Product;
 }

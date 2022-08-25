@@ -1,1 +1,41 @@
-<p>order-list works!</p>
+<p-toast></p-toast>
+<div class="admin-page">
+    <p-card header="Orders" subheader="Lists of all orders">
+        <div class="p-grid">
+            <div class="p-col-12">
+
+            </div>
+        </div>
+        <div class="p-grid mt-4">
+            <div class="p-col-12">
+                <p-table [value]="orders" styleClass="p-datatable-gridlines" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <!--<th>Id</th>-->
+                            <th pSortableColumn="name">User <p-sortIcon field="code"></p-sortIcon></th>
+                            <th>Total Price</th>
+                            <th>Date Ordered</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-order>
+                        <tr>
+                            <!--<td>{{category.id}}</td> -->
+                            <td>{{order.city}}</td>
+                            <td>{{order.totalPrice}}</td>
+                            <td>{{order.dateOrdered | date: 'short'}}</td>
+                            <td>
+                                <p-tag  [severity]="orderStatus[order.status].color" [value]="orderStatus[order.status].name"></p-tag>                       
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </p-card>
+</div>
+
+<!-- Confirmation Dialgog -->
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
