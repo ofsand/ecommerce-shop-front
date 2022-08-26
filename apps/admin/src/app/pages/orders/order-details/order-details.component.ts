@@ -33,7 +33,6 @@ export class OrderDetailsComponent implements OnInit {
         name: STATUS[key].name
       };
     });
-    console.log(this.orderStatuses);
   }
   
 
@@ -44,6 +43,8 @@ export class OrderDetailsComponent implements OnInit {
           this.order = order;
           this.selectedStatus = order.status;
         })
+      }else {
+        console.log("here");
       }
     })
   }
