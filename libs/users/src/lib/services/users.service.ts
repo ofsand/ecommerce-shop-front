@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { User } from '../models/user';
 
@@ -31,5 +32,11 @@ export class UsersService {
   addUser(userData: User): Observable<User> {
     return this.http.post<User>(`${this.apiURLUsers}`, userData);
   }
+
+  getUserCount(): Observable<User> {
+    return this.http.get<User>(`${this.apiURLUsers}/get/count`)
+    .pipe(map((objectValue: any) => objectValue.userCount));
+  }
+
 
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '@ecommerce-brands/products';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {ConfirmationService, ConfirmEventType, MessageService} from 'primeng/api';
+import { UsersService } from '@ecommerce-brands/users';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import { Router } from '@angular/router';
 
 @Component({
