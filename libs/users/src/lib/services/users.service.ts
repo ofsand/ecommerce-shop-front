@@ -33,8 +33,8 @@ export class UsersService {
     return this.http.post<User>(`${this.apiURLUsers}`, userData);
   }
 
-  getUserCount(): Observable<User> {
-    return this.http.get<User>(`${this.apiURLUsers}/get/count`)
+  getUserCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiURLUsers}/get/count`)
     .pipe(map((objectValue: any) => objectValue.userCount));
   }
 
