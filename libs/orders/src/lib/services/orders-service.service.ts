@@ -39,7 +39,7 @@ export class OrdersService {
 
   getTotalSales(): Observable<number> {
     return this.http.get<number>(`${this.apiUrlOrders}/get/totalsales`)
-    .pipe(map((objectValue: any) => objectValue.totalSales));
+    .pipe(map((objectValue: any) => objectValue.totalsales));
   }
 }
 
