@@ -22,7 +22,7 @@
                     <ng-template pTemplate="body" let-order>
                         <tr>
                             <!--<td>{{category.id}}</td> -->
-                            <td>{{order.city}}</td>
+                            <td>{{order.user.name}}</td>
                             <td>{{order.totalPrice}}</td>
                             <td>{{order.dateOrdered | date: 'short'}}</td>
                             <td>
