@@ -7,6 +7,7 @@ import { OrdersService } from '@ecommerce-brands/orders';
   styleUrls: []
 })
 export class DashboardComponent implements OnInit {
+  ordersCount: number;
 
   constructor(
     private ordersService: OrdersService
@@ -17,8 +18,8 @@ export class DashboardComponent implements OnInit {
   }
 
   _getOrdersCount() {
-    this.ordersService.getOrdersCount().subscribe( data => {
-      console.log(data);
+    this.ordersService.getOrdersCount().subscribe( orderspCount => {
+      this.ordersCount = orderspCount;
     })
   }
 
