@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from '@ecommerce-brands/orders';
 
 @Component({
   selector: 'admin-dashboard',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private ordersService: OrdersService
+  ) { }
 
   ngOnInit(): void {
+    this._getOrdersCount();
+  }
+
+  _getOrdersCount() {
+    this.ordersService.getOrdersCount().subscribe( data => {
+      console.log(data);
+    })
   }
 
 }
