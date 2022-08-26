@@ -26,7 +26,8 @@ import { ProductsFormComponent } from './pages/products/products-form/products-f
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 
-import { CategoriesService, UsersService } from '@ecommerce-brands/products';
+import { CategoriesService } from '@ecommerce-brands/products';
+import { UsersService } from '@ecommerce-brands/users';
 import { MessageService } from 'primeng/api';
 import {ConfirmationService} from 'primeng/api';
 import {ColorPickerModule} from 'primeng/colorpicker';

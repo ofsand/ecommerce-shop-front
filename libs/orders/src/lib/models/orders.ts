@@ -1,5 +1,5 @@
 import { OrderItem } from "./order-item";
-import { User } from "@ecommerce-brands/products";
+import { User } from "@ecommerce-brands/users";
 
 export class Order {
     id?: string;
