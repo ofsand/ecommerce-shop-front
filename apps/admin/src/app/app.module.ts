@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -40,6 +40,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import { TagModule } from 'primeng/tag';
 import {InputMaskModule} from 'primeng/inputmask';
 import {FieldsetModule} from 'primeng/fieldset';
+import { AppRoutingModule } from './app-routing.module';
 
 
 const UX_MODULE = [
@@ -63,98 +64,17 @@ const UX_MODULE = [
 
 ];
 
-const routes: Routes = [
-  {
-    path: '',
-    component: ShellComponent,
-    children: [
-      {
-        path:'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path:'categories',
-        component: CategoryListComponent
-      },
-      {
-        path:'categories/form',
-        component: CategoriesFormComponent
-      },
-      {
-        path:'categories/form/:id',
-        component: CategoriesFormComponent
-      },
-      //Product routes
-      {
-        path:'products',
-        component: ProductsListComponent
-      },
-      {
-        path:'products/form',
-        component: ProductsFormComponent
-      },
-      {
-        path:'products/form/:id',
-        component: ProductsFormComponent
-      },
-            //Product routes
-      {
-        path:'products',
-        component: ProductsListComponent
-      },
-      {
-        path:'products/form',
-        component: ProductsFormComponent
-      },
-      //User routes
-      {
-        path:'users',
-        component: UserListComponent
-      },
-      {
-        path:'users/form',
-        component: UserFormComponent
-      },
-      {
-        path:'users/form/:id',
-        component: UserFormComponent
-      },
-            //Product routes
-      {
-        path:'users',
-        component: UserListComponent
-      },
-      {
-        path:'users/form',
-        component: UserFormComponent
-      },
-      {
-        path:'users/form/:id',
-        component: UserFormComponent
-      },
-      //Orders routes
-      {
-        path:'orders',
-        component: OrderListComponent
-      },
-      {
-        path:'orders/:id',
-        component: OrderDetailsComponent
-      }
-    ]
-  }
-];
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoryListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent, UserListComponent, UserFormComponent, OrderListComponent, OrderDetailsComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes, { initialNavigation: 'enabledNonBlocking'}),
     UX_MODULE, 
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule],
+    BrowserAnimationsModule,
+    AppRoutingModule],
   providers: [UsersService, CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
