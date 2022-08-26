@@ -11,7 +11,8 @@ import { UiModule } from '@ecommerce-brands/ui';
 
 import {AccordionModule} from 'primeng/accordion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import { NavComponent } from './shared/nav/nav.component';
+import { ProductsModule } from '@ecommerce-brands/products';
 
 
 const routes: Routes = [
@@ -32,8 +33,9 @@ const routes: Routes = [
     ProductListComponent,
     HeaderComponent,
     FooterComponent,
+    NavComponent
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes), UiModule, AccordionModule, BrowserAnimationsModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes), UiModule, AccordionModule, BrowserAnimationsModule, ProductsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

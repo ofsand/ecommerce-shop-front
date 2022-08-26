@@ -1,0 +1,16 @@
+.nav {
+    list-style: none;
+    display: inline-flex;
+    li {
+        margin: 20px 20px;
+    }
+
+    a {
+        color: rgb(62, 55, 55);
+        font-size: 1em;
+        &:hover {
+            color: red;
+            cursor: pointer;
+        }
+    }
+}
