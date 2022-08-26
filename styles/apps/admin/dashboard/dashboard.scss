@@ -2,22 +2,21 @@
     color: white;
     display: flex;
     justify-content: space-between;
-    text-align: center;
-    
-    .icon-and-title{
-    }
-    
     .pi{
         font-size: 2.5em;
         margin-bottom: 10px;
+        margin-left: 5px;
     }
     .name {
-        padding-left: 30px;
         font-size: 1.2em;
+        margin-left: 5px;
     }
-     
     .number {
         font-size: 2.5em;
+        margin: 25px 10px 0px 0px;
+    }
+    .sales-number {
+        font-size: 2em;
         margin: 25px 10px 0px 0px;
     }
 }
@@ -46,3 +45,30 @@
     background: linear-gradient(to right, #0575E6, #d1d80b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */     
 }
 
+.dashboard-card {
+    box-shadow: rgba(0,0,0,0.4) 5px 5px 10px;
+    &:hover {
+        box-shadow: rgba(0,0,0,0.4) 2px 2px 15px;
+        transform: scale(1.2);
+        transition: 1s;
+        .d-item {
+            .pi{
+                font-size: 1.8em;
+                margin-bottom: 10px;
+                transition: 1s;
+            }
+            .name {
+                font-size: 0.8em;
+                transition: 1s;
+            }
+            .number {
+                font-size: 2.5em;
+                transition: 1s;
+            }
+            .sales-number {
+                font-size: 2.5em;
+                transition: 1s;
+            }
+        }
+    }
+}
