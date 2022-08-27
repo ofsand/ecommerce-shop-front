@@ -16,6 +16,7 @@
 @import './apps/shop/pages/home-page.scss';
 @import './apps/shop/pages/products-list.scss';
 @import './libs/products/products-search.scss';
+@import './libs/products/product-item.scss';
 
 // Shared
 @import './apps/shop/shared/footer.scss';
@@ -26,8 +27,8 @@
 @import './libs/ui/ui.scss';
 
 .container {
-    width: 90%;
-    padding: 5px 50px;
+    width: 100%;
+    padding: 5px 10%;
     margin: 0 auto;
-    background-color: rgb(244, 238, 231);
+    background-color: rgb(248, 244, 244);
 }
