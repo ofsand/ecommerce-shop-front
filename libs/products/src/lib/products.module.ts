@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import {CheckboxModule} from 'primeng/checkbox';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     CommonModule,
     ButtonModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forChild(routes),
     CheckboxModule]
     ,

@@ -3,7 +3,7 @@
         <div class="filters col-3 ">
             <h4>Categories</h4>
             <div class="field-checkbox" *ngFor="let cat of categories">
-                <p-checkbox class="" name="groupname" value="val1" label="{{cat.name}}"></p-checkbox>
+                <p-checkbox class="" [binary]="true" label="{{cat.name}}" [(ngModel)]="cat.checked" (onChange)="categoryFilter()"></p-checkbox>
             </div>
         </div>
         <div class="col-9 featured-products">
