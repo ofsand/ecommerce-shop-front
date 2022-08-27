@@ -7,6 +7,7 @@ import {ButtonModule} from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { RouterModule, Routes } from '@angular/router';
+import {CheckboxModule} from 'primeng/checkbox';
 
 const routes: Routes = [
   {
@@ -17,7 +18,13 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [CommonModule, ButtonModule, HttpClientModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    HttpClientModule,
+    RouterModule.forChild(routes),
+    CheckboxModule]
+    ,
   declarations: [
     ProductsSearchComponent,
     FeaturedProductsComponent,

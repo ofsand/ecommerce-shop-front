@@ -1,1 +1,17 @@
-<p>products-list works!</p>
+<div class="product-list">
+    <div class="grid">
+        <div class="filters col-3 ">
+            <h4>Categories</h4>
+            <div class="field-checkbox" *ngFor="let cat of categories">
+                <p-checkbox class="" name="groupname" value="val1" label="{{cat.name}}"></p-checkbox>
+            </div>
+        </div>
+        <div class="col-9 featured-products">
+            <div class="grid">
+                <div class="col-4" *ngFor="let product of products">
+                    <products-product-item [product]="product"></products-product-item>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
