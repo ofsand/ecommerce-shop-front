@@ -23,7 +23,7 @@
                         <tr>
                             <!--<td>{{category.id}}</td> -->
                             <td>{{order.user.name}}</td>
-                            <td>{{order.totalPrice}}</td>
+                            <td>{{order.totalPrice | currency}}</td>
                             <td>{{order.dateOrdered | date: 'short'}}</td>
                             <td>
                                 <p-tag  [severity]="orderStatus[order.status].color" [value]="orderStatus[order.status].name"></p-tag>                       
