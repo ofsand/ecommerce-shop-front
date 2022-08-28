@@ -11,6 +11,7 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductsPageComponent implements OnInit {
   product: Product;
+  ratingVale: any;
 
   constructor(
     private productsService: ProductsService,
@@ -29,6 +30,7 @@ export class ProductsPageComponent implements OnInit {
   private _getProduct(productId: string) {
     this.productsService.getProduct(productId).subscribe( product => {
       this.product = product;
+      this.ratingVale = product.rating;
     })
   }
 

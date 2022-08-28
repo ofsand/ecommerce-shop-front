@@ -11,7 +11,8 @@ import {CheckboxModule} from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
 import { CategoriesBannerComponent } from './components/categories-banner/categories-banner.component';
 import {CarouselModule} from 'primeng/carousel';
-import { ProductsPageComponent } from './pages/products-page/products-page.component';
+import { ProductsPageComponent } from './pages/products-page/products-page.component';;
+import {RatingModule} from 'primeng/rating';
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes),
     CheckboxModule,
-    CarouselModule
+    CarouselModule,
+    RatingModule
   ]
     ,
   declarations: [
