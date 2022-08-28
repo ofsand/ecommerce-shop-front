@@ -11,6 +11,8 @@ import {CheckboxModule} from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
 import { CategoriesBannerComponent } from './components/categories-banner/categories-banner.component';
 import {CarouselModule} from 'primeng/carousel';
+import { ProductsPageComponent } from './pages/products-page/products-page.component';
+
 
 const routes: Routes = [
   {
@@ -21,6 +23,10 @@ const routes: Routes = [
     path: 'categories/:id',
     component: ProductsListComponent
   },
+  {
+    path: 'products/:id',
+    component: ProductsPageComponent
+  }
 ];
 
 
@@ -40,8 +46,9 @@ const routes: Routes = [
     FeaturedProductsComponent,
     ProductItemComponent,
     ProductsListComponent,
-    CategoriesBannerComponent
+    CategoriesBannerComponent,
+    ProductsPageComponent
   ],
-  exports: [ProductsSearchComponent, CategoriesBannerComponent  , FeaturedProductsComponent, ProductItemComponent, ProductsListComponent]
+  exports: [ProductsSearchComponent, CategoriesBannerComponent  , FeaturedProductsComponent, ProductItemComponent, ProductsListComponent, ProductsPageComponent]
 })
 export class ProductsModule {}

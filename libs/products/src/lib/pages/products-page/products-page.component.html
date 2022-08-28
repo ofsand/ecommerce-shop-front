@@ -1,0 +1,40 @@
+<div class="product-page">
+    <div class="container">
+        <div class="grid">
+            <div class="col-6 image-holder">
+                <img src="assets/images/knitting-home.jpg" style="width: 100%;" alt="">
+            </div>
+            <div class="col-6 product-details">
+                <div class="col-12">
+                    <h3 class="col-12 title">{{product.name}}</h3>
+                    <p class="col-10 desc">{{product.description}}</p>
+                <div class="col-12 grid">
+                    <div class="col-5 price">
+                        <h2>{{product.price | currency}}</h2>
+                    </div>
+                    <div class="col-5 reviews">
+                        <p>{{product.rating}}</p>
+                    </div>
+                </div>
+                <div class="col-12 colors">
+                    Colors
+                </div>
+                <div class="col-12 size">
+                    Size
+                </div>
+                <div class="col-12 grid">
+                    <div class="col-4 quantity">
+                        Quantity
+                    </div>
+                    <div class="col-8 add-to-cart-btn">
+                        <button pButton type="button" label="Add to Cart"><i class="pi pi-shopping-cart mr-2"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-10 desc">
+            <p>{{product.richDescription}}</p>
+        </div>
+
+    </div>
+</div>

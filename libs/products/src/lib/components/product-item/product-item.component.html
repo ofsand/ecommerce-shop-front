@@ -11,7 +11,7 @@
             </span>
         </div>
         <div class="product-image">
-            <img [src]="product.image"  src="" alt="">
+            <img [src]="product.image" routerLink="/products/{{product.id}}" src="" alt="">
         </div>
         <h5 class="product-name m-3">{{product.name}}</h5>
         <button pButton pRipple label="Add to cart" class="w-8 mt-auto">
