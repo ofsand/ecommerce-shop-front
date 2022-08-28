@@ -15,9 +15,13 @@
 // Pages
 @import './apps/shop/pages/home-page.scss';
 @import './libs/products/pages/products-list.scss';
-@import './libs/products/components/products-search.scss';
-@import './libs/products/components/product-item.scss';
+@import './libs/products/pages/products-page.scss';
+
+// Components
 @import './libs/products/components/categories-banner.scss';
+@import './libs/products/components/product-item.scss';
+@import './libs/products/components/products-search.scss';
+
 
 // Shared
 @import './apps/shop/shared/footer.scss';

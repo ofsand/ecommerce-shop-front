@@ -1,0 +1,38 @@
+<div class="product-page">
+    <div class="container surface-section my-5 px-4 py-4 md:px-6 lg:px-8">
+        <div class="grid">
+            <div class="col-6 image-holder">
+                <img src="assets/images/knitting-home.jpg" style="width: 100%;" alt="">
+            </div>
+            <div class="col-6 product-details">
+                <div class="col-12 text-left">
+                    <h3 class="col-12 title">{{product.name}}</h3>
+                    <p class="col-10 desc">{{product.description}}</p>
+                </div>
+                <div class="col-12 flex justify-content-between align-items-center">
+                    <h2 class="price text-left">{{product.price | currency}}</h2>
+                    <p-rating class="reviews text-right" [(ngModel)]="ratingVale" [cancel]="false" readonly="true" ></p-rating>
+                </div>
+                <div class="col-12 colors">
+                    Colors
+                </div>
+                <div class="col-12 size">
+                    Size
+                </div>
+                <div class="col-12 grid">
+                    <div class="col-4 quantity">
+                        Quantity
+                    </div>
+                    <div class="col-12 add-to-cart-btn flex justify-content-center">
+                        <button pButton type="button" label="Buy Now" class="mx-4"><i class="pi pi-check mr-2"></i></button>
+                        <button pButton type="button" label="Add to Cart" class="mx-4"><i class="pi pi-shopping-cart mr-2"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-10 desc">
+            <p>{{product.richDescription}}</p>
+        </div>
+
+    </div>
+</div>
