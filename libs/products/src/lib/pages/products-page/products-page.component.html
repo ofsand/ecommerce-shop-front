@@ -5,14 +5,12 @@
                 <img src="assets/images/knitting-home.jpg" style="width: 100%;" alt="">
             </div>
             <div class="col-6 product-details">
-                <div class="col-12 text-left">
-                    <h3 class="col-12 title">{{product.name}}</h3>
-                    <p class="col-10 desc">{{product.description}}</p>
+                <div class="col-12 text-left flex flex-row justify-content-between align-items-center">
+                    <h3 class="col-8 title">{{product.name}}</h3>
+                    <p-rating class="reviews text-right col-4" [(ngModel)]="ratingVale" [cancel]="false" [readonly]="true" ></p-rating>
                 </div>
-                <div class="col-12 flex justify-content-between align-items-center">
-                    <h2 class="price text-left">{{product.price | currency}}</h2>
-                    <p-rating class="reviews text-right" [(ngModel)]="ratingVale" [cancel]="false" [readonly]="true" ></p-rating>
-                </div>
+                <p class="col-11 desc">{{product.description}}</p>
+                <h2 class="price text-left">{{product.price | currency}}</h2>
                 <div class="col-12 colors">
                     Colors
                 </div>
@@ -30,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-10 desc">
+        <div class="col-10 desc mt-5">
             <p>{{product.richDescription}}</p>
         </div>
 
