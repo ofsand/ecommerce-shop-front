@@ -15,10 +15,10 @@
                 <p-table [value]="categories"  responsiveLayout="scroll">
                     <ng-template pTemplate="header"></ng-template>
                     <ng-template pTemplate="body" let-category>
-                        <tr>
+                        <tr class="grid col-12">
                             <!--<td>{{category.id}}</td> -->
-                            <td>{{category.name}}</td>
-                            <td>
+                            <td class="col-9">{{category.name}}</td>
+                            <td class="col-3">
                                 <p-button (click)="deleteCategory(category.id)" styleClass="p-button-danger mr-2" icon="pi pi-trash"></p-button>
                                 <p-button (click)="updateCategory(category.id)" styleClass="p-button-secondary" icon="pi pi-pencil"></p-button>
                             </td>
