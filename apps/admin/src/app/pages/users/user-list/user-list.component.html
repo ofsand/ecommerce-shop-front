@@ -21,7 +21,6 @@
           [paginator]="true"
           [rows]="10"
           [value]="users"
-          styleClass="p-datatable-gridlines"
           [globalFilterFields]="['name']"
         >
           <ng-template pTemplate="header">
@@ -32,6 +31,7 @@
               <th>City</th>
               <th>Address</th>
               <th>Admin</th>
+              <th></th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-user>
