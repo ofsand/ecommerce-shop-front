@@ -1,0 +1,13 @@
+<div class="categories-banner">
+    <h3>Cats</h3>
+    <div class="grid" *ngFor="let cat of categories">
+        <div class="col-2">
+            <div class="category">
+                <div class="category-icon">
+                    <i class="pi pi-{{cat.icon}}"></i>
+                </div>
+                <div class="category-name cursor-pointer" [routerLink]="'categories/' + cat.id">{{cat.name}}</div>
+            </div>
+        </div>
+    </div>
+</div>

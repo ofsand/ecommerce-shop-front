@@ -9,12 +9,17 @@ import { ProductsListComponent } from './pages/products-list/products-list.compo
 import { RouterModule, Routes } from '@angular/router';
 import {CheckboxModule} from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
+import { CategoriesBannerComponent } from './components/categories-banner/categories-banner.component';
 
 const routes: Routes = [
   {
     path: 'products',
     component: ProductsListComponent
-  }
+  },
+  {
+    path: 'categories/:id',
+    component: ProductsListComponent
+  },
 ];
 
 
@@ -31,8 +36,9 @@ const routes: Routes = [
     ProductsSearchComponent,
     FeaturedProductsComponent,
     ProductItemComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    CategoriesBannerComponent
   ],
-  exports: [ProductsSearchComponent, FeaturedProductsComponent, ProductItemComponent, ProductsListComponent]
+  exports: [ProductsSearchComponent, CategoriesBannerComponent  , FeaturedProductsComponent, ProductItemComponent, ProductsListComponent]
 })
 export class ProductsModule {}
