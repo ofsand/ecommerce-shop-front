@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 import { BannerComponent } from './components/banner/banner.component';
 import { SliderComponent } from './components/slider/slider.component';
 import {ButtonModule} from 'primeng/button';
+import { FeaturesBlockComponent } from './components/features-block/features-block.component';
 
 
 @NgModule({
   imports: [CommonModule, ButtonModule],
   declarations: [
     BannerComponent,
-    SliderComponent
+    SliderComponent,
+    FeaturesBlockComponent
   ],
   exports: [
     BannerComponent,
-    SliderComponent
+    SliderComponent,
+    FeaturesBlockComponent
   ],
 })
 export class UiModule {}
