@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BannerComponent } from './components/banner/banner.component';
 import { SliderComponent } from './components/slider/slider.component';
 import {ButtonModule} from 'primeng/button';
-import { FeaturesBlockComponent } from './components/features-block/features-block.component';
+import { FeaturesBlockComponent } from '../../../products/src/lib/components/features-block/features-block.component';
 
 
 @NgModule({

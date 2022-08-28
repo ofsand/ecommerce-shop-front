@@ -14,6 +14,7 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsListComponent implements OnInit {
   products: Product[] = [];
   categories: Category[] = [];
+  currentCategory: any;
   isCategoryPage: boolean;
 
   constructor(
@@ -25,7 +26,11 @@ export class ProductsListComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       params['id'] ? this._getProducts([params['id']]) : this._getProducts();
-      params['id'] ? (this.isCategoryPage = true) : (this.isCategoryPage = false);
+      params['id'] ? (
+            this.isCategoryPage = true,
+            this._getCategory( params['id'])
+            ) : 
+            (this.isCategoryPage = false);
     });
     this._getCategories();
   }
@@ -39,6 +44,12 @@ export class ProductsListComponent implements OnInit {
   private _getCategories() {
     this.categoriesService.getCategories().subscribe((cats) => {
       this.categories = cats;
+    })
+  }
+
+  private _getCategory(categoryId: string) {
+    this.categoriesService.getCategory(categoryId).subscribe((cat) => {
+      this.currentCategory = cat.name;
     })
   }
 

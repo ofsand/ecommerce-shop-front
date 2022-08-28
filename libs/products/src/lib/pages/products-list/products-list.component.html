@@ -1,4 +1,6 @@
 <div class="product-list">
+    <h2 class="text-center mb-7 mt-5" *ngIf="!isCategoryPage">Explore more products</h2>
+    <h2 class="text-center mb-7 mt-5" *ngIf="isCategoryPage">{{currentCategory}}</h2>
     <div class="grid">
         <div class="filters col-3" *ngIf="!isCategoryPage">
             <h4>Categories</h4>

@@ -12,6 +12,7 @@ import {AccordionModule} from 'primeng/accordion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NavComponent } from './shared/nav/nav.component';
 import { ProductsModule } from '@ecommerce-brands/products';
+import { FooterSecondComponent } from './shared/footer-second/footer-second.component';
 
 
 const routes: Routes = [
@@ -27,10 +28,14 @@ const routes: Routes = [
     HomePageComponent,
     HeaderComponent,
     FooterComponent,
-    NavComponent
+    NavComponent,
+    FooterSecondComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes), UiModule, AccordionModule, BrowserAnimationsModule, ProductsModule, UiModule],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [
+    FooterSecondComponent
+  ],
 })
 export class AppModule {}

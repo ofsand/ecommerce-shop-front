@@ -1,0 +1,62 @@
+.horiz-line-2 {
+    margin: 80px 0px 20px 0px;
+}
+.footer-second{
+    .footer-content {
+        margin-bottom: 0px;
+        padding-left: 50px;
+        .about-footer {
+            .logo-footer {
+                img {
+                    max-width: 100px;
+                    float: left;
+                    margin-right: 20px;
+                }
+            }
+            .text-footer {
+                text-align: justify;
+            }
+        }
+    
+        .links-footer {
+            h3 {
+                padding-left: 50px;
+            }
+            ul {
+                list-style: none; 
+                span{
+                    display: flex;
+                    flex-direction: row;
+                    i {
+                        margin: 5px;
+                    }
+                    li {
+                        margin: 5px;
+                    }
+                }
+            }
+        }
+
+        .contact-footer {
+            h3 {
+                padding-left: 50px;
+            }
+            ul {
+                list-style: none; 
+                span{
+                    display: flex;
+                    flex-direction: row;
+                    i {
+                        margin: 5px;
+                    }
+                    li {
+                        margin: 5px;
+                    }
+                }
+            }
+            .social-media-footer {
+
+            }
+        }
+    }
+}
