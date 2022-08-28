@@ -1,13 +1,17 @@
 <div class="categories-banner">
-    <h3>Cats</h3>
-    <div class="grid" *ngFor="let cat of categories">
-        <div class="col-2">
-            <div class="category">
-                <div class="category-icon">
-                    <i class="pi pi-{{cat.icon}}"></i>
+    <p-carousel [value]="categories"  styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" >
+        <ng-template pTemplate="header">
+            <h2 class="categories-banner-title m-5">Cats</h2>
+        </ng-template>
+        <ng-template let-cat pTemplate="item" >
+            <div class="category-item h-full mx-5">
+                <div class="category-item-content flex flex-column shadow-2 h-full text-center justify-content-between align-items-center flex-wrap surface-card" style="border-radius: 6px">
+                    <div>
+                        <h3 class="category-name cursor-pointer p-3" [routerLink]="'categories/' + cat.id">{{cat.name}}</h3>
+                    </div>
                 </div>
-                <div class="category-name cursor-pointer" [routerLink]="'categories/' + cat.id">{{cat.name}}</div>
             </div>
-        </div>
-    </div>
+        </ng-template>
+    </p-carousel>
+
 </div>

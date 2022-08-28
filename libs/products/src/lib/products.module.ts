@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {CheckboxModule} from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
 import { CategoriesBannerComponent } from './components/categories-banner/categories-banner.component';
+import {CarouselModule} from 'primeng/carousel';
 
 const routes: Routes = [
   {
@@ -30,7 +31,9 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forChild(routes),
-    CheckboxModule]
+    CheckboxModule,
+    CarouselModule
+  ]
     ,
   declarations: [
     ProductsSearchComponent,
