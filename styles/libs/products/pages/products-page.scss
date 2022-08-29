@@ -6,10 +6,15 @@
             margin-left: 4px;
             color: rgb(223, 223, 65);
         }
-    }
-    h2 {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 1.7rem;
+        .price-before {
+            text-decoration: line-through;
+            color: red;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .price {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.7rem;
+        }
     }
     .quantity-input {
         .p-inputnumber-input {

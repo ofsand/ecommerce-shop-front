@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { OrdersModule } from '@ecommerce-brands/orders';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
@@ -31,7 +32,7 @@ const routes: Routes = [
     NavComponent,
     FooterSecondComponent
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes), UiModule, AccordionModule, BrowserAnimationsModule, ProductsModule, UiModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes), UiModule, AccordionModule, BrowserAnimationsModule, ProductsModule, UiModule, OrdersModule],
   providers: [],
   bootstrap: [AppComponent],
   exports: [

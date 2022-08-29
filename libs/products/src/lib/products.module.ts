@@ -14,6 +14,7 @@ import {CarouselModule} from 'primeng/carousel';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';;
 import {RatingModule} from 'primeng/rating';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { UiModule } from '@ecommerce-brands/ui';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
     CheckboxModule,
     CarouselModule,
     RatingModule,
-    InputNumberModule
+    InputNumberModule,
+    UiModule
   ]
     ,
   declarations: [

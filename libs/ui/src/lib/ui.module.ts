@@ -4,6 +4,7 @@ import { BannerComponent } from './components/banner/banner.component';
 import { SliderComponent } from './components/slider/slider.component';
 import {ButtonModule} from 'primeng/button';
 import { FeaturesBlockComponent } from './components/features-block/features-block.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 
 @NgModule({
@@ -11,12 +12,14 @@ import { FeaturesBlockComponent } from './components/features-block/features-blo
   declarations: [
     BannerComponent,
     SliderComponent,
-    FeaturesBlockComponent
+    FeaturesBlockComponent,
+    GalleryComponent
   ],
   exports: [
     BannerComponent,
     SliderComponent,
-    FeaturesBlockComponent
+    FeaturesBlockComponent,
+    GalleryComponent
   ],
 })
 export class UiModule {}
