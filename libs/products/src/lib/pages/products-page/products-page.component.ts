@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../models/product';
@@ -12,6 +13,7 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsPageComponent implements OnInit {
   product: Product;
   ratingVale: any;
+  val: number = 1;
 
   constructor(
     private productsService: ProductsService,
@@ -32,6 +34,10 @@ export class ProductsPageComponent implements OnInit {
       this.product = product;
       this.ratingVale = product.rating;
     })
+  }
+
+  onInc() {
+    console.log("here");
   }
 
 }

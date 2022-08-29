@@ -19,43 +19,37 @@
         }
     
         .links-footer {
-            h3 {
-                padding-left: 50px;
-            }
             ul {
                 list-style: none; 
                 span{
                     display: flex;
                     flex-direction: row;
                     i {
-                        margin: 5px;
+                        margin: 3px;
                     }
                     li {
-                        margin: 5px;
+                        margin: 3px 5px;
                     }
                 }
             }
         }
 
         .contact-footer {
-            h3 {
-                padding-left: 50px;
-            }
             ul {
                 list-style: none; 
                 span{
                     display: flex;
                     flex-direction: row;
                     i {
-                        margin: 5px;
+                        margin: 2px;
                     }
                     li {
-                        margin: 5px;
+                        margin: 2px 5px;
                     }
                 }
             }
             .social-media-footer {
-
+                margin-top: 40px;
             }
         }
     }

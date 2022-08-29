@@ -13,6 +13,7 @@ import { CategoriesBannerComponent } from './components/categories-banner/catego
 import {CarouselModule} from 'primeng/carousel';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';;
 import {RatingModule} from 'primeng/rating';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 
 const routes: Routes = [
@@ -40,7 +41,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CheckboxModule,
     CarouselModule,
-    RatingModule
+    RatingModule,
+    InputNumberModule
   ]
     ,
   declarations: [

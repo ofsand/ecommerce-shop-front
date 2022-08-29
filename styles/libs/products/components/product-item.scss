@@ -1,6 +1,10 @@
 .product-item {
     .product-wrapper {
         padding: 0px 15px 15px 15px;
+        .p-rating-icon {
+            margin-left: 4px;
+            color: rgb(223, 223, 65);
+        }
         .product-image {
             
             img {
