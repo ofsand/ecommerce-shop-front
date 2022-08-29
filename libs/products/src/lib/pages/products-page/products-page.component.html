@@ -2,9 +2,9 @@
     <div class="container surface-section my-5 px-4 py-4 md:px-6 lg:px-8">
         <div class="grid">
             <div class="col-6 image-holder">
-                <img src="assets/images/knitting-home.jpg" style="width: 100%;" alt="">
+                <ui-gallery [images] = "product.images"></ui-gallery>
             </div>
-            <div class="col-6 product-details">
+            <div class="col-5 ml-6 product-details">
                 <div class="col-12 text-left flex flex-row justify-content-between align-items-center">
                     <h3 class="col-8 title">{{product.name}}</h3>
                     <p-rating class="reviews text-right col-4" [(ngModel)]="ratingVale" [cancel]="false" [readonly]="true" ></p-rating>
@@ -19,8 +19,8 @@
                 <hr>
                 <div class="flex flex-row justify-content-around align-items-center">
                     <h2 class="price text-left">{{ val* product.price | currency}}</h2>
-                    <h3 class="price-before text-left ml-1">{{ val* product.price * (1.3) | currency}}</h3>
-                    <div class="flex flex-row align-content-center mr-7">
+                    <h3 class="price-before text-left">{{ val* product.price * (1.3) | currency}}</h3>
+                    <div class="flex flex-row align-content-center ml-3">
                         <p class="quantity mr-3">Quantity</p><br>
                         <p-inputNumber [(ngModel)]="val" [showButtons]="true" 
                                 incrementButtonIcon="pi pi-chevron-up" decrementButtonIcon="pi pi-chevron-down"
