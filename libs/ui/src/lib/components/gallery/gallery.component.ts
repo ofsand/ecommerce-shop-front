@@ -12,11 +12,18 @@ export class GalleryComponent implements OnInit {
   @Input() images: string[];
 
   ngOnInit(): void {
-    this.selectedImage = this.images[0];
+    if(this.hasImages()) {
+      this.selectedImage = this.images[0];
+    }
   }
 
   changeSelectedImage(imageUrl: string) {
-    this.selectedImage = imageUrl;
+    if(this.hasImages()) {
+      this.selectedImage = imageUrl;
+    }
   }
 
+  hasImages() {
+    return this.images?.length >0;
+  }
 }

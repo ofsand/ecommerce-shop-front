@@ -9,10 +9,9 @@
             box-shadow: #00000054 1px 1px 5px 1px;
             max-width: 100%;
             height: 100%;
-            cursor: pointer;
         }
     }
-
+    
     .images {
         ul {
             display: flex;
@@ -26,6 +25,7 @@
                 border-radius: 3px;
                 display: block;
                 margin: 8px;
+                cursor: pointer;
             }
             .image-focus {
                 box-shadow:inset 0 0 0 200px rgba(25, 20, 66, 0.3);
