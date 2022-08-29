@@ -10,21 +10,27 @@
                     <p-rating class="reviews text-right col-4" [(ngModel)]="ratingVale" [cancel]="false" [readonly]="true" ></p-rating>
                 </div>
                 <p class="col-11 desc">{{product.description}}</p>
-                <h2 class="price text-left">{{product.price | currency}}</h2>
+                <div class="flex flex-row justify-content-around align-items-center">
+                    <h2 class="price text-left">{{ val* product.price | currency}}</h2>
+                    <div class="flex flex-row align-content-center">
+                        <p class="quantity mr-3">Quantity</p><br>
+                        <p-inputNumber [(ngModel)]="val" [showButtons]="true" 
+                                    buttonLayout="horizontal" spinnerMode="horizontal"
+                                    decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success"
+                                    incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus"
+                                    inputId="minmax-buttons" [min]="1" class="quantity-input h-2rem align-self-center" [step]="1">
+                        </p-inputNumber>
+                    </div>
+                </div>
                 <div class="col-12 colors">
                     Colors
                 </div>
                 <div class="col-12 size">
                     Size
                 </div>
-                <div class="col-12 grid">
-                    <div class="col-4 quantity">
-                        Quantity
-                    </div>
-                    <div class="col-12 add-to-cart-btn flex justify-content-center">
-                        <button pButton type="button" label="Buy Now" class="mx-4"><i class="pi pi-check mr-2"></i></button>
-                        <button pButton type="button" label="Add to Cart" class="mx-4"><i class="pi pi-shopping-cart mr-2"></i></button>
-                    </div>
+                <div class="col-12 add-to-cart-btn flex justify-content-center">
+                    <button pButton type="button" label="Buy Now" class="mx-4"></button>
+                    <button pButton type="button" label="Add to Cart" class="mx-4"><i class="pi pi-shopping-cart mr-2"></i></button>
                 </div>
             </div>
         </div>
