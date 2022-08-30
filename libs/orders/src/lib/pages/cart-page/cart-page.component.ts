@@ -12,8 +12,8 @@ import { OrdersService } from '../../services/orders-service.service';
 })
 export class CartPageComponent implements OnInit {
 
-  val: number = 1;
   cartItemsDetailed: CartItemDetailed[] = [];
+  val: any;
 
   constructor(
     private route: Router,
@@ -33,6 +33,7 @@ export class CartPageComponent implements OnInit {
             product: respProduct,
             quantity: cartItem.quantity
           })
+          this.val=cartItem.quantity;
       });
     })
   });
