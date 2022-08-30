@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CartService } from './services/cart-service.service';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { CartIconComponent } from './components/cart-icon/cart-icon.component';
+import {BadgeModule} from 'primeng/badge';
+
 
 const routes: Routes = [
   {
@@ -12,12 +15,14 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, BadgeModule, RouterModule.forChild(routes)],
   declarations: [
-    CartPageComponent
+    CartPageComponent,
+    CartIconComponent
   ],
   exports: [
-    CartPageComponent
+    CartPageComponent,
+    CartIconComponent
   ],
 })
 export class OrdersModule {
