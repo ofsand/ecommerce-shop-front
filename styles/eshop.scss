@@ -38,5 +38,6 @@
     width: 100%;
     padding: 5px 10% 35px 10%;
     margin: 0 auto;
-    background-color: rgb(248, 244, 244);
+    background: linear-gradient(to right, rgba(130, 138, 142, 0.6), rgba(224, 221, 253, 0.6)), url("../apps/eshop/src/assets/images/abstract-blur.jpg") no-repeat fixed;
+    background-size: cover;
 }

@@ -11,11 +11,16 @@ export class CartService {
   constructor() { }
 
   initCartLocalStorage() {
-    const initialCart = {
-      items: []
+    //Check if cart exist 
+    const cart: Cart = this.getCart();
+    if(!cart) {
+      //initializing cart
+      const initialCart = {
+        items: []
+      };
+      const initialCartJson = JSON.stringify(initialCart)
+      localStorage.setItem(CART_KEY, initialCartJson);
     }
-    const initialCartJson = JSON.stringify(initialCart)
-    localStorage.setItem(CART_KEY, initialCartJson);
   }
 
   getCart() :Cart{
