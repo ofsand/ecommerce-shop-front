@@ -31,9 +31,11 @@
                         </div>
                     </div>
                     <div class="col-2 flex flex-column justify-content-center align-items-center">
-                        <p-inputNumber [[(ngModel)]]="val" [showButtons]="true" incrementButtonIcon="pi pi-chevron-up" decrementButtonIcon="pi pi-chevron-down" inputId="minmax-buttons" [min]="val" class="quantity-input h-2rem align-self-center mb-4" [step]="1"></p-inputNumber>
+                        <p-inputNumber [(ngModel)]="val" [showButtons]="true" 
+                        incrementButtonIcon="pi pi-chevron-up" decrementButtonIcon="pi pi-chevron-down"
+                        inputId="minmax-buttons" [min]="1" class="quantity-input h-2rem align-self-center" [step]="1">
+                        </p-inputNumber>
                         <span class="sub-total">
-                            <h2 class="text-green-600">{{val * 2}}</h2>
                             <h2 class="text-green-600">{{val * cartItem.product.price | currency }}</h2>
                         </span>
                     </div> 
