@@ -1,12 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { CartService } from './services/cart-service.service';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
-export const ordersRoutes: Route[] = [];
+const routes: Routes = [
+  {
+    path: 'cart',
+    component: CartPageComponent
+  }
+]
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule.forChild(routes)],
+  declarations: [
+    CartPageComponent
+  ],
+  exports: [
+    CartPageComponent
+  ],
 })
 export class OrdersModule {
 
