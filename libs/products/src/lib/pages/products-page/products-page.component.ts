@@ -36,8 +36,5 @@ export class ProductsPageComponent implements OnInit {
     })
   }
 
-  onInc() {
-    console.log("here");
-  }
 
 }

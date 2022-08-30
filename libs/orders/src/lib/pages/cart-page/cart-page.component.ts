@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductsService } from '@ecommerce-brands/products';
+import { Cart, CartItem, CartItemDetailed } from '../../models/cart';
 import { CartService } from '../../services/cart-service.service';
 import { OrdersService } from '../../services/orders-service.service';
 
@@ -12,10 +12,13 @@ import { OrdersService } from '../../services/orders-service.service';
 })
 export class CartPageComponent implements OnInit {
 
+  val: number = 1;
+  cartItemsDetailed: CartItemDetailed[] = [];
+
   constructor(
     private route: Router,
     private cartService: CartService,
-    private productService: ProductsService
+    private ordersService: OrdersService
   ) { }
 
   ngOnInit(): void {
@@ -25,11 +28,16 @@ export class CartPageComponent implements OnInit {
   _getCartDetails() {
     this.cartService.cart$.subscribe(respCart => {
       respCart.items?.forEach((cartItem) => {
-        this.productService.getProduct(cartItem.productId).subscribe((product) => {})
-      })
+        this.ordersService.getProduct(cartItem.productId).subscribe((respProduct) => {
+          this.cartItemsDetailed.push({
+            product: respProduct,
+            quantity: cartItem.quantity
+          })
+      });
     })
-  }
+  });
 
+}
   backToShop() {
     this.route.navigateByUrl('/products');
   }

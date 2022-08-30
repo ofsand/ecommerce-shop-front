@@ -14,15 +14,15 @@
             <div class="cart-shipping">
                 Shipping after Payment
             </div>
-            <div class="cart-item mt-4 bg-white-alpha-60 ">
+            <div class="cart-item mt-4 bg-white-alpha-60 " *ngFor="let cartItem of cartItemsDetailed">
                 <div class="grid">
                     <div class="col-3 cart-item-image ml-2">
-                        <img src="assets/images/white-shirt.jpg" width="100%" alt="">
+                        <img [src]="cartItem.product.image" width="100%" alt="">
                     </div>
                     <div class="col-6 flex flex-column justify-content-center">
-                        <div class="cart-item-name mb-3">Product name</div>
+                        <div class="cart-item-name mb-3"><h2>{{cartItem.product.name}}</h2></div>
                         <div class="cart-item-price">
-                            <h3>{{234 | currency}}</h3>
+                            <h3>{{cartItem.product.price | currency}}</h3>
                         </div>
                         <div class="cart-item-remove-btn mt-2">
                             <button pButton >
@@ -31,12 +31,10 @@
                         </div>
                     </div>
                     <div class="col-2 flex flex-column justify-content-center align-items-center">
-                        <p-inputNumber value="1" [showButtons]="true" 
-                                incrementButtonIcon="pi pi-chevron-up" decrementButtonIcon="pi pi-chevron-down"
-                                inputId="minmax-buttons" [min]="1" class="quantity-input h-2rem align-self-center mb-4" [step]="1">
-                        </p-inputNumber>
+                        <p-inputNumber [[(ngModel)]]="val" [showButtons]="true" incrementButtonIcon="pi pi-chevron-up" decrementButtonIcon="pi pi-chevron-down" inputId="minmax-buttons" [min]="val" class="quantity-input h-2rem align-self-center mb-4" [step]="1"></p-inputNumber>
                         <span class="sub-total">
-                            <h2 class="red">{{5435 | currency }}</h2>
+                            <h2 class="text-green-600">{{val * 2}}</h2>
+                            <h2 class="text-green-600">{{val * cartItem.product.price | currency }}</h2>
                         </span>
                     </div> 
                 </div>
