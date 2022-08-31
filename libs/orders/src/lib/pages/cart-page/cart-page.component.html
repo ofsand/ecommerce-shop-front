@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="col-2 flex flex-column justify-content-center align-items-center">
-                        <p-inputNumber [(ngModel)]="val" [showButtons]="true" 
+                        <p-inputNumber [(ngModel)]="val"  [inputId]="cartItem.product.id" [showButtons]="true" 
                         incrementButtonIcon="pi pi-chevron-up" decrementButtonIcon="pi pi-chevron-down"
                         inputId="minmax-buttons" [min]="1" class="quantity-input h-2rem align-self-center" [step]="1">
                         </p-inputNumber>
