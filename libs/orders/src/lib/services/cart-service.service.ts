@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Cart, CartItem } from '../models/cart';
 
 export const CART_KEY = "cart";
@@ -7,6 +8,7 @@ export const CART_KEY = "cart";
   providedIn: 'root'
 })
 export class CartService {
+  cart$: BehaviorSubject<Cart> = new BehaviorSubject(this.getCart());
 
   constructor() { }
 

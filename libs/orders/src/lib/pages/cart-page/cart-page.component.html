@@ -1,1 +1,46 @@
-<p>cart-page works!</p>
+<div class="cart-page mt-6">
+    <div class="p-grid">
+        <div class="col-8">
+            <div>
+                <button pButton pRipple label="Continue shopping" class="w-4 mt-auto" (click)="backToShop()">
+                    <i class="pi pi-chevron-left"></i>
+                </button>
+            </div>
+            <div class="mt-6">
+                <h4>
+                    My cart:
+                </h4>
+            </div>
+            <div class="cart-shipping">
+                Shipping after Payment
+            </div>
+            <div class="cart-item mt-4 bg-white-alpha-60 " *ngFor="let cartItem of cartItemsDetailed">
+                <div class="grid">
+                    <div class="col-3 cart-item-image ml-2">
+                        <img [src]="cartItem.product.image" width="100%" alt="">
+                    </div>
+                    <div class="col-6 flex flex-column justify-content-center">
+                        <div class="cart-item-name mb-3"><h2>{{cartItem.product.name}}</h2></div>
+                        <div class="cart-item-price">
+                            <h3>{{cartItem.product.price | currency}}</h3>
+                        </div>
+                        <div class="cart-item-remove-btn mt-2">
+                            <button pButton >
+                                <i class="pi pi-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-2 flex flex-column justify-content-center align-items-center">
+                        <p-inputNumber [(ngModel)]="val"  [inputId]="cartItem.product.id" [showButtons]="true" 
+                        incrementButtonIcon="pi pi-chevron-up" decrementButtonIcon="pi pi-chevron-down"
+                        inputId="minmax-buttons" [min]="1" class="quantity-input h-2rem align-self-center" [step]="1">
+                        </p-inputNumber>
+                        <span class="sub-total">
+                            <h2 class="text-green-600">{{val * cartItem.product.price | currency }}</h2>
+                        </span>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
