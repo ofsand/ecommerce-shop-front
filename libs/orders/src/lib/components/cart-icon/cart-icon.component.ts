@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { CartService } from '../../services/cart-service.service';
+import { OrdersService } from '../../services/orders-service.service';
 
 @Component({
   selector: 'orders-cart-icon',
@@ -8,10 +11,13 @@ import { CartService } from '../../services/cart-service.service';
   ]
 })
 export class CartIconComponent implements OnInit {
-  CartCount? = 0;
+  cartCount? = 0;
+  addedProductName: string;
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private ordersService: OrdersService,
+    private messageService: MessageService ,
   ) { }
 
   ngOnInit(): void {
@@ -20,8 +26,13 @@ export class CartIconComponent implements OnInit {
 
   _getCartItemsNumber() {
     this.cartService.cart$.subscribe(cart => {
-        this.CartCount = cart.items?.length;
-    })
+      this.cartCount = cart?.items?.length;
+      this.messageService.add(
+        { severity:'success', 
+          summary:'Service Message', 
+          detail: `The product is added to the Cart successfully !`
+        });
+    });
   }
 
 }

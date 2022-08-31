@@ -8,7 +8,9 @@
             <img [src]="product.image" routerLink="/products/{{product.id}}" src="" alt="">
         </div>
         <h5 class="product-name m-3">{{product.name}}</h5>
-        <button pButton pRipple label="Add to cart" class="w-8 mt-auto" (click)="addProductToCart()">
+        <button pButton pRipple label="Add to cart" 
+            class="w-8 mt-auto" 
+            (click)="addProductToCart()">
             <i class="pi pi-shopping-cart pr-1"></i>
         </button>
     </div>

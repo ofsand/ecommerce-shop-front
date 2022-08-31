@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cart, CartItem, CartItemDetailed } from '../../models/cart';
+import { CartItemDetailed } from '../../models/cart';
 import { CartService } from '../../services/cart-service.service';
 import { OrdersService } from '../../services/orders-service.service';
 
@@ -36,7 +36,6 @@ export class CartPageComponent implements OnInit {
           this.val=cartItem.quantity;
         });
       })
-      console.log(this.cartItemsDetailed.length);
   });
 
 }

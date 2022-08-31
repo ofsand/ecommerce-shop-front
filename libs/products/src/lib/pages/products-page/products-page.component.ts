@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartItem, CartService } from '@ecommerce-brands/orders';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 
@@ -17,7 +18,8 @@ export class ProductsPageComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,16 @@ export class ProductsPageComponent implements OnInit {
     })
   }
 
+  addProductToCart() {
+    const cartItem: CartItem = {
+      productId: this.product.id,
+      quantity: this.val
+    };
+
+    this.cartService.setCartItem(cartItem);
+  }
+
+  
   private _getProduct(productId: string) {
     this.productsService.getProduct(productId).subscribe( product => {
       this.product = product;
