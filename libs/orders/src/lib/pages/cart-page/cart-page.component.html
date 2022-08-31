@@ -20,7 +20,7 @@
                         <img [src]="cartItem.product.image" width="100%" alt="">
                     </div>
                     <div class="col-6 flex flex-column justify-content-center">
-                        <div class="cart-item-name mb-3"><h2>{{cartItem.product.name}}</h2></div>
+                        <div class="cart-item-name mb-3 grid"><h2 >{{cartItem.product.name}}</h2><h3 class="ml-2 text-blue-500 align-self-center"> x {{cartItem.quantity}}</h3></div>
                         <div class="cart-item-price">
                             <h3>{{cartItem.product.price | currency}}</h3>
                         </div>
@@ -36,7 +36,7 @@
                         inputId="minmax-buttons" [min]="1" class="quantity-input h-2rem align-self-center" [step]="1">
                         </p-inputNumber>
                         <span class="sub-total">
-                            <h2 class="text-green-600">{{val * cartItem.product.price | currency }}</h2>
+                            <h2 class="text-green-600">{{cartItem.quantity * cartItem.product.price | currency }}</h2>
                         </span>
                     </div> 
                 </div>

@@ -29,7 +29,7 @@ export class CartIconComponent implements OnInit {
       this.cartCount = cart?.items?.length;
       this.messageService.add(
         { severity:'success', 
-          summary:'Service Message', 
+          summary:'product Added', 
           detail: `The product is added to the Cart successfully !`
         });
     });
