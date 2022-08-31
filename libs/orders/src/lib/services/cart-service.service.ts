@@ -47,6 +47,7 @@ export class CartService {
     
     const cartJson = JSON.stringify(cart)
     localStorage.setItem(CART_KEY, cartJson);
+    this.cart$.next(cart);
     return cart;
   }
 }

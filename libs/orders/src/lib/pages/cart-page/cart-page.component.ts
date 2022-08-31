@@ -33,10 +33,10 @@ export class CartPageComponent implements OnInit {
             product: respProduct,
             quantity: cartItem.quantity
           })
-          console.log(this.cartItemsDetailed);
           this.val=cartItem.quantity;
-      });
-    })
+        });
+      })
+      console.log(this.cartItemsDetailed.length);
   });
 
 }
