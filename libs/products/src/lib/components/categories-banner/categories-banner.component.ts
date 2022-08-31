@@ -10,6 +10,7 @@ import { CategoriesService } from '../../services/categories.service';
 })
 export class CategoriesBannerComponent implements OnInit {
   categories: Category[] = [];
+  categoriesLength: number;
 
   constructor(
     private categoriesService: CategoriesService
@@ -23,6 +24,7 @@ export class CategoriesBannerComponent implements OnInit {
   private _getCategories() {
     this.categoriesService.getCategories().subscribe((cats) => {
       this.categories = cats;
+      this.categoriesLength = cats.length;
     })
   }
 

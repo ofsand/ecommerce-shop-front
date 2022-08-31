@@ -12,13 +12,14 @@ export class ProductItemComponent implements OnInit {
   @Input() product: Product;
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
   ) { }
 
   ngOnInit(): void {
   }
 
-  addProductToCart() {;
+  addProductToCart() {
+    
     const cartItem: CartItem = {
       productId: this.product.id,
       quantity: 1

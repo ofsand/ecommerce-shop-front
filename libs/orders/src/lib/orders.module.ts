@@ -7,6 +7,10 @@ import { CartIconComponent } from './components/cart-icon/cart-icon.component';
 import {BadgeModule} from 'primeng/badge';
 import {ButtonModule} from 'primeng/button';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 const routes: Routes = [
   {
@@ -16,7 +20,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [CommonModule, BadgeModule, RouterModule.forChild(routes), ButtonModule, InputNumberModule],
+  imports: [CommonModule, BadgeModule, RouterModule.forChild(routes), ButtonModule, InputNumberModule, MessagesModule, MessageModule, ToastModule],
   declarations: [
     CartPageComponent,
     CartIconComponent
@@ -25,6 +29,7 @@ const routes: Routes = [
     CartPageComponent,
     CartIconComponent
   ],
+  providers: [MessageService]
 })
 export class OrdersModule {
 
