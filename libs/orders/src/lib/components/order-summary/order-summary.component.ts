@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from '@ecommerce-brands/products';
 import { take } from 'rxjs';
 import { CartService } from '../../services/cart-service.service';
@@ -12,11 +13,15 @@ import { OrdersService } from '../../services/orders-service.service';
 })
 export class OrderSummaryComponent implements OnInit {
   totalPrice: number;
+  isCheckoutPage: boolean;
 
   constructor(
     private cartService: CartService,
-    private ordersService: OrdersService
-  ) { }
+    private ordersService: OrdersService,
+    private router: Router
+  ) {
+    this.router.url.includes('checkout') ? this.isCheckoutPage = true : this.isCheckoutPage = false;
+  }
 
   ngOnInit(): void {
     this._getOrderSummary();
@@ -35,5 +40,9 @@ export class OrderSummaryComponent implements OnInit {
         })
       }
     });
+  }
+
+  navigateToCheckoout() {
+    this.router.navigateByUrl('/checkout');
   }
 }

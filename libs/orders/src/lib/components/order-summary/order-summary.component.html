@@ -1,4 +1,4 @@
-<div class="order-summary cart-item mt-4 bg-white-alpha-60 py-2 px-5 fixed w-100 col-3">
+<div class="order-summary cart-item mt-4 bg-white-alpha-60 py-2 px-5 w-100 ">
     <h3 class="mb-5">Order Summary</h3>
     <div class="summary-price flex justify-content-between my-3">
         <span>Items Price</span>
@@ -13,8 +13,8 @@
             <h4 class="my-4">Total Price</h4>
             <h2 class="text-green-600">{{ totalPrice | currency }}</h2>
         </div>
-        <div class="checkout-btn flex justify-content-center my-3">
-            <p-button label="checkout"></p-button>
+        <div class="checkout-btn flex justify-content-center my-3" *ngIf="!isCheckoutPage">
+            <p-button label="checkout" (onClick)="navigateToCheckoout()"></p-button>
         </div>
     </div>
 </div>
