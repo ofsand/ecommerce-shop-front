@@ -20,21 +20,32 @@
                         <img [src]="cartItem.product.image" width="100%" alt="">
                     </div>
                     <div class="col-6 flex flex-column justify-content-center">
-                        <div class="cart-item-name mb-3 grid"><h2 >{{cartItem.product.name}}</h2><h3 class="ml-2 text-blue-500 align-self-center"> x {{cartItem.quantity}}</h3></div>
+                        <div class="cart-item-name mb-3 grid"><h2 >{{cartItem.product.name}}</h2><h3 class="ml-2 text-blue-500 align-self-center text-xl"> x {{cartItem.quantity}}</h3></div>
                         <div class="cart-item-price">
                             <h3>{{cartItem.product.price | currency}}</h3>
                         </div>
-                    </div>
-                    <div class="col-2 flex flex-column justify-content-around align-items-center">
                         <div class="cart-item-remove-btn mt-2">
-                            <button pButton class="p-button-danger" >
-                                <i class="pi pi-trash"  (click)="deleteCartItem(cartItem)"> Remove</i>
+                            <button pButton class="p-button-danger">
+                                <i class="pi pi-trash" (click)="deleteCartItem(cartItem)"></i>
                             </button>
                         </div>
+                    </div>
+                    <div class="col-2 flex flex-column justify-content-center align-items-center">
+                        <p-inputNumber 
+                            [(ngModel)]="cartItem.quantity"  
+                            [inputId]="cartItem.product.id" 
+                            [showButtons]="true" 
+                            incrementButtonIcon="pi pi-chevron-up" 
+                            decrementButtonIcon="pi pi-chevron-down"
+                            inputId="minmax-buttons" [min]="1" 
+                            class="quantity-input h-2rem align-self-center" 
+                            [step]="1"
+                            (onInput)="updateCartItemQuantity($event, cartItem)">
+                        </p-inputNumber>
                         <span class="sub-total">
                             <h2 class="text-green-600">{{cartItem.quantity * cartItem.product.price | currency }}</h2>
                         </span>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
