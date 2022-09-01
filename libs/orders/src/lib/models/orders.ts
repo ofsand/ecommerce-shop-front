@@ -10,6 +10,6 @@ export class Order {
     phone?: string;
     status?: string;
     totalPrice?: number;
-    user?: User;
+    user?: any;
     dateOrdered?: Date;
 }
