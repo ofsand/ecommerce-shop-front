@@ -11,6 +11,8 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -20,14 +22,16 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [CommonModule, BadgeModule, RouterModule.forChild(routes), ButtonModule, InputNumberModule, MessagesModule, MessageModule, ToastModule],
+  imports: [CommonModule, BadgeModule, RouterModule.forChild(routes), ButtonModule, InputNumberModule, MessagesModule, MessageModule, ToastModule, FormsModule],
   declarations: [
     CartPageComponent,
-    CartIconComponent
+    CartIconComponent,
+    OrderSummaryComponent
   ],
   exports: [
     CartPageComponent,
-    CartIconComponent
+    CartIconComponent,
+    OrderSummaryComponent
   ],
   providers: [MessageService]
 })

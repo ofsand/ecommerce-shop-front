@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartItemDetailed } from '../../models/cart';
+import { CartItem, CartItemDetailed } from '../../models/cart';
 import { CartService } from '../../services/cart-service.service';
 import { OrdersService } from '../../services/orders-service.service';
 
@@ -27,6 +27,7 @@ export class CartPageComponent implements OnInit {
 
   _getCartDetails() {
     this.cartService.cart$.subscribe(respCart => {
+      this.cartItemsDetailed = [];
       respCart.items?.forEach((cartItem) => {
         this.ordersService.getProduct(cartItem.productId).subscribe((respProduct) => {
           this.cartItemsDetailed.push({
@@ -41,5 +42,16 @@ export class CartPageComponent implements OnInit {
 }
   backToShop() {
     this.route.navigateByUrl('/products');
+  }
+
+  deleteCartItem(cartItem: CartItemDetailed) {
+    this.cartService.deleteCartItem(cartItem.product.id);
+  }
+
+  updateCartItemQuantity(event, cartItem: CartItemDetailed) {
+    this.cartService.setCartItem({
+      productId: cartItem.product.id,
+      quantity: event.value
+    }, true);
   }
 }
