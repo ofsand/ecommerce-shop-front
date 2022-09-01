@@ -1,0 +1,69 @@
+<div class="cart-page mt-6">
+  <div class="grid">
+      <div class="col-7 ">
+        <div class="p-grid mt-5">
+            <div class="p-col-12">
+              <form [formGroup]="checkoutFormGroup">
+                <div class="formgrid grid">
+                  <div class="field col">
+                    <label for="name">Name</label>
+                    <input class="ml-4" formControlName="name" id="name" type="text" pInputText /><br/>
+                    <small *ngIf="checkoutFormGroup.controls['name'].invalid && isSubmitted" class="p-error"
+                      >Name is required</small
+                    >
+                  </div>
+                  <div class="field col">
+                    <label for="email">Email</label>
+                    <input class="ml-4" formControlName="email" id="email" type="text" pInputText /><br/>
+                    <small *ngIf="checkoutFormGroup.controls['email'].invalid && isSubmitted" class="p-error">
+                    <span *ngIf="checkoutFormGroup.controls['email'].errors['required']">email is required</span>
+                      <span *ngIf="checkoutFormGroup.controls['email'].errors['email']">email is invalid</span></small>
+                  </div>
+                  <div class="field col">
+                    <label for="password">Password</label>
+                    <input class="ml-4" formControlName="password" id="password" type="password" pInputText /><br/>
+                    <small *ngIf="checkoutFormGroup.controls['password'].invalid && isSubmitted" class="p-error"
+                      >Password is required</small
+                    >
+                  </div>
+                </div>
+        
+                <div class="formgrid grid">
+                  <div class="field col">
+                    <label for="phone">Phone</label>
+                    <p-inputMask class="ml-4" mask="(999) 999-999999" formControlName="phone" placeholder="(212) 999-999999"></p-inputMask><br/>
+                    <small *ngIf="checkoutFormGroup.controls['phone'].invalid && isSubmitted" class="p-error"
+                      >Name is required</small
+                    >
+                  </div>
+                  <div class="field col">
+                    <label for="city">City</label>
+                    <input class="ml-4" formControlName="city" id="city" type="text" pInputText /><br/>
+                    <small *ngIf="checkoutFormGroup.controls['city'].invalid && isSubmitted" class="p-error"></small>
+                  </div>
+                  <div class="field col">
+                    <label for="password">Address</label>
+                    <input class="ml-4" formControlName="address" id="address" type="address" pInputText /><br/>
+                    <small *ngIf="checkoutFormGroup.controls['address'].invalid && isSubmitted" class="p-error"
+                      >Password is required</small
+                    >
+                  </div>
+                </div>
+                <div class="formgrid grid">
+                    <div class="field col">
+                      <label for="isAdmin">Admin</label>
+                      <p-inputSwitch class="ml-4" formControlName="isAdmin" id="isAdmin" type="isAdmin"></p-inputSwitch>
+                    </div>
+                </div>
+              </form>
+            </div>
+        </div>
+      </div>
+      <div class="col-4 col-offset-1">
+        <orders-summary></orders-summary>
+        <div class="mt-5 flex justify-content-center">
+            <button  pButton pRipple class="p-button-success" label="Place order" (click)="placeOrder()"></button>
+        </div>
+      </div>
+  </div>
+</div>

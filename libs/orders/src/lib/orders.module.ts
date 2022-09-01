@@ -12,26 +12,38 @@ import {MessageModule} from 'primeng/message';
 import {ToastModule} from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+
+import {DropdownModule} from 'primeng/dropdown';
+import {InputMaskModule} from 'primeng/inputmask';
+import {InputTextModule} from 'primeng/inputtext';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 const routes: Routes = [
   {
     path: 'cart',
     component: CartPageComponent
+  },
+  {
+    path: 'checkout',
+    component: CheckoutPageComponent
   }
 ]
 
 @NgModule({
-  imports: [CommonModule, BadgeModule, RouterModule.forChild(routes), ButtonModule, InputNumberModule, MessagesModule, MessageModule, ToastModule, FormsModule],
+  imports: [CommonModule, BadgeModule, RouterModule.forChild(routes), ButtonModule, InputNumberModule, MessagesModule, MessageModule, ToastModule, FormsModule, DropdownModule, InputMaskModule, InputTextModule, ReactiveFormsModule, InputSwitchModule],
   declarations: [
     CartPageComponent,
     CartIconComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    CheckoutPageComponent
   ],
   exports: [
     CartPageComponent,
     CartIconComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    CheckoutPageComponent
   ],
   providers: [MessageService]
 })
