@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Order, OrdersService } from '@ecommerce-brands/orders';
+import { Order, OrdersService, STATUS } from '@ecommerce-brands/orders';
 import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
-import { STATUS } from '../order.status';
 
 
 @Component({

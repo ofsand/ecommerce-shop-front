@@ -4,3 +4,5 @@ export * from './lib/models/order-item';
 export * from './lib/models/cart';
 export * from './lib/services/orders-service.service';
 export * from './lib/services/cart-service.service';
+export * from './lib/order.status'
+export * from './lib/components/cart-icon/cart-icon.component'
