@@ -13,17 +13,25 @@ export class CartService {
   constructor() { }
 
   initCartLocalStorage() {
-    //Check if cart exist 
     const cart: Cart = this.getCart();
-    if(!cart) {
-      //initializing cart
-      const initialCart = {
+    if (!cart) {
+      const intialCart = {
         items: []
       };
-      const initialCartJson = JSON.stringify(initialCart)
-      localStorage.setItem(CART_KEY, initialCartJson);
+      const intialCartJson = JSON.stringify(intialCart);
+      localStorage.setItem(CART_KEY, intialCartJson);
     }
   }
+
+  emptyCart() {
+    const intialCart = {
+      items: []
+    };
+    const intialCartJson = JSON.stringify(intialCart);
+    localStorage.setItem(CART_KEY, intialCartJson);
+    this.cart$.next(intialCart);
+  }
+  
 
   getCart() :Cart{
     const cartJsonString: string = localStorage.getItem(CART_KEY);

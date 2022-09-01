@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '@ecommerce-brands/users';
 import { MessageService } from 'primeng/api';
 import { Cart } from '../../models/cart';
@@ -29,7 +29,8 @@ export class CheckoutPageComponent implements OnInit {
     private location: Location,
     private route: ActivatedRoute,
     private cartService: CartService,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -60,11 +61,13 @@ export class CheckoutPageComponent implements OnInit {
       shippingAddress: this.checkoutFormGroup.controls['address'].value,
       city: this.checkoutFormGroup.controls['city'].value,
       phone: this.checkoutFormGroup.controls['phone'].value,
+      status: '0',
       user: this.userId
     }
 
-    this.ordersService.createOrder(order).subscribe( {
-      //redirect to thank you page // payment
+    this.cartService.emptyCart();
+    this.ordersService.createOrder(order).subscribe(() => {
+      this.router.navigateByUrl('/thankyou')
     });
 
   }

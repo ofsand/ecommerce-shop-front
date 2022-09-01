@@ -11,7 +11,7 @@ import { OrdersService } from '../../services/orders-service.service';
   ]
 })
 export class CartIconComponent implements OnInit {
-  cartCount? = 0;
+  cartCount: any;
   addedProductName: string;
 
   constructor(
