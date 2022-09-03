@@ -1,14 +1,14 @@
-<div class="gallery" *ngIf="hasImages()">
-    <div class="selected-image">
-        <img [src]="selectedImage" width="520" alt="">
-    </div>
-    <div class="images">
-        <ul>
+<div class="gallery grid" *ngIf="hasImages()">
+    <div class="images col-2">
+        <ul class="flex flex-column">
             <li *ngFor="let imageUrl of images" 
             [ngStyle]="{'background-image' : 'url('+imageUrl+')'}"
             (click)="changeSelectedImage(imageUrl)"
             [ngClass]="selectedImage === imageUrl ? 'image-focus' : 'image-unfocus'"
             > </li>
         </ul>
+    </div>
+    <div class="selected-image col-10">
+        <img [src]="selectedImage" width="520" alt="">
     </div>
 </div>

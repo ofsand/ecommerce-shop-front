@@ -3,7 +3,7 @@
     .selected-image {
         margin-bottom: 15px;
         text-align: center;
-        height: 360px;
+        
         img {
             border-radius: 3px;
             box-shadow: #00000054 1px 1px 5px 1px;
@@ -20,11 +20,11 @@
             padding: 0px;
             li {
                 background-size: cover;
-                width: 100px;
-                height: 100px;
+                width: 65px;
+                height: 65px;
                 border-radius: 3px;
                 display: block;
-                margin: 8px;
+                margin: 3px;
                 cursor: pointer;
             }
             .image-focus {
