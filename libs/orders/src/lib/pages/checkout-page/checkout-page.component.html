@@ -3,26 +3,36 @@
       <div class="col-7 ">
         <div class="p-grid mt-5">
             <div class="p-col-12">
-              <form [formGroup]="checkoutFormGroup">
+              <form [formGroup]="checkoutFormGroup" class="w-full my-5 mx-auto p-6 md:px-6 lg:px-8 bg-white-alpha-60 cart-item shadow-2">
+                <div class="field">
+                  <label for="" class="pb-3">Please fill in the following informations !</label>
+                </div>
                 <div class="formgrid grid">
                   <div class="field col">
-                    <label for="name">Name</label>
-                    <input class="ml-4" formControlName="name" id="name" type="text" pInputText /><br/>
+                    <label for="name">Name</label><br>
+                    <input formControlName="name" id="name" type="text" pInputText /><br/>
                     <small *ngIf="checkoutFormGroup.controls['name'].invalid && isSubmitted" class="p-error"
                       >Name is required</small
                     >
                   </div>
                   <div class="field col">
-                    <label for="email">Email</label>
-                    <input class="ml-4" formControlName="email" id="email" type="text" pInputText /><br/>
+                    <label for="email">Email</label><br>
+                    <input formControlName="email" id="email" type="text" pInputText /><br/>
                     <small *ngIf="checkoutFormGroup.controls['email'].invalid && isSubmitted" class="p-error">
                     <span *ngIf="checkoutFormGroup.controls['email'].errors['required']">email is required</span>
                       <span *ngIf="checkoutFormGroup.controls['email'].errors['email']">email is invalid</span></small>
                   </div>
                   <div class="field col">
-                    <label for="password">Password</label>
-                    <input class="ml-4" formControlName="password" id="password" type="password" pInputText /><br/>
+                    <label for="password">Password</label><br>
+                    <input formControlName="password" id="password" type="password" pInputText /><br/>
                     <small *ngIf="checkoutFormGroup.controls['password'].invalid && isSubmitted" class="p-error"
+                      >Password is required</small
+                    >
+                  </div>
+                  <div class="field col">
+                    <label for="password">Address</label><br>
+                    <input formControlName="address" id="address" type="address" pInputText /><br/>
+                    <small *ngIf="checkoutFormGroup.controls['address'].invalid && isSubmitted" class="p-error"
                       >Password is required</small
                     >
                   </div>
@@ -30,30 +40,17 @@
         
                 <div class="formgrid grid">
                   <div class="field col">
-                    <label for="phone">Phone</label>
-                    <p-inputMask class="ml-4" mask="(999) 999-999999" formControlName="phone" placeholder="(212) 999-999999"></p-inputMask><br/>
+                    <label for="phone">Phone</label><br>
+                    <p-inputMask mask="(999) 999-999999" formControlName="phone" placeholder="(212) 999-999999"></p-inputMask><br/>
                     <small *ngIf="checkoutFormGroup.controls['phone'].invalid && isSubmitted" class="p-error"
                       >Name is required</small
                     >
                   </div>
                   <div class="field col">
-                    <label for="city">City</label>
-                    <input class="ml-4" formControlName="city" id="city" type="text" pInputText /><br/>
+                    <label for="city">City</label><br>
+                    <input formControlName="city" id="city" type="text" pInputText /><br/>
                     <small *ngIf="checkoutFormGroup.controls['city'].invalid && isSubmitted" class="p-error"></small>
                   </div>
-                  <div class="field col">
-                    <label for="password">Address</label>
-                    <input class="ml-4" formControlName="address" id="address" type="address" pInputText /><br/>
-                    <small *ngIf="checkoutFormGroup.controls['address'].invalid && isSubmitted" class="p-error"
-                      >Password is required</small
-                    >
-                  </div>
-                </div>
-                <div class="formgrid grid">
-                    <div class="field col">
-                      <label for="isAdmin">Admin</label>
-                      <p-inputSwitch class="ml-4" formControlName="isAdmin" id="isAdmin" type="isAdmin"></p-inputSwitch>
-                    </div>
                 </div>
               </form>
             </div>
