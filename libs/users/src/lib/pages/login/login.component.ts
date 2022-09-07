@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';import { AuthService } from '../../services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 ;
 
 @Component({
@@ -16,7 +19,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private localStorageService: LocalStorageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -35,9 +40,11 @@ export class LoginComponent implements OnInit {
 
     if(this.loginFormGroup.invalid) return;
 
-    this.authService.login(this.loginForm['email'].value, this.loginForm['password'].value).subscribe((user) => {
-      console.log(user);
+    this.authService.login(this.loginForm['email'].value, this.loginForm['password'].value).subscribe(
+      (user) => {
+      this.localStorageService.setToken(user.token);
       this.auth = false;
+      this.router.navigate(['/']);
     },
     (error) => {
       console.log(error);

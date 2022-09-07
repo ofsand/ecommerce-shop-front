@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { AuthGuard } from '@ecommerce-brands/users';
 import { CategoriesFormComponent } from './pages/categories/categories-form/categories-form.component';
 import { CategoryListComponent } from './pages/categories/category-list/category-list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: '',
     component: ShellComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path:'',
