@@ -1,21 +1,17 @@
 import { UsersEntity } from './users.models';
-import {
-  usersAdapter,
-  UsersPartialState,
-  initialUsersState,
-} from './users.reducer';
+import { State, usersAdapter, initialState } from './users.reducer';
 import * as UsersSelectors from './users.selectors';
 
 describe('Users Selectors', () => {
   const ERROR_MSG = 'No Error Available';
-  const getUsersId = (it: UsersEntity) => it.id;
+  const getUsersId = (it) => it['id'];
   const createUsersEntity = (id: string, name = '') =>
     ({
       id,
-      name: name || `name-${id}`,
+      name: name || `name-${id}`
     } as UsersEntity);
 
-  let state: UsersPartialState;
+  let state;
 
   beforeEach(() => {
     state = {
@@ -23,15 +19,15 @@ describe('Users Selectors', () => {
         [
           createUsersEntity('PRODUCT-AAA'),
           createUsersEntity('PRODUCT-BBB'),
-          createUsersEntity('PRODUCT-CCC'),
+          createUsersEntity('PRODUCT-CCC')
         ],
         {
-          ...initialUsersState,
+          ...initialState,
           selectedId: 'PRODUCT-BBB',
           error: ERROR_MSG,
-          loaded: true,
+          loaded: true
         }
-      ),
+      )
     };
   });
 
@@ -45,19 +41,19 @@ describe('Users Selectors', () => {
     });
 
     it('getSelected() should return the selected Entity', () => {
-      const result = UsersSelectors.getSelected(state) as UsersEntity;
+      const result = UsersSelectors.getSelected(state);
       const selId = getUsersId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
     });
 
-    it('getUsersLoaded() should return the current "loaded" status', () => {
+    it("getUsersLoaded() should return the current 'loaded' status", () => {
       const result = UsersSelectors.getUsersLoaded(state);
 
       expect(result).toBe(true);
     });
 
-    it('getUsersError() should return the current "error" state', () => {
+    it("getUsersError() should return the current 'error' state", () => {
       const result = UsersSelectors.getUsersError(state);
 
       expect(result).toBe(ERROR_MSG);

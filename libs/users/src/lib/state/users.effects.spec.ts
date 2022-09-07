@@ -1,16 +1,18 @@
-import { TestBed } from '@angular/core/testing';
-import { provideMockActions } from '@ngrx/effects/testing';
-import { Action } from '@ngrx/store';
-import { provideMockStore } from '@ngrx/store/testing';
-import { NxModule } from '@nrwl/angular';
-import { hot } from 'jasmine-marbles';
+import { TestBed, async } from '@angular/core/testing';
+
 import { Observable } from 'rxjs';
 
-import * as UsersActions from './users.actions';
+import { provideMockActions } from '@ngrx/effects/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+
+import { NxModule, DataPersistence } from '@nrwl/angular';
+import { hot } from '@nrwl/angular/testing';
+
 import { UsersEffects } from './users.effects';
+import * as UsersActions from './users.actions';
 
 describe('UsersEffects', () => {
-  let actions: Observable<Action>;
+  let actions: Observable<any>;
   let effects: UsersEffects;
 
   beforeEach(() => {
@@ -18,9 +20,10 @@ describe('UsersEffects', () => {
       imports: [NxModule.forRoot()],
       providers: [
         UsersEffects,
+        DataPersistence,
         provideMockActions(() => actions),
-        provideMockStore(),
-      ],
+        provideMockStore()
+      ]
     });
 
     effects = TestBed.inject(UsersEffects);
@@ -28,11 +31,9 @@ describe('UsersEffects', () => {
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: UsersActions.initUsers() });
+      actions = hot('-a-|', { a: UsersActions.init() });
 
-      const expected = hot('-a-|', {
-        a: UsersActions.loadUsersSuccess({ users: [] }),
-      });
+      const expected = hot('-a-|', { a: UsersActions.loadUsersSuccess({ users: [] }) });
 
       expect(effects.init$).toBeObservable(expected);
     });

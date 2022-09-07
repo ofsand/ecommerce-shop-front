@@ -1,42 +1,43 @@
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-import { NxModule } from '@nrwl/angular';
 import { readFirst } from '@nrwl/angular/testing';
 
-import * as UsersActions from './users.actions';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule, Store } from '@ngrx/store';
+
+import { NxModule } from '@nrwl/angular';
+
+import { UsersEntity } from './users.models';
 import { UsersEffects } from './users.effects';
 import { UsersFacade } from './users.facade';
-import { UsersEntity } from './users.models';
-import {
-  USERS_FEATURE_KEY,
-  UsersState,
-  initialUsersState,
-  usersReducer,
-} from './users.reducer';
+
 import * as UsersSelectors from './users.selectors';
+import * as UsersActions from './users.actions';
+import { USERS_FEATURE_KEY, State, initialState, reducer } from './users.reducer';
 
 interface TestSchema {
-  users: UsersState;
+  users: State;
 }
 
 describe('UsersFacade', () => {
   let facade: UsersFacade;
   let store: Store<TestSchema>;
-  const createUsersEntity = (id: string, name = ''): UsersEntity => ({
-    id,
-    name: name || `name-${id}`,
-  });
+  const createUsersEntity = (id: string, name = '') =>
+    ({
+      id,
+      name: name || `name-${id}`
+    } as UsersEntity);
+
+  beforeEach(() => {});
 
   describe('used in NgModule', () => {
     beforeEach(() => {
       @NgModule({
         imports: [
-          StoreModule.forFeature(USERS_FEATURE_KEY, usersReducer),
-          EffectsModule.forFeature([UsersEffects]),
+          StoreModule.forFeature(USERS_FEATURE_KEY, reducer),
+          EffectsModule.forFeature([UsersEffects])
         ],
-        providers: [UsersFacade],
+        providers: [UsersFacade]
       })
       class CustomFeatureModule {}
 
@@ -45,8 +46,8 @@ describe('UsersFacade', () => {
           NxModule.forRoot(),
           StoreModule.forRoot({}),
           EffectsModule.forRoot([]),
-          CustomFeatureModule,
-        ],
+          CustomFeatureModule
+        ]
       })
       class RootModule {}
       TestBed.configureTestingModule({ imports: [RootModule] });
@@ -58,43 +59,55 @@ describe('UsersFacade', () => {
     /**
      * The initially generated facade::loadAll() returns empty array
      */
-    it('loadAll() should return empty list with loaded == true', async () => {
-      let list = await readFirst(facade.allUsers$);
-      let isLoaded = await readFirst(facade.loaded$);
+    it('loadAll() should return empty list with loaded == true', async (done) => {
+      try {
+        let list = await readFirst(facade.allUsers$);
+        let isLoaded = await readFirst(facade.loaded$);
 
-      expect(list.length).toBe(0);
-      expect(isLoaded).toBe(false);
+        expect(list.length).toBe(0);
+        expect(isLoaded).toBe(false);
 
-      facade.init();
+        facade.init();
 
-      list = await readFirst(facade.allUsers$);
-      isLoaded = await readFirst(facade.loaded$);
+        list = await readFirst(facade.allUsers$);
+        isLoaded = await readFirst(facade.loaded$);
 
-      expect(list.length).toBe(0);
-      expect(isLoaded).toBe(true);
+        expect(list.length).toBe(0);
+        expect(isLoaded).toBe(true);
+
+        done();
+      } catch (err) {
+        done.fail(err);
+      }
     });
 
     /**
      * Use `loadUsersSuccess` to manually update list
      */
-    it('allUsers$ should return the loaded list; and loaded flag == true', async () => {
-      let list = await readFirst(facade.allUsers$);
-      let isLoaded = await readFirst(facade.loaded$);
+    it('allUsers$ should return the loaded list; and loaded flag == true', async (done) => {
+      try {
+        let list = await readFirst(facade.allUsers$);
+        let isLoaded = await readFirst(facade.loaded$);
 
-      expect(list.length).toBe(0);
-      expect(isLoaded).toBe(false);
+        expect(list.length).toBe(0);
+        expect(isLoaded).toBe(false);
 
-      store.dispatch(
-        UsersActions.loadUsersSuccess({
-          users: [createUsersEntity('AAA'), createUsersEntity('BBB')],
-        })
-      );
+        store.dispatch(
+          UsersActions.loadUsersSuccess({
+            users: [createUsersEntity('AAA'), createUsersEntity('BBB')]
+          })
+        );
 
-      list = await readFirst(facade.allUsers$);
-      isLoaded = await readFirst(facade.loaded$);
+        list = await readFirst(facade.allUsers$);
+        isLoaded = await readFirst(facade.loaded$);
 
-      expect(list.length).toBe(2);
-      expect(isLoaded).toBe(true);
+        expect(list.length).toBe(2);
+        expect(isLoaded).toBe(true);
+
+        done();
+      } catch (err) {
+        done.fail(err);
+      }
     });
   });
 });

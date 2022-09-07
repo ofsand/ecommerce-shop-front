@@ -3,5 +3,4 @@
  */
 export interface UsersEntity {
   id: string | number; // Primary ID
-  name: string;
 }

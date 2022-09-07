@@ -1,38 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { USERS_FEATURE_KEY, UsersState, usersAdapter } from './users.reducer';
+import { USERS_FEATURE_KEY, UsersPartialState, UsersState } from './users.reducer';
 
 // Lookup the 'Users' feature state managed by NgRx
-export const getUsersState =
-  createFeatureSelector<UsersState>(USERS_FEATURE_KEY);
-
-const { selectAll, selectEntities } = usersAdapter.getSelectors();
-
-export const getUsersLoaded = createSelector(
-  getUsersState,
-  (state: UsersState) => state.loaded
+export const getUsersState = createFeatureSelector<UsersPartialState, UsersState>(
+  USERS_FEATURE_KEY
 );
 
-export const getUsersError = createSelector(
-  getUsersState,
-  (state: UsersState) => state.error
-);
+export const getUser = createSelector(getUsersState, (state) => state.user);
 
-export const getAllUsers = createSelector(getUsersState, (state: UsersState) =>
-  selectAll(state)
-);
-
-export const getUsersEntities = createSelector(
-  getUsersState,
-  (state: UsersState) => selectEntities(state)
-);
-
-export const getSelectedId = createSelector(
-  getUsersState,
-  (state: UsersState) => state.selectedId
-);
-
-export const getSelected = createSelector(
-  getUsersEntities,
-  getSelectedId,
-  (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
-);
+export const getUserIsAuth = createSelector(getUsersState, (state) => state.isAuthenticated);
