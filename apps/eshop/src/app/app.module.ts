@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NavComponent } from './shared/nav/nav.component';
 import { ProductsModule } from '@ecommerce-brands/products';
 import { FooterSecondComponent } from './shared/footer-second/footer-second.component';
+import { UsersModule } from '@ecommerce-brands/users';
 
 
 const routes: Routes = [
@@ -32,7 +33,7 @@ const routes: Routes = [
     NavComponent,
     FooterSecondComponent
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes), UiModule, AccordionModule, BrowserAnimationsModule, ProductsModule, UiModule, OrdersModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes), UiModule, AccordionModule, BrowserAnimationsModule, ProductsModule, UiModule, OrdersModule, UsersModule],
   providers: [],
   bootstrap: [AppComponent],
   exports: [
