@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,7 +27,7 @@ import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 
 import { CategoriesService } from '@ecommerce-brands/products';
-import { UsersModule, UsersService } from '@ecommerce-brands/users';
+import { JwtInterceptor, UsersModule, UsersService } from '@ecommerce-brands/users';
 import { MessageService } from 'primeng/api';
 import {ConfirmationService} from 'primeng/api';
 import {ColorPickerModule} from 'primeng/colorpicker';
@@ -75,7 +75,8 @@ const UX_MODULE = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule],
-  providers: [UsersService, CategoriesService, MessageService, ConfirmationService],
+  providers: [UsersService, CategoriesService, MessageService, ConfirmationService,
+              { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
