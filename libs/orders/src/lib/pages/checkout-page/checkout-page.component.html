@@ -22,6 +22,7 @@
                     <span *ngIf="checkoutFormGroup.controls['email'].errors['required']">email is required</span>
                       <span *ngIf="checkoutFormGroup.controls['email'].errors['email']">email is invalid</span></small>
                   </div>
+                  
                   <div class="field col">
                     <label for="password">Password</label><br>
                     <input formControlName="password" id="password" type="password" pInputText /><br/>
@@ -29,6 +30,7 @@
                       >Password is required</small
                     >
                   </div>
+                  
                   <div class="field col">
                     <label for="password">Address</label><br>
                     <input formControlName="address" id="address" type="address" pInputText /><br/>

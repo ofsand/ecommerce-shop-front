@@ -7,11 +7,11 @@ import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'users-login',
-  templateUrl: './login.component.html',
+  templateUrl: './user-login.component.html',
   styles: [
   ]
 })
-export class LoginComponent implements OnInit {
+export class UserLoginComponent implements OnInit {
   loginFormGroup: FormGroup;
   isSubmitted = false;
   authErr = false;
@@ -35,21 +35,37 @@ export class LoginComponent implements OnInit {
     })
   }
 
+  guestSubmit() {
+    this.isSubmitted = true;
+
+    this.loginForm['email'].setValue('guest@email.com');
+    this.loginForm['password'].setValue('guest');
+
+    this.authService.userLogin(this.loginForm['email'].value, this.loginForm['password'].value).subscribe(
+      (user) => {
+      this.localStorageService.setToken(user.token);
+          this.authErr = false;
+          this.router.navigate(['/checkout']);
+    });
+
+
+  }
+
   onSubmit() {
     this.isSubmitted = true;
 
     if(this.loginFormGroup.invalid) return;
 
-    this.authService.login(this.loginForm['email'].value, this.loginForm['password'].value).subscribe(
+    this.authService.userLogin(this.loginForm['email'].value, this.loginForm['password'].value).subscribe(
       (user) => {
       this.localStorageService.setToken(user.token);
       const tokenDecode = JSON.parse(atob(user.token.split(".")[1]));
 
-      if(tokenDecode.isAdmin) {
+      if(!tokenDecode.isAdmin) {
           this.authErr = false;
-          this.router.navigate(['/']);
+          this.router.navigate(['/checkout']);
       } else{
-        this.authMessage = `You don't have Privileges of administrator !`;
+        this.authMessage = `You are logging as admin, only customers are allowed !`;
         this.authErr = true;
       }
     },

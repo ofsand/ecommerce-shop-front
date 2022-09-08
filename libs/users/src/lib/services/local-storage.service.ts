@@ -41,7 +41,7 @@ export class LocalStorageService {
           return false;
         }
     } else {
-      return null
+      return null;
     }
   }
 

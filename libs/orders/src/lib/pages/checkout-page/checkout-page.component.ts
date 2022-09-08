@@ -42,12 +42,12 @@ export class CheckoutPageComponent implements OnInit {
   private _initUserForm() {
     this.checkoutFormGroup = this.formBuilder.group({
       name: ['', Validators.required],
-      password: ['', Validators.required],
+      password: [''],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       city: ['', Validators.required],
-      address: ['', ],
-      isAdmin: [false],
+      address: ['', Validators.required],
+      isAdmin: [false]
     });
   }
 
