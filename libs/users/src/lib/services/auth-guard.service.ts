@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -16,7 +15,7 @@ export class AuthGuard implements CanActivate{
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const token = this.localStorageToken.getToken();
 
-    //Simplest way to Decode the token // There more complicated ways !
+    //Simplest way to Decode the token // There are more complicated ways !
     if(token) {
       const tokenDecode = JSON.parse(atob(token.split(".")[1]));
       if( tokenDecode.isAdmin && !this._tokenExpired(tokenDecode.exp)) return true;
