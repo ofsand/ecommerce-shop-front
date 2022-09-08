@@ -23,7 +23,11 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
   isSubmitted = false;
   orderItems: any = [];
   userId: any;
+<<<<<<< HEAD
   unsubscribe$: Subject<void> = new Subject();
+=======
+  unsubscribe$: Subject<any> = new Subject();
+>>>>>>> 9682675a6d24463150085a160a04ba40f061a68f
 
   constructor(
     private messageService: MessageService,
@@ -41,6 +45,7 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
     this._autoFillUserData();
     this._initUserForm();
     this._getCartItems();
+    this._autoFillUserData();
   }
 
   ngOnDestroy() {
@@ -60,8 +65,12 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
   }
 
   private _autoFillUserData() {
+<<<<<<< HEAD
     this.usersService
       .observeCurrentUser()
+=======
+    this.usersService.observeCurrentUser()
+>>>>>>> 9682675a6d24463150085a160a04ba40f061a68f
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((user) => {
         if (user) {
@@ -117,6 +126,10 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
       })
 
       //console.log(this.orderItems);
+  }
+
+  get checkoutForm() {
+    return this.checkoutFormGroup.controls;
   }
 
   get checkoutForm() {
