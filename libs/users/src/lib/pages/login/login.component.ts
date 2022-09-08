@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthGuard } from '../../services/auth-guard.service';
 import { AuthService } from '../../services/auth.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 ;
@@ -14,8 +15,8 @@ import { LocalStorageService } from '../../services/local-storage.service';
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
   isSubmitted = false;
-  auth = false;
-  authMessage = 'Errorrr'
+  authErr = false;
+  authMessage = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,8 +44,15 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm['email'].value, this.loginForm['password'].value).subscribe(
       (user) => {
       this.localStorageService.setToken(user.token);
-      this.auth = false;
-      this.router.navigate(['/']);
+      const tokenDecode = JSON.parse(atob(user.token.split(".")[1]));
+
+      if(tokenDecode.isAdmin) {
+          this.authErr = false;
+          this.router.navigate(['/']);
+      } else{
+        this.authMessage = `You don't have Privileges, You are no longer admin !`;
+        this.authErr = true;
+      }
     },
     (error) => {
       console.log(error);
@@ -53,8 +61,9 @@ export class LoginComponent implements OnInit {
       }else{
         this.authMessage = 'There is a Problem on the server, Please Try later !'
       }
+      
 
-      this.auth = true;
+      this.authErr = true;
     });
     }
 

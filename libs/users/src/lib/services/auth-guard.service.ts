@@ -7,6 +7,7 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class AuthGuard implements CanActivate{
 
+
   constructor(
     private router: Router,
     private localStorageToken: LocalStorageService
@@ -18,7 +19,11 @@ export class AuthGuard implements CanActivate{
     //Simplest way to Decode the token // There are more complicated ways !
     if(token) {
       const tokenDecode = JSON.parse(atob(token.split(".")[1]));
-      if( tokenDecode.isAdmin && !this._tokenExpired(tokenDecode.exp)) return true;
+
+      if( tokenDecode.isAdmin && !this._tokenExpired(tokenDecode.exp)) {
+        return true;
+      }
+      
     }
     this.router.navigate(['/login']);
     return false;
@@ -27,4 +32,5 @@ export class AuthGuard implements CanActivate{
   private _tokenExpired(expiration: number): boolean {
     return Math.floor(new Date().getTime() / 1000) >= expiration;
   }
+
 }

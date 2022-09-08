@@ -40,17 +40,13 @@ const routes: Routes = [
     RouterModule.forRoot(routes), 
     UiModule, 
     AccordionModule, 
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
     BrowserAnimationsModule, 
     ProductsModule, 
     UiModule, 
     OrdersModule, 
     UsersModule,
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
-  ],
+  providers: [],
   bootstrap: [AppComponent],
   exports: [
     FooterSecondComponent

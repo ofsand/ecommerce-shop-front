@@ -10,7 +10,7 @@
                         <div class="text-900 text-3xl font-medium">Welcome !</div>
                     </div>
 
-                        <small *ngIf="isSubmitted && auth" class="p-error text-center">
+                        <small *ngIf="isSubmitted && authErr" class="p-error text-center">
                             <h3>{{ authMessage }}</h3>
                         </small>   
                 

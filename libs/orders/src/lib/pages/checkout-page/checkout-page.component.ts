@@ -22,7 +22,6 @@ export class CheckoutPageComponent implements OnInit {
   isSubmitted = false;
   orderItems: any = [];
   userId: any;
-  unsubscribe$: Subject<any> = new Subject();
 
   constructor(
     private messageService: MessageService,
@@ -38,7 +37,6 @@ export class CheckoutPageComponent implements OnInit {
   ngOnInit(): void {
     this._initUserForm();
     this._getCartItems();
-    this._autoFillUserData();
   }
 
   private _initUserForm() {
@@ -53,20 +51,6 @@ export class CheckoutPageComponent implements OnInit {
     });
   }
 
-  private _autoFillUserData() {
-    this.usersService.observeCurrentUser()
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((user) => {
-        if (user) {
-          this.userId = user.id;
-          this.checkoutForm['name'].setValue(user.name);
-          this.checkoutForm['email'].setValue(user.email);
-          this.checkoutForm['phone'].setValue(user.phone);
-          this.checkoutForm['city'].setValue(user.city);
-          this.checkoutForm['street'].setValue(user.address);
-        }
-      });
-  }
 
   placeOrder() {
     this.isSubmitted = true;
