@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/adjacent-overload-signatures */
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '@ecommerce-brands/users';
+import { Subject, takeUntil } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { Cart } from '../../models/cart';
 import { OrderItem } from '../../models/order-item';
@@ -16,11 +18,12 @@ import { OrdersService } from '../../services/orders-service.service';
   styles: [
   ]
 })
-export class CheckoutPageComponent implements OnInit {
+export class CheckoutPageComponent implements OnInit, OnDestroy {
   checkoutFormGroup: FormGroup;
   isSubmitted = false;
   orderItems: any = [];
-  userId = '6310cb9d40899c7e2c30f890';
+  userId: any;
+  unsubscribe$: Subject<void> = new Subject();
 
   constructor(
     private messageService: MessageService,
@@ -33,9 +36,16 @@ export class CheckoutPageComponent implements OnInit {
     private router: Router
   ) { }
 
+
   ngOnInit(): void {
+    this._autoFillUserData();
     this._initUserForm();
     this._getCartItems();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   private _initUserForm() {
@@ -45,9 +55,24 @@ export class CheckoutPageComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       city: ['', Validators.required],
-      address: ['', ],
-      isAdmin: [false],
+      address: ['', ]
     });
+  }
+
+  private _autoFillUserData() {
+    this.usersService
+      .observeCurrentUser()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((user) => {
+        if (user) {
+          this.userId = user.id;
+          this.checkoutForm['name'].setValue(user.name);
+          this.checkoutForm['email'].setValue(user.email);
+          this.checkoutForm['phone'].setValue(user.phone);
+          this.checkoutForm['city'].setValue(user.city);
+          this.checkoutForm['street'].setValue(user.address);
+        }
+      });
   }
 
   placeOrder() {
@@ -58,18 +83,28 @@ export class CheckoutPageComponent implements OnInit {
 
     const order: Order = {
       orderItems: this.orderItems,
-      shippingAddress: this.checkoutFormGroup.controls['address'].value,
-      city: this.checkoutFormGroup.controls['city'].value,
-      phone: this.checkoutFormGroup.controls['phone'].value,
+      shippingAddress: this.checkoutForm['address'].value,
+      city: this.checkoutForm['city'].value,
+      phone: this.checkoutForm['phone'].value,
       status: '0',
       user: this.userId
     }
 
-    this.cartService.emptyCart();
-    this.ordersService.createOrder(order).subscribe(() => {
-      this.router.navigateByUrl('/thankyou')
-    });
+    this.ordersService.createOrder(order).subscribe(
+      () => {
+        //redirect to thank you page // payment
+        this.cartService.emptyCart();
+        this.router.navigate(['/thankyou']);
+      },
+      () => {
+        //display some message to user
+      }
+    );
 
+  }
+
+  backToCart() {
+    this.router.navigate(['/cart']);
   }
 
   private _getCartItems() {
@@ -81,7 +116,11 @@ export class CheckoutPageComponent implements OnInit {
         }
       })
 
-      console.log(this.orderItems);
+      //console.log(this.orderItems);
+  }
+
+  get checkoutForm() {
+    return this.checkoutFormGroup.controls;
   }
 
 }

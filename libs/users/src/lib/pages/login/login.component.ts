@@ -14,7 +14,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
   isSubmitted = false;
-  auth = false;
+  authErr = false;
   authMessage = 'Errorrr'
 
   constructor(
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm['email'].value, this.loginForm['password'].value).subscribe(
       (user) => {
       this.localStorageService.setToken(user.token);
-      this.auth = false;
+      this.authErr = false;
       this.router.navigate(['/']);
     },
     (error) => {
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         this.authMessage = 'There is a Problem on the server, Please Try later !'
       }
 
-      this.auth = true;
+      this.authErr = true;
     });
     }
 
