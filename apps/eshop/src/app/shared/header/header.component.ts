@@ -1,5 +1,6 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'eshop-header',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: []
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
+
+  goLogin() {
+    this.router.navigate(['/user-login']);
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '@ecommerce-brands/products';
+import { MessageService} from 'primeng/api';
 import { take } from 'rxjs';
 import { CartService } from '../../services/cart-service.service';
 import { OrdersService } from '../../services/orders-service.service';
@@ -18,7 +18,8 @@ export class OrderSummaryComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private ordersService: OrdersService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
     this.router.url.includes('checkout') ? this.isCheckoutPage = true : this.isCheckoutPage = false;
   }
@@ -42,7 +43,12 @@ export class OrderSummaryComponent implements OnInit {
     });
   }
 
-  navigateToCheckoout() {
-    this.router.navigateByUrl('/checkout');
+  navigateToCheckout() {
+    if(this.totalPrice === 0){
+        this.messageService.add({severity:'warn', summary: 'warnning', detail: 'You should choose few products before going to checkout, You can not checkout an empty cart !'});        
+      } else {
+        this.router.navigateByUrl('/checkout');
+      }
+
   }
 }

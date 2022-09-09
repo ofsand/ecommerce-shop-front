@@ -20,7 +20,7 @@
                                 <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                                 <input formControlName="email" id="email" type="text" pInputText placeholder="Username">         
                             </div>
-                            <small *ngIf="loginForm['email'].invalid && isSubmitted" class="p-error">
+                            <small *ngIf="loginForm['email'].invalid && isSubmitted && !authVerification" class="p-error">
                                 <span *ngIf="loginForm['email'].errors['required']">Email is required</span>
                                 <span *ngIf="loginForm['email'].errors['email']">Email is invalid</span>
                             </small>
@@ -32,7 +32,7 @@
                                 <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
                                 <input formControlName="password" id="password" type="password" pInputText placeholder="Password">   
                             </div>
-                            <small *ngIf="loginForm['password'].invalid && isSubmitted" class="p-error">
+                            <small *ngIf="loginForm['password'].invalid && isSubmitted && !authVerification" class="p-error">
                                 Password is required
                             </small>
                         </div>

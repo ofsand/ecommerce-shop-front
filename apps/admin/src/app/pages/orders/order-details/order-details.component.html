@@ -60,19 +60,19 @@
                             {{ order.shippingAddress}}<br/>
                             {{ order.zipCode}}<br/>
                             {{ order.city}}<br/>
-                            {{ order.phone}}<br/>
                         </p>
                     </div>
                     <div class="col-4">
                         <h4>Customer name</h4>
                         <p>
-                            {{ order.user.name}}<br/>
+                            {{ order.name}}<br/>
                         </p>
                     </div>
                     <div class="col-4">
                         <h4>Contact info</h4>
                         <p>
                             {{ order.phone}}<br/>
+                            {{ order.user.email}}
                         </p>
                     </div>
                 </div>

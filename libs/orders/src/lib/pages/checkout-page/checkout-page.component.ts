@@ -41,10 +41,11 @@ export class CheckoutPageComponent implements OnInit {
 
   private _initUserForm() {
     this.checkoutFormGroup = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['here', Validators.required],
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
+      zipCode: ['', Validators.required],
       city: ['', Validators.required],
       address: ['', ],
       isAdmin: [false],
@@ -61,7 +62,9 @@ export class CheckoutPageComponent implements OnInit {
     const order: Order = {
       orderItems: this.orderItems,
       shippingAddress: this.checkoutFormGroup.controls['address'].value,
+      name: this.checkoutFormGroup.controls['name'].value,
       city: this.checkoutFormGroup.controls['city'].value,
+      zipCode: this.checkoutFormGroup.controls['zipCode'].value,
       phone: this.checkoutFormGroup.controls['phone'].value,
       status: '0',
       user: this.userId

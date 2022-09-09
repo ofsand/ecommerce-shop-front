@@ -28,9 +28,7 @@ export class CartIconComponent implements OnInit {
     this.cartService.cart$.subscribe(cart => {
       this.cartCount = cart?.items?.length ?? 0;
       this.messageService.add(
-        { severity:'success',
-          summary:'product Added',
-          detail: `The product is added to the Cart successfully !`
+        { severity:'success'
         });
     });
   }

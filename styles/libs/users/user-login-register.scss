@@ -1,0 +1,24 @@
+.user-login-register {
+    background-color: rgba(255, 255, 255, 0.742);
+    height: 70%;
+    width: 50%;
+    position: absolute;
+    left: 25%;
+    top: 20%;
+    border-radius: 8px;
+
+    .image-container {
+        background-image: url('../../../apps/admin/src/assets/images/login.jpg');
+        height: 100%;
+        border-radius: 8px 0px 0px 8px;
+        background-size: cover;
+    }
+
+    .form-container {
+        .admin-btn {
+            position:absolute;
+            top: 2px;
+            right: 10px;
+        }
+    }
+}

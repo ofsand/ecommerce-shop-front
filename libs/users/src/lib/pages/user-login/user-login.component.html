@@ -1,0 +1,56 @@
+<div class="user-login-register panel grid shadow-3">
+    <div class="col-6 image-container">
+
+    </div>
+    <div class="col-6 form-container h-100 flex justify-content-center align-content-center flex-column">
+
+            <div class="text-center mb-4">
+                <img src="assets/images/shop.png" alt="Image" height="100" class="">
+                <div class="text-900 text-3xl font-medium">Welcome !</div>
+            </div>
+
+                <small *ngIf="isSubmitted && authErr" class="p-error text-center">
+                    <h3>{{ authMessage }}</h3>
+                </small>   
+
+            <form [formGroup]="loginFormGroup" class="px-6">
+                <div class="col-12 pb-3">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                        <input formControlName="email" id="email" type="text" pInputText placeholder="Username">         
+                    </div>
+                    <small *ngIf="loginForm['email'].invalid && isSubmitted && !authVerification" class="p-error">
+                        <span *ngIf="loginForm['email'].errors['required']">Email is required</span>
+                        <span *ngIf="loginForm['email'].errors['email']">Email is invalid</span>
+                    </small>
+
+                </div>
+
+                <div class="col-12 pb-4">
+                    <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                        <input formControlName="password" id="password" type="password" pInputText placeholder="Password">   
+                    </div>
+                    <small *ngIf="loginForm['password'].invalid && isSubmitted && !authVerification" class="p-error">
+                        Password is required
+                    </small>
+                </div>
+
+                <div class="flex align-items-center justify-content-between mb-4 mt-2">
+                    <div class="flex align-items-center">
+                        <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                        <label for="rememberme1" class="text-900 text-sm">Remember me</label>
+                    </div>
+                    <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer text-sm">Forgot password?</a>
+                </div>
+
+                <button pButton pRipple label="Sign In" class="col-8 col-offset-2 my-2" (click)="onSubmit()"></button>
+                <button pButton pRipple label="Continue As a guest" class="col-8 col-offset-2 p-button-outlined p-button-secondary my-2" (click)="guestSubmit()"></button>
+                <div class="admin-btn">
+                    <button pButton pRipple label="I'm an admin" class="col-12 p-button p-button-warning my-2" (click)="guestSubmit()"></button>
+                </div>
+
+            </form>
+
+    </div>
+</div>

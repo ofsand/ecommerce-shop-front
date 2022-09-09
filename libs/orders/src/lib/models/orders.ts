@@ -5,6 +5,7 @@ export class Order {
     id?: string;
     orderItems?: OrderItem[];
     shippingAddress?: string;
+    name?: string;
     city?: string;
     zipCode?: string;
     phone?: string;

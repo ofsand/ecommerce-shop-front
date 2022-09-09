@@ -46,7 +46,7 @@ const routes: Routes = [
     OrdersModule, 
     UsersModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent],
   exports: [
     FooterSecondComponent

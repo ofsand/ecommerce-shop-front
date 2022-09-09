@@ -11,9 +11,6 @@ import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { CategoryListComponent } from './pages/categories/category-list/category-list.component';
 
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-
 import {CardModule} from 'primeng/card';
 import {ToolbarModule} from 'primeng/toolbar';
 import {ButtonModule} from 'primeng/button';
@@ -77,8 +74,6 @@ const UX_MODULE = [
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
     AppRoutingModule],
   providers: [UsersService, CategoriesService, MessageService, ConfirmationService,
               { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
