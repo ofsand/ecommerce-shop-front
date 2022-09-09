@@ -6,12 +6,13 @@ import { UsersService } from '@ecommerce-brands/users';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  constructor(private usersService: UsersService) {
+  
+  constructor() {
 
   }
 
   ngOnInit() {
-    this.usersService.initAppSession();
+
   }
 
   title = 'eshop';

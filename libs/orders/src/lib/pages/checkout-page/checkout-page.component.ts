@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/adjacent-overload-signatures */
 import { Location } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '@ecommerce-brands/users';
@@ -18,16 +17,11 @@ import { OrdersService } from '../../services/orders-service.service';
   styles: [
   ]
 })
-export class CheckoutPageComponent implements OnInit, OnDestroy {
+export class CheckoutPageComponent implements OnInit {
   checkoutFormGroup: FormGroup;
   isSubmitted = false;
   orderItems: any = [];
   userId: any;
-<<<<<<< HEAD
-  unsubscribe$: Subject<void> = new Subject();
-=======
-  unsubscribe$: Subject<any> = new Subject();
->>>>>>> 9682675a6d24463150085a160a04ba40f061a68f
 
   constructor(
     private messageService: MessageService,
@@ -40,17 +34,9 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
     private router: Router
   ) { }
 
-
   ngOnInit(): void {
-    this._autoFillUserData();
     this._initUserForm();
     this._getCartItems();
-    this._autoFillUserData();
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
   }
 
   private _initUserForm() {
@@ -60,29 +46,11 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       city: ['', Validators.required],
-      address: ['', ]
+      address: ['', ],
+      isAdmin: [false],
     });
   }
 
-  private _autoFillUserData() {
-<<<<<<< HEAD
-    this.usersService
-      .observeCurrentUser()
-=======
-    this.usersService.observeCurrentUser()
->>>>>>> 9682675a6d24463150085a160a04ba40f061a68f
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((user) => {
-        if (user) {
-          this.userId = user.id;
-          this.checkoutForm['name'].setValue(user.name);
-          this.checkoutForm['email'].setValue(user.email);
-          this.checkoutForm['phone'].setValue(user.phone);
-          this.checkoutForm['city'].setValue(user.city);
-          this.checkoutForm['street'].setValue(user.address);
-        }
-      });
-  }
 
   placeOrder() {
     this.isSubmitted = true;
@@ -92,9 +60,9 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
 
     const order: Order = {
       orderItems: this.orderItems,
-      shippingAddress: this.checkoutForm['address'].value,
-      city: this.checkoutForm['city'].value,
-      phone: this.checkoutForm['phone'].value,
+      shippingAddress: this.checkoutFormGroup.controls['address'].value,
+      city: this.checkoutFormGroup.controls['city'].value,
+      phone: this.checkoutFormGroup.controls['phone'].value,
       status: '0',
       user: this.userId
     }
@@ -125,11 +93,7 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
         }
       })
 
-      //console.log(this.orderItems);
-  }
-
-  get checkoutForm() {
-    return this.checkoutFormGroup.controls;
+      console.log(this.orderItems);
   }
 
   get checkoutForm() {

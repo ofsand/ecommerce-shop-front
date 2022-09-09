@@ -25,11 +25,7 @@ export class LocalStorageService {
     const token = this.getToken();
     if(token) {
       const tokenDecode = JSON.parse(atob(token.split('.')[1]));
-<<<<<<< HEAD
-      return !this._tokenExpired(tokenDecode.exp);
-=======
       return this._tokenExpired(tokenDecode.exp);
->>>>>>> 9682675a6d24463150085a160a04ba40f061a68f
     } else {
       return false
     }
