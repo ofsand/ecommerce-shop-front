@@ -21,4 +21,46 @@ header {
             }
         }
     }
+    .user-login {
+        padding: 0;
+        margin: 0;
+        height: 20px;
+        background-color: transparent;
+        .p-menubar {
+            padding: 0;
+            margin: 0;
+            height: inherit;
+            background-color: transparent;
+            border: transparent;
+            .p-element {
+                .p-menuitem-link {
+                    &:hover {
+                        background-color: transparent !important;
+                    }
+                    padding-left: 0px;
+                    padding-right: 0px;
+
+                    .p-menuitem-icon {
+                        color: black !important;
+                        margin: 0px !important;
+                    }
+                    .p-submenu-icon {
+                        color: black !important;
+                        margin: 0px !important;
+                        margin-right: 8px !important;
+                    }
+                }
+                .p-submenu-list {
+                    background-color: rgba(255,255,255,0.6) !important;
+                    border-radius: 5px;
+                    li {
+                        a{
+                            padding-left: 10px;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
 }

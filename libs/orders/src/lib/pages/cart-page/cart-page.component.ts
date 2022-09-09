@@ -14,6 +14,7 @@ export class CartPageComponent implements OnInit {
 
   cartItemsDetailed: CartItemDetailed[] = [];
   val: any;
+  cartEmpty: boolean;
 
   constructor(
     private route: Router,
@@ -28,8 +29,10 @@ export class CartPageComponent implements OnInit {
   _getCartDetails() {
     this.cartService.cart$.subscribe(respCart => {
       this.cartItemsDetailed = [];
+      this.cartEmpty = false;
       respCart.items?.forEach((cartItem) => {
         this.ordersService.getProduct(cartItem.productId).subscribe((respProduct) => {
+          this.cartEmpty = true;
           this.cartItemsDetailed.push({
             product: respProduct,
             quantity: cartItem.quantity

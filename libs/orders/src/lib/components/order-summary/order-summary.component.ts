@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '@ecommerce-brands/products';
 import { take } from 'rxjs';
 import { CartService } from '../../services/cart-service.service';
 import { OrdersService } from '../../services/orders-service.service';
@@ -42,7 +41,12 @@ export class OrderSummaryComponent implements OnInit {
     });
   }
 
-  navigateToCheckoout() {
-    this.router.navigateByUrl('/checkout');
+  navigateToCheckout() {
+    if(this.totalPrice === 0){
+        this.router.navigateByUrl('/cart');
+      } else {
+        this.router.navigateByUrl('/checkout');
+      }
+
   }
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Cart, CartService } from '@ecommerce-brands/orders';
 import { AuthService } from '../../services/auth.service';
 import { LocalStorageService } from '../../services/local-storage.service';
-;
+import { MyServ } from '../../services/my-serv.service';
 
 @Component({
   selector: 'users-login',
@@ -16,17 +17,22 @@ export class UserLoginComponent implements OnInit {
   isSubmitted = false;
   authErr = false;
   authMessage = '';
+  cartExist: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private localStorageService: LocalStorageService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private cartService: CartService,
+    private serv: MyServ
+  ) {
+  }
 
   ngOnInit(): void {
     this._initLoginForm();
   }
+
 
   private _initLoginForm() {
     this.loginFormGroup = this.formBuilder.group( {
@@ -45,9 +51,19 @@ export class UserLoginComponent implements OnInit {
       (user) => {
       this.localStorageService.setToken(user.token);
           this.authErr = false;
-          this.router.navigate(['/checkout']);
+          this.serv.sendUpdate(true);
+          this.router.navigate(['/cart']);
+          
+    },
+    (error) => {
+      this.serv.sendUpdate(false);
+      console.log(error);
+      if(error.status === 400) {
+        this.authMessage = 'Wrong Email or Password !'
+      }else{
+        this.authMessage = 'There is a Problem on the server, Please Try later !'
+      }
     });
-
 
   }
 
@@ -63,7 +79,16 @@ export class UserLoginComponent implements OnInit {
 
       if(!tokenDecode.isAdmin) {
           this.authErr = false;
-          this.router.navigate(['/checkout']);
+          const cart = this.cartService.getCart();
+          cart.items?.find((item) => {
+
+            if(item) {
+              this.router.navigate(['/checkout']);
+          } else {
+              this.router.navigate(['/']);
+          }
+          });
+
       } else{
         this.authMessage = `You are logging as admin, only customers are allowed !`;
         this.authErr = true;
@@ -76,7 +101,6 @@ export class UserLoginComponent implements OnInit {
       }else{
         this.authMessage = 'There is a Problem on the server, Please Try later !'
       }
-      
 
       this.authErr = true;
     });
@@ -86,4 +110,6 @@ export class UserLoginComponent implements OnInit {
   get loginForm() {
     return this.loginFormGroup.controls; 
     }
+
+
 }
