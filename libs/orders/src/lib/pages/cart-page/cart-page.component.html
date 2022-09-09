@@ -6,12 +6,12 @@
                     <i class="pi pi-chevron-left"></i>
                 </button>
             </div>
-            <div class="mt-6">
+            <div class="mt-6" *ngIf="cartEmpty">
                 <h4>
                     Your Products
                 </h4>
             </div>
-            <div class="cart-shipping">
+            <div class="cart-shipping" *ngIf="cartEmpty">
                 Here are the products that you choosed! Happy Shopping !
             </div><br>
             <div class="cart-item mt-4 bg-white-alpha-60 " *ngFor="let cartItem of cartItemsDetailed">
@@ -48,6 +48,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="cart-item mt-4 bg-white-alpha-60 p-4 shadow-2" *ngIf="!cartEmpty">
+                <div class="grid justify-content-center">
+                    <h2>You should Select few items before Checkout</h2>
+                </div>
+            </div>
+
         </div>
         <div class="col-4 col-offset-1">
             <orders-summary></orders-summary>

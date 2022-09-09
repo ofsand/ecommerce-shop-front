@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthGuard } from '../../services/auth-guard.service';
 import { AuthService } from '../../services/auth.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 ;
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit {
           this.authErr = false;
           this.router.navigate(['/']);
       } else{
-        this.authMessage = `You don't have Privileges, You are no longer admin !`;
+        this.authMessage = `You don't have Privileges of administrator !`;
         this.authErr = true;
       }
     },

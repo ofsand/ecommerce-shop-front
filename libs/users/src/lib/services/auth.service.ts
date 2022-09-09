@@ -22,8 +22,17 @@ export class AuthService {
     return this.http.post<any>(`${this.apiURLUsers}/login`, {email: email, password: password})
   }
 
+  userLogin(email: string, password: string) : Observable<any> {
+    return this.http.post<any>(`${this.apiURLUsers}/user-login`, {email: email, password: password})
+  }
+
   logout() {
     this.localStorageToken.deleteToken();
     this.router.navigate(['/login']);
+  }
+
+  userLogout() {
+    this.localStorageToken.deleteToken();
+    this.router.navigate(['/user-login']);
   }
 }

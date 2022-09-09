@@ -6,12 +6,17 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserLoginComponent } from './pages/user-login/user-login.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
   },
+  {
+    path: 'user-login',
+    component: UserLoginComponent
+  }
 ];
 
 @NgModule({
@@ -24,8 +29,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [LoginComponent],
-  exports: [LoginComponent],
+  declarations: [LoginComponent, UserLoginComponent],
+  exports: [LoginComponent, UserLoginComponent],
   providers: [],
 })
 export class UsersModule {}

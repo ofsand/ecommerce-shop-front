@@ -20,7 +20,8 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import { ThankYouComponent } from './pages/thank-you/thank-you.component';
-import { AuthGuard } from '@ecommerce-brands/users';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard, JwtInterceptor, UsersAuthGuard } from '@ecommerce-brands/users';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'checkout',
+    canActivate: [UsersAuthGuard],
     component: CheckoutPageComponent
   },
   {
@@ -53,7 +55,7 @@ const routes: Routes = [
     CheckoutPageComponent,
     ThankYouComponent
   ],
-  providers: [MessageService]
+  providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}]
 })
 export class OrdersModule {
 

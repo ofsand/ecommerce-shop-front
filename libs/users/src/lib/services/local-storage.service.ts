@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 const TOKEN = 'jwtToken'
 
@@ -7,7 +8,8 @@ const TOKEN = 'jwtToken'
 })
 export class LocalStorageService {
 
-  constructor() { }
+  constructor() {
+  }
 
   setToken(data: any) {
     localStorage.setItem(TOKEN, data);
@@ -41,7 +43,7 @@ export class LocalStorageService {
           return false;
         }
     } else {
-      return null
+      return null;
     }
   }
 
@@ -49,4 +51,8 @@ export class LocalStorageService {
     return Math.floor(new Date().getTime() / 1000) >= expiration;
   }
 
+  isAuthenticatedMethod() {
+    const isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    return isUserLoggedIn;
+  }
 }

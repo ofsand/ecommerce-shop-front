@@ -1,8 +1,3 @@
-.login-register {
-    background: linear-gradient(to right, rgba(130, 138, 142, 0.6), rgba(224, 221, 253, 0.6)), url("../../../apps/eshop/src/assets/images/abstract-blur.jpg") no-repeat fixed;
-    background-size: cover;
-    height: 100vh;
-    position: relative;
 
     .panel {
         background-color: rgba(255, 255, 255, 0.742);
@@ -10,7 +5,7 @@
         width: 50%;
         position: absolute;
         left: 25%;
-        top: 15%;
+        top: 20%;
         border-radius: 8px;
 
         .image-container {
@@ -20,4 +15,3 @@
             background-size: cover;
         }
     }
-}
