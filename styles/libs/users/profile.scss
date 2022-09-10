@@ -1,4 +1,4 @@
-.cart-profile {
+.profile {
     .cart-item {
         border-radius: 4px;
         .quantity-input {
@@ -8,4 +8,59 @@
             }
         }
     }
+
+        .p-tabview {
+            background-color:  transparent;
+            .p-tabview-nav-container {
+                background-color:  transparent;
+                .p-tabview-nav-content {
+                    background-color:  transparent;
+                    padding-bottom: 5px;
+                    .p-tabview-nav {
+                        background-color:  transparent ;
+                        border-width: 0px;
+                        align-items: center;
+                        justify-content: center;
+                        li{
+                            margin: 0 30px;
+                            a {
+                                border: 2px #eaeaea solid;
+                                border-radius: 8px;
+                                &:hover {
+                                    //background-color: #eaeaea;
+                                    border: 2px #949494 solid;
+                                }
+                            }
+                            &:hover {
+                                background-color: transparent;
+                            }
+                        }
+                        li:nth-child(3) {
+                            position: absolute;
+                            right: 50px;
+                            a {
+                                background-color: #F59E0B;
+                                color: white;
+                                padding: inherit;
+                                padding-right: 10px;
+                                span {
+                                    padding: 15px;
+                                }
+                                &:hover {
+                                    background-color: #F59E0B;
+                                }
+                            }
+                            &:hover {
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                }
+            }
+            .p-tabview-panels {
+                background-color:  transparent;
+            }
+        }
+
+
 }

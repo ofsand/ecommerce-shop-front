@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { Router } from '@angular/router';
-import { UsersService } from '@ecommerce-brands/users';
+import { AuthService, UsersService } from '@ecommerce-brands/users';
 import { User } from '../../models/user';
 import { Order, OrderItem, OrdersService } from '@ecommerce-brands/orders';
 
@@ -24,7 +24,8 @@ export class ProfileComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private router: Router,
     private usersService: UsersService,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -72,6 +73,10 @@ export class ProfileComponent implements OnInit {
           console.log(this.user);
     })
     }
+  }
+
+  goLogout() {
+    this.authService.userLogout();
   }
 
 }

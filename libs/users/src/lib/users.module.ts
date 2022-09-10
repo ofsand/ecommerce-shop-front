@@ -10,7 +10,7 @@ import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 import {FieldsetModule} from 'primeng/fieldset';
-import {CardModule} from 'primeng/card';
+import {TabViewModule} from 'primeng/tabview';
 
 const routes: Routes = [
   {
@@ -37,7 +37,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     FieldsetModule,
-    CardModule
+    TabViewModule
   ],
   declarations: [LoginComponent, UserLoginComponent, ProfileComponent],
   exports: [LoginComponent, UserLoginComponent, ProfileComponent],
