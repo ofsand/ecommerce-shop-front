@@ -60,6 +60,69 @@
             
             <h3 class="text-center mt-4">Here you can see and change your personal information !</h3>
 
+              <div class="p-grid mt-5 bg-white-alpha-60 cart-item shadow-2 p-5">
+                <div class="p-col-12">
+                  <form [formGroup]="form" class="mt-3">
+                    <div class="formgrid grid">
+                      <div class="field col">
+                        <label for="name">Name</label><br/>
+                        <input formControlName="name" id="name" type="text" pInputText /><br/>
+                        <small *ngIf="form.controls['name'].invalid && isSubmitted" class="p-error"
+                          >Name is required</small
+                        >
+                      </div>
+                      <div class="field col">
+                        <label for="email">Email</label><br/>
+                        <input formControlName="email" id="email" type="text" pInputText /><br/>
+                        <small *ngIf="form.controls['email'].invalid && isSubmitted" class="p-error">
+                        <span *ngIf="form.controls['email'].errors['required']">email is required</span>
+                          <span *ngIf="form.controls['email'].errors['email']">email is invalid</span></small>
+                      </div>
+                      <div class="field col">
+                        <label for="password">Password</label><br/>
+                        <input formControlName="password" id="password" type="password" pInputText /><br/>
+                        <small *ngIf="form.controls['password'].invalid && isSubmitted" class="p-error"
+                          >Password is required</small
+                        >
+                      </div>
+                    </div>
+          
+                    <div class="formgrid grid">
+                      <div class="field col">
+                        <label for="phone">Phone</label><br/>
+                        <input formControlName="phone" placeholder="(212) 999-999999" type="phone" pInputText><br/>
+                        <small *ngIf="form.controls['phone'].invalid && isSubmitted" class="p-error"
+                          >Phone is required</small
+                        >
+                      </div>
+                      <div class="field col">
+                        <label for="city">City</label><br/>
+                        <input formControlName="city" id="city" type="city" pInputText /><br/>
+                        <small *ngIf="form.controls['city'].invalid && isSubmitted" class="p-error">
+                          City is required
+                        </small>
+                      </div>
+                      <div class="field col">
+                        <label for="password">Address</label><br/>
+                        <input formControlName="address" id="address" type="address" pInputText /><br/>
+                        <small *ngIf="form.controls['address'].invalid && isSubmitted" class="p-error"
+                          >Address is required</small
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-12 flex justify-content-start mt-2 ml-2">
+                  <p-button
+                    styleClass="p-button-primary"
+                    [label]="'Update'"
+                    icon="pi pi-pencil"
+                    (click)="onSubmit()"
+                  ></p-button>
+                </div>
+              </div>
+
+
         </p-tabPanel>
         <p-tabPanel>
             <ng-template pTemplate = "header" >

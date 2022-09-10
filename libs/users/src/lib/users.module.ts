@@ -12,6 +12,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import {FieldsetModule} from 'primeng/fieldset';
 import {TabViewModule} from 'primeng/tabview';
 import { TagModule } from 'primeng/tag';
+import {ToolbarModule} from 'primeng/toolbar';
+import {InputMaskModule} from 'primeng/inputmask';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 const routes: Routes = [
   {
@@ -39,7 +42,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     FieldsetModule,
     TabViewModule,
-    TagModule
+    TagModule,
+    ToolbarModule,
+    InputMaskModule,
+    InputNumberModule
 
   ],
   declarations: [LoginComponent, UserLoginComponent, ProfileComponent],

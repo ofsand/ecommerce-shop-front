@@ -54,19 +54,21 @@
               <label for="phone">Phone</label>
               <p-inputMask class="ml-4" mask="(999) 999-999999" formControlName="phone" placeholder="(212) 999-999999"></p-inputMask><br/>
               <small *ngIf="form.controls['phone'].invalid && isSubmitted" class="p-error"
-                >Name is required</small
+                >Phone is required</small
               >
             </div>
             <div class="field col">
               <label for="city">City</label>
               <input class="ml-4" formControlName="city" id="city" type="text" pInputText /><br/>
-              <small *ngIf="form.controls['city'].invalid && isSubmitted" class="p-error"></small>
+              <small *ngIf="form.controls['city'].invalid && isSubmitted" class="p-error">
+                City is required
+              </small>
             </div>
             <div class="field col">
               <label for="password">Address</label>
               <input class="ml-4" formControlName="address" id="address" type="address" pInputText /><br/>
               <small *ngIf="form.controls['address'].invalid && isSubmitted" class="p-error"
-                >Password is required</small
+                >Address is required</small
               >
             </div>
           </div>

@@ -16,7 +16,6 @@ export class UserFormComponent implements OnInit {
   isSubmitted = false;
   editmode = false;
   currentUserId: string;
-  countries = [];
 
   constructor(
     private messageService: MessageService,
