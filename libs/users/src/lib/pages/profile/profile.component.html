@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-4">
                             <h5>Order status</h5>
-                            <p>{{order.status}}</p>
+                            <p-tag  [severity]="orderStatus[order?.status].color" [value]="orderStatus[order?.status].name"></p-tag>
                         </div>
                         <div class="col-4">
                             <h5>Order total price</h5>

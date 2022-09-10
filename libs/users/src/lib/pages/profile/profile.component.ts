@@ -4,7 +4,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { Router } from '@angular/router';
 import { AuthService, UsersService } from '@ecommerce-brands/users';
 import { User } from '../../models/user';
-import { Order, OrderItem, OrdersService } from '@ecommerce-brands/orders';
+import { Order, OrderItem, OrdersService, STATUS } from '@ecommerce-brands/orders';
 
 @Component({
   selector: 'users-profile',
@@ -17,8 +17,9 @@ export class ProfileComponent implements OnInit {
   user: User;
   userId?: string;
   isGuest: boolean;
-  orders: any[] = [];
+  orders: Order[] = [];
   ordersNumber: any;
+  orderStatus = STATUS;
 
   constructor(
     private localStorageService: LocalStorageService,
