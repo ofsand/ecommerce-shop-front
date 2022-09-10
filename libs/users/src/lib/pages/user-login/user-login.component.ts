@@ -93,7 +93,7 @@ export class UserLoginComponent implements OnInit {
   private _isAuthenticated() {
     this.isSubmitted = true;
     this.authVerification = true;
-
+    
     const token = this.localStorageService.getToken()
 
     if(token) {

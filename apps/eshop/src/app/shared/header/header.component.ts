@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {}
@@ -18,4 +18,6 @@ export class HeaderComponent implements OnInit {
   goLogin() {
     this.router.navigate(['/user-login']);
   }
+
+  
 }

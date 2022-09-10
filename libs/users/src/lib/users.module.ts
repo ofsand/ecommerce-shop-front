@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserLoginComponent } from './pages/user-login/user-login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
+import {FieldsetModule} from 'primeng/fieldset';
+import {CardModule} from 'primeng/card';
+
 const routes: Routes = [
   {
     path: 'login',
@@ -32,7 +35,9 @@ const routes: Routes = [
     InputTextModule,
     ButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FieldsetModule,
+    CardModule
   ],
   declarations: [LoginComponent, UserLoginComponent, ProfileComponent],
   exports: [LoginComponent, UserLoginComponent, ProfileComponent],

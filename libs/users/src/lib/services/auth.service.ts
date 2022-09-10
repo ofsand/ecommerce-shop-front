@@ -35,4 +35,5 @@ export class AuthService {
     this.localStorageToken.deleteToken();
     this.router.navigate(['/user-login']);
   }
+  
 }

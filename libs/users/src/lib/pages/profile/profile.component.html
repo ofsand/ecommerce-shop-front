@@ -1,1 +1,47 @@
-<p>profile works!</p>
+<div class="profile">
+    <div class="text-center">
+        <h1>Hello  {{user?.name}} !<i class="pi pi-smile"></i></h1>
+    </div>
+    <div class="empty-profile">
+
+    </div>
+
+    <h3 class="text-center">Here you can see all the orders that you made previously !</h3>
+
+        <div class="p-grid mb-5" *ngFor="let order of orders; let i = index" >
+            <p-fieldset styleClass="mt-4 bg-white-alpha-60 cart-profile shadow-2" legend="Order  {{i+1}}" [toggleable]="true" >
+                <div class="grid">
+                    <div class="col-4">
+                        <h5>Order date</h5>
+                        <p>{{order.dateOrdered | date: 'short'}}</p>
+                    </div>
+                    <div class="col-4">
+                        <h5>Order status</h5>
+                        <p>{{order.status}}</p>
+                    </div>
+                    <div class="col-4">
+                        <h5>Order total price</h5>
+                        <h3 class="text-green-600">{{order.totalPrice | currency}}</h3>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="col-2 font-bold">Product</div>
+                    <div class="col-2 font-bold">Brand</div>
+                    <div class="col-2 font-bold">Category</div>
+                    <div class="col-2 font-bold">Price</div>
+                    <div class="col-2 font-bold">Quantity</div>
+                    <div class="col-2 font-bold">Order Total</div>
+                </div>
+                <div class="grid" *ngFor="let orderItem of order?.orderItems">
+                    <div class="col-2">{{orderItem.product?.name}}</div>
+                    <div class="col-2">{{orderItem.product?.brand}}</div>
+                    <div class="col-2">{{orderItem.product?.category?.name}}</div>
+                    <div class="col-2">{{orderItem.product?.price | currency}}</div>
+                    <div class="col-2">{{orderItem.quantity}}</div>
+                    <div class="col-2">{{orderItem?.product?.price * orderItem?.quantity | currency}}</div>
+                </div>
+            </p-fieldset>
+           
+        </div>
+
+</div>

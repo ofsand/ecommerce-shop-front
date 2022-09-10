@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { map, Observable } from 'rxjs';
 import { Order } from '../models/orders';
-import { Product } from '@ecommerce-brands/products';
+import { OrderItem } from '../models/order-item';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,10 @@ export class OrdersService {
 
   getOrder(orderId: string): Observable<Order> {
     return this.http.get<Order>(`${this.apiUrlOrders}/${orderId}`)
+  }
+
+  getOrderItemByUserId(userId?: string): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.apiUrlOrders}/get/userorders/${userId}`)
   }
 
   createOrder(order: Order): Observable<Order> {
