@@ -59,6 +59,29 @@
             }
             .p-tabview-panels {
                 background-color:  transparent;
+                .p-datatable {
+                    .p-datatable-thead {
+                        tr {
+                            border-width: 0px;
+                            th {
+                                padding: 0em 1em !important;
+                                &:first-child {
+                                    border-radius: 8px;
+                                    border: none;
+                                }
+                                &:last-child{
+                                    background-color: transparent;
+                                    border-width: 0px;
+                                }
+                            }
+                        }
+                    }
+                    .p-datatable-tbody {
+                        tr {
+                            background: transparent;
+                        }
+                    }
+                }
             }
         }
 

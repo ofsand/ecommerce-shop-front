@@ -11,6 +11,7 @@ import { OrderItem } from '../../models/order-item';
 import { Order } from '../../models/orders';
 import { CartService } from '../../services/cart-service.service';
 import { OrdersService } from '../../services/orders-service.service';
+import { ProductsService } from '@ecommerce-brands/products';
 
 @Component({
   selector: 'orders-checkout-page',
@@ -42,21 +43,17 @@ export class CheckoutPageComponent implements OnInit {
     this._initUserForm();
     this._getCartItems();
     this._checkUser();
-    if(this.isGuest) {
-      this._placeData()
-    }
   }
 
   private _initUserForm() {
     this.checkoutFormGroup = this.formBuilder.group({
       name: ['', Validators.required],
-      //password: ['', Validators.required],
+      password: [''],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      //zipCode: ['', Validators.required],
       city: ['', Validators.required],
       address: ['', Validators.required],
-      //isAdmin: [false],
+      isAdmin: [false],
     });
   }
 
@@ -64,30 +61,23 @@ export class CheckoutPageComponent implements OnInit {
   placeOrder() {
     this.isSubmitted = true;
     if(this.checkoutFormGroup.invalid) {
-        return;
+      return;
     }   
-
+    
+    console.log('here')
     const order: Order = {
       orderItems: this.orderItems,
-      shippingAddress: this.checkoutFormGroup.controls['address'].value,
       name: this.checkoutFormGroup.controls['name'].value,
+      shippingAddress: this.checkoutFormGroup.controls['address'].value,
       city: this.checkoutFormGroup.controls['city'].value,
-      //zipCode: this.checkoutFormGroup.controls['zipCode'].value,
       phone: this.checkoutFormGroup.controls['phone'].value,
       status: '0',
       user: this.userId
     }
-
-    this.ordersService.createOrder(order).subscribe(
-      () => {
-        //redirect to thank you page // payment
-        this.cartService.emptyCart();
-        this.router.navigate(['/thankyou']);
-      },
-      () => {
-        //display some message to user
-      }
-    );
+    this.cartService.emptyCart();
+    this.ordersService.createOrder(order).subscribe(() => {
+      this.router.navigateByUrl('/thankyou')
+    });
 
   }
 
@@ -103,8 +93,6 @@ export class CheckoutPageComponent implements OnInit {
           quantity: item.quantity
         }
       })
-
-      console.log(this.orderItems);
   }
 
   get checkoutForm() {
@@ -121,6 +109,7 @@ export class CheckoutPageComponent implements OnInit {
               this.isGuest = true
             } else {
               this.isGuest = false
+              this._placeData(this.userId)
             }
         }
     }
@@ -130,14 +119,13 @@ export class CheckoutPageComponent implements OnInit {
     return Math.floor(new Date().getTime() / 1000) >= expiration;
   }
 
-  private _placeData() {
-    this.ordersService.getOrderItemByUserId(this.userId).subscribe( (orders) => {
-      this.user = orders[0].user;
-      this.checkoutFormGroup.controls['name'].setValue(this.user.name);
-      this.checkoutFormGroup.controls['phone'].setValue(this.user.phone);
-      this.checkoutFormGroup.controls['email'].setValue(this.user.email);
-      this.checkoutFormGroup.controls['address'].setValue(this.user.address);
-      this.checkoutFormGroup.controls['city'].setValue(this.user.city);
+  private _placeData(userId: string) {
+    this.usersService.getUser(userId).subscribe( (user) => {
+      this.checkoutFormGroup.controls['name'].setValue(user.name);
+      this.checkoutFormGroup.controls['email'].setValue(user.email);
+      this.checkoutFormGroup.controls['phone'].setValue(user.phone);
+      this.checkoutFormGroup.controls['address'].setValue(user.address);
+      this.checkoutFormGroup.controls['city'].setValue(user.city);
     });
   }
 

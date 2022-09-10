@@ -42,7 +42,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this._isAuthenticated();
-    this._GetOrderItems();
     this._initUserForm();
   }
 
@@ -57,16 +56,17 @@ export class ProfileComponent implements OnInit {
       address: ['', Validators.required],
     });
   }
-
+  
 
   private _isAuthenticated() {
     
     const token = this.localStorageService.getToken()
-
+    
     if(token) {
       const tokenDecode = JSON.parse(atob(token.split(".")[1]));
-        if(!this._tokenExpired(tokenDecode.exp)) {
+      if(!this._tokenExpired(tokenDecode.exp)) {
             this.userId = tokenDecode.id;
+            this._GetOrderItems(tokenDecode.id)
             return null
           } else {
           this.router.navigate(['/user-login']);
@@ -90,23 +90,40 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  private _GetOrderItems() {
-    if(this._isGuest()) {
-        this.ordersService.getOrderItemByUserId(this.userId).subscribe( (orders) => {
+  private _GetOrderItems(userId: string) {
+    if(!this._isGuest()) {
+        this.ordersService.getOrderItemByUserId(userId).subscribe( (orders) => {
           this.orders = orders;
           this.ordersNumber = orders.length;
-          this.user = orders[0].user;
+          if(orders.length > 0) {
+            this.user = orders[0].user;
+          } else {
+            this._getUserData(userId);
+          }
 
-          this.form.controls['name'].setValue(this.user.name);
-          this.form.controls['phone'].setValue(this.user.phone);
-          this.form.controls['email'].setValue(this.user.email);
-          this.form.controls['address'].setValue(this.user.address);
-          this.form.controls['city'].setValue(this.user.city);
+          this.form.controls['name'].setValue(this.user?.name);
+          this.form.controls['phone'].setValue(this.user?.phone);
+          this.form.controls['email'].setValue(this.user?.email);
+          this.form.controls['address'].setValue(this.user?.address);
+          this.form.controls['city'].setValue(this.user?.city);
           this.form.controls['password'].setValidators([]);
           this.form.controls['password'].updateValueAndValidity();
     })
     }
   }
+
+   private _getUserData(userId: string) {
+    this.usersService.getUser(userId).subscribe( (user) => {
+      this.user = user;
+      this.form.controls['name'].setValue(this.user.name);
+      this.form.controls['phone'].setValue(this.user.phone);
+      this.form.controls['email'].setValue(this.user.email);
+      this.form.controls['address'].setValue(this.user.address);
+      this.form.controls['city'].setValue(this.user.city);
+      this.form.controls['password'].setValidators([]);
+      this.form.controls['password'].updateValueAndValidity();
+    });
+   }
 
   goLogout() {
     this.authService.userLogout();

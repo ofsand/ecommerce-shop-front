@@ -15,6 +15,7 @@ import { TagModule } from 'primeng/tag';
 import {ToolbarModule} from 'primeng/toolbar';
 import {InputMaskModule} from 'primeng/inputmask';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {TableModule} from 'primeng/table';
 
 const routes: Routes = [
   {
@@ -45,7 +46,8 @@ const routes: Routes = [
     TagModule,
     ToolbarModule,
     InputMaskModule,
-    InputNumberModule
+    InputNumberModule,
+    TableModule
 
   ],
   declarations: [LoginComponent, UserLoginComponent, ProfileComponent],

@@ -10,14 +10,14 @@
                 <div class="formgrid grid">
                   <div class="field col">
                     <label for="name">Name</label><br>
-                    <input formControlName="name" id="name" type="text" pInputText readonly="readonly"/><br/>
+                    <input formControlName="name" id="name" type="text" pInputText [readonly]="!isGuest? 'readonly' :''"/><br/>
                     <small *ngIf="checkoutFormGroup.controls['name'].invalid && isSubmitted" class="p-error"
                       >Name is required</small
                     >
                   </div>
                   <div class="field col">
                     <label for="email">Email</label><br>
-                    <input formControlName="email" id="email" type="text" pInputText readonly="readonly"/><br/>
+                    <input formControlName="email" id="email" type="text" pInputText [readonly]="!isGuest? 'readonly' :''"/><br/>
                     <small *ngIf="checkoutFormGroup.controls['email'].invalid && isSubmitted" class="p-error">
                     <span *ngIf="checkoutFormGroup.controls['email'].errors['required']">email is required</span>
                       <span *ngIf="checkoutFormGroup.controls['email'].errors['email']">email is invalid</span></small>
@@ -25,21 +25,21 @@
 
                   <div class="field col">
                     <label for="password">Address</label><br>
-                    <input formControlName="address" id="address" type="address" pInputText readonly="readonly" /><br/>
+                    <input formControlName="address" id="address" type="address" pInputText [readonly]="!isGuest? 'readonly' :''" /><br/>
                     <small *ngIf="checkoutFormGroup.controls['address'].invalid && isSubmitted" class="p-error"
                       >Address is required</small
                     >
                   </div>
                   <div class="field col">
                       <label for="phone">Phone</label><br>
-                      <input formControlName="phone" placeholder="(212) 999-999999" type="phone" pInputText readonly="readonly"><br/>
+                      <input formControlName="phone" placeholder="(212) 999-999999" type="phone" pInputText [readonly]="!isGuest? 'readonly' :''"><br/>
                       <small *ngIf="checkoutFormGroup.controls['phone'].invalid && isSubmitted" class="p-error"
                         >Phone is required</small
                       >
                   </div>
                   <div class="field col">
                     <label for="city">City</label><br>
-                    <input formControlName="city" id="city" type="text" pInputText readonly="readonly"/><br/>
+                    <input formControlName="city" id="city" type="text" pInputText [readonly]="!isGuest? 'readonly' :''"/><br/>
                     <small *ngIf="checkoutFormGroup.controls['city'].invalid && isSubmitted" class="p-error">
                       City is required
                     </small>

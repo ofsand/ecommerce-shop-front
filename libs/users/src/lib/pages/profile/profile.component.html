@@ -14,13 +14,25 @@
             </ng-template>
 
             <h3 class="text-center mt-4">Here you can see all the orders that you made previously !</h3>
+            <p-table [value]="orders">
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th class="col-1 px-2" pSortableColumn="dateOrdered">Sort <p-sortIcon field="dateOrdered"></p-sortIcon></th>
+                      <th><p>Click to Sort by date</p></th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-order>
+                  <tr>
+                    <th></th> 
 
-            <div class="p-grid mb-5" *ngFor="let order of orders; let i = index" >
-                <p-fieldset styleClass="mt-4 bg-white-alpha-60 cart-item shadow-2" legend="Order  {{i+1}}" [toggleable]="true" >
+                    <th style="text-align: left;">
+
+            <div class="p-grid mb-5"  >
+                <p-fieldset styleClass="mt-4 bg-white-alpha-60 cart-item shadow-2" legend="{{order.dateOrdered | date: 'mediumDate'}}" [toggleable]="true" >
                     <div class="grid">
                         <div class="col-4">
                             <h5>Order date</h5>
-                            <p>{{order.dateOrdered | date: 'short'}}</p>
+                            <p>{{order.dateOrdered | date: 'medium'}}</p>
                         </div>
                         <div class="col-4">
                             <h5>Order status</h5>
@@ -37,7 +49,7 @@
                         <div class="col-2 font-bold">Category</div>
                         <div class="col-2 font-bold">Price</div>
                         <div class="col-2 font-bold">Quantity</div>
-                        <div class="col-2 font-bold">Order Total</div>
+                        <div class="col-2 font-bold">Product Total</div>
                     </div>
                     <div class="grid" *ngFor="let orderItem of order?.orderItems">
                         <div class="col-2">{{orderItem.product?.name}}</div>
@@ -50,6 +62,10 @@
                 </p-fieldset>
                
             </div>
+          </th>
+        </tr>
+      </ng-template>
+      </p-table>
         </p-tabPanel>
 
         <p-tabPanel>
