@@ -66,6 +66,7 @@ export class ProfileComponent implements OnInit {
       const tokenDecode = JSON.parse(atob(token.split(".")[1]));
       if(!this._tokenExpired(tokenDecode.exp)) {
             this.userId = tokenDecode.id;
+            this.isGuest = this._isGuest(tokenDecode.id);
             this._GetOrderItems(tokenDecode.id)
             return null
           } else {
@@ -80,9 +81,9 @@ export class ProfileComponent implements OnInit {
     return Math.floor(new Date().getTime() / 1000) >= expiration;
   }
 
-  private _isGuest() {
+  private _isGuest(userId: string) {
     
-    if(this.userId === '6310cb9d40899c7e2c30f890') {
+    if(userId === '6310cb9d40899c7e2c30f890') {
       return true;
     }else {
       return false;
@@ -91,7 +92,7 @@ export class ProfileComponent implements OnInit {
   }
 
   private _GetOrderItems(userId: string) {
-    if(!this._isGuest()) {
+    if(!this.isGuest) {
         this.ordersService.getOrderItemByUserId(userId).subscribe( (orders) => {
           this.orders = orders;
           this.ordersNumber = orders.length;
@@ -127,6 +128,14 @@ export class ProfileComponent implements OnInit {
 
   goLogout() {
     this.authService.userLogout();
+  }
+
+  goCheckout() {
+    this.router.navigate(['/cart']);
+  }
+
+  goShopping() {
+    this.router.navigate(['/products']);
   }
 
   //Form methods

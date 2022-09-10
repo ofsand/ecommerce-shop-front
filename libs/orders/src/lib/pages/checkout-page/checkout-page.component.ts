@@ -26,6 +26,7 @@ export class CheckoutPageComponent implements OnInit {
   userId: any;
   isGuest: boolean
   user: User;
+  goThankYouPage = false;
 
   constructor(
     private messageService: MessageService,
@@ -76,7 +77,7 @@ export class CheckoutPageComponent implements OnInit {
     }
     this.cartService.emptyCart();
     this.ordersService.createOrder(order).subscribe(() => {
-      this.router.navigateByUrl('/thankyou')
+      this.goThankYouPage = true;
     });
 
   }
@@ -129,7 +130,13 @@ export class CheckoutPageComponent implements OnInit {
     });
   }
 
-  GoProfile() {
+  goProfile() {
+    this.goThankYouPage = false;
     this.router.navigate(['/profile']);
+  }
+
+  goShopping() {
+    this.goThankYouPage = false;
+    this.router.navigate(['/products']);
   }
 }

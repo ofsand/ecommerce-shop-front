@@ -21,7 +21,6 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputMaskModule} from 'primeng/inputmask';
 import {InputTextModule} from 'primeng/inputtext';
 import {InputSwitchModule} from 'primeng/inputswitch';
-import { ThankYouComponent } from './pages/thank-you/thank-you.component';
 import { JwtInterceptor, UsersAuthGuard } from '@ecommerce-brands/users';
 
 const routes: Routes = [
@@ -33,11 +32,6 @@ const routes: Routes = [
     path: 'checkout',
     canActivate: [UsersAuthGuard],
     component: CheckoutPageComponent
-  },
-  {
-    path: 'thankyou',
-    canActivate: [UsersAuthGuard],
-    component: ThankYouComponent
   }
 ]
 
@@ -47,15 +41,13 @@ const routes: Routes = [
     CartPageComponent,
     CartIconComponent,
     OrderSummaryComponent,
-    CheckoutPageComponent,
-    ThankYouComponent
+    CheckoutPageComponent
   ],
   exports: [
     CartPageComponent,
     CartIconComponent,
     OrderSummaryComponent,
-    CheckoutPageComponent,
-    ThankYouComponent
+    CheckoutPageComponent
   ],
   providers: [MessageService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}]
 })

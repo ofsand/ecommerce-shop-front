@@ -2,11 +2,24 @@
     <div class="text-center mb-7">
         <h1>Hello  {{user?.name}} !<i class="pi pi-smile"></i></h1>
     </div>
-    <div class="empty-profile">
+    <div class="guest-profile" *ngIf="isGuest">
+        <h2 class="text-center mt-4">You are logging in as a guest</h2><br/>
+        <h3 >Why should you Logout and create you own account !</h3>
+        <ul>
+          <li><h4>You will have the history of your orders</h4></li>
+          <li><h4>Track your order, and knowing if it is delivered or it's on its way</h4></li>
+          <li><h4>Your shipping information will be saved, so you don't have to enter it in every order</h4></li>
+          <li><h4>You can change your shipping information easily</h4></li>
+        </ul>
 
+        <div class="buttons flex justify-content-start mt-8 py-3 bg-white-alpha-60 cart-item shadow-2 col-10 col-offset-1 relative">
+          <button pButton pRipple label="Continue my shopping" icon="pi pi-arrow-circle-left" class="my-2 mx-5 p-button-success" (click)="goShopping()"></button>
+          <button pButton pRipple label="Go to checkout" icon="pi pi-arrow-circle-right" iconPos="right" class="my-2 mx-5  p-button-primary" (click)="goCheckout()"></button>
+          <button pButton pRipple label="Logout" icon="pi pi-sign-out" iconPos="right" class="align-self-end my-2 mx-2 p-button-danger absolute top-2 logout" (click)="goLogout()"></button>
+        </div>
     </div>
 
-    <p-tabView >
+    <p-tabView *ngIf="!isGuest">
         <p-tabPanel>
             <ng-template pTemplate = "header">
                 <i class="pi pi-calendar mr-2"></i>
@@ -14,7 +27,7 @@
             </ng-template>
 
             <h3 class="text-center mt-4">Here you can see all the orders that you made previously !</h3>
-            <p-table [value]="orders">
+            <p-table [value]="orders" *ngIf="ordersNumber > 0">
               <ng-template pTemplate="header">
                   <tr>
                       <th class="col-1 px-2" pSortableColumn="dateOrdered">Sort <p-sortIcon field="dateOrdered"></p-sortIcon></th>
@@ -66,6 +79,10 @@
         </tr>
       </ng-template>
       </p-table>
+      <div class="text-center mt-8" *ngIf="ordersNumber === 0">
+          <h2>You have not yet made any order !</h2>
+          <button pButton pRipple label="Start Shopping" icon="pi pi-shopping-cart" class="mt-5 mx-8 p-button-success" (click)="goShopping()"></button>
+      </div>
         </p-tabPanel>
 
         <p-tabPanel>

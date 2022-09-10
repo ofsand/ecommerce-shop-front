@@ -1,9 +1,9 @@
 <div class="user-login-register panel grid shadow-3">
-    <div class="col-6 image-container">
+    <div class="grid col-12 login-cpmnt" *ngIf="!registerMode">
+        <div class="col-6 image-container">
 
-    </div>
-    <div class="col-6 form-container h-100 flex justify-content-center align-content-center flex-column">
-
+        </div>
+        <div class="col-6 form-container h-100 flex justify-content-center align-content-center flex-column">
             <div class="text-center mb-4">
                 <img src="assets/images/shop.png" alt="Image" height="100" class="">
                 <div class="text-900 text-3xl font-medium">Welcome !</div>
@@ -36,21 +36,82 @@
                     </small>
                 </div>
 
-                <div class="flex align-items-center justify-content-between mb-4 mt-2">
-                    <div class="flex align-items-center">
-                        <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                        <label for="rememberme1" class="text-900 text-sm">Remember me</label>
-                    </div>
-                    <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer text-sm">Forgot password?</a>
-                </div>
-
                 <button pButton pRipple label="Sign In" class="col-8 col-offset-2 my-2" (click)="onSubmit()"></button>
                 <button pButton pRipple label="Continue As a guest" class="col-8 col-offset-2 p-button-outlined p-button-secondary my-2" (click)="guestSubmit()"></button>
+                <button pButton pRipple label="Create Account" class="col-8 col-offset-2 p-button p-button-success my-2" (click)="createAcc()"></button>
                 <div class="admin-btn">
                     <button pButton pRipple label="I'm an admin" class="col-12 p-button p-button-warning my-2" (click)="guestSubmit()"></button>
                 </div>
 
             </form>
-
+        </div>
     </div>
+    <div class="register-cmpnt col-12" *ngIf="registerMode && !accCreated">
+            <form [formGroup]="form">
+              <div class="formgrid grid mt-7 mb-2 ml-8">
+                <div class="field col">
+                  <label for="name">Name</label><br/>
+                  <input class="" formControlName="name" id="name" type="text" pInputText /><br/>
+                  <small *ngIf="form.controls['name'].invalid && formisSubmitted" class="p-error"
+                    >Name is required</small
+                  >
+                </div>
+                <div class="field col">
+                  <label for="email">Email</label><br/>
+                  <input class="" formControlName="email" id="email" type="text" pInputText /><br/>
+                  <small *ngIf="form.controls['email'].invalid && formisSubmitted" class="p-error">
+                  <span *ngIf="form.controls['email'].errors['required']">email is required</span>
+                    <span *ngIf="form.controls['email'].errors['email']">email is invalid</span></small>
+                </div>
+            </div>
+            <div class="formgrid grid my-2 ml-8">
+                <div class="field col">
+                  <label for="password">Password</label><br/>
+                  <input class="" formControlName="password" id="password" type="password" pInputText /><br/>
+                  <small *ngIf="form.controls['password'].invalid && formisSubmitted" class="p-error"
+                    >Password is required</small
+                  >
+                </div>
+    
+              <div class="field col">
+                  <label for="phone">Phone</label><br/>
+                  <p-inputMask class="" mask="(999) 999-999999" formControlName="phone" placeholder="(212) 999-999999"></p-inputMask><br/>
+                  <small *ngIf="form.controls['phone'].invalid && formisSubmitted" class="p-error"
+                  >Phone is required</small
+                  >
+                </div>
+            </div>
+            <div class="formgrid grid my-2 ml-8">
+                <div class="field col">
+                  <label for="city">City</label><br/>
+                  <input class="" formControlName="city" id="city" type="text" pInputText /><br/>
+                  <small *ngIf="form.controls['city'].invalid && formisSubmitted" class="p-error">
+                    City is required
+                  </small>
+                </div>
+                <div class="field col">
+                  <label for="password">Address</label><br/>
+                  <input class="" formControlName="address" id="address" type="address" pInputText /><br/>
+                  <small *ngIf="form.controls['address'].invalid && formisSubmitted" class="p-error"
+                    >Address is required</small
+                  >
+                </div>
+            </div>
+              <div class="flex justify-content-center mt-6">
+                  <button pButton pRipple label="return" class="p-button p-button-warning my-2 mx-8" (click)="goLogin()"></button>
+                  <button pButton pRipple label="Create" class="p-button p-button-secondary my-2 mx-8" (click)="onFormSubmit()"></button>
+                </div>
+            </form>
+        </div>
+        <div class="register-cmpnt col-12 text-center flex justify-content-around flex-column" *ngIf="registerMode && accCreated">
+            <div class="">
+                <h4>Your account is been created Successfully,</h4> <br/>
+                <h4>You can Go to login page and enter your email and password !</h4>
+            </div>
+            <div><i class="pi pi-check-circle text-7xl text-green-500"></i></div>
+            <div class="">
+                <button pButton pRipple label="Go to Login" class="p-button p-button-info my-2 mx-8" (click)="goLogin()"></button>
+                <button pButton pRipple label="Create another account" class="p-button p-button-info my-2 mx-8" (click)="createAnotherAcc()"></button>
+            </div>
+        </div>
 </div>

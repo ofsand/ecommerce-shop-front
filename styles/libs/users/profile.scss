@@ -39,7 +39,7 @@
                             position: absolute;
                             right: 50px;
                             a {
-                                background-color: #F59E0B;
+                                background-color: rgb(224, 2, 2);
                                 color: white;
                                 padding: inherit;
                                 padding-right: 10px;
@@ -47,7 +47,7 @@
                                     padding: 15px;
                                 }
                                 &:hover {
-                                    background-color: #F59E0B;
+                                    background-color: rgb(194, 3, 3);
                                 }
                             }
                             &:hover {
@@ -84,6 +84,10 @@
                 }
             }
         }
-
+    .buttons {
+        .logout {
+            right: 35px;
+        }
+    }
 
 }

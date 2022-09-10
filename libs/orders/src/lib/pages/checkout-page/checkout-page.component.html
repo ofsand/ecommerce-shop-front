@@ -1,4 +1,4 @@
-<div class="cart-page mt-6">
+<div class="cart-page mt-6" *ngIf="!goThankYouPage">
   <div class="grid">
       <div class="col-7 ">
         <div class="p-grid mt-5">
@@ -45,7 +45,7 @@
                     </small>
                   </div>
                   <div class="field col mt-5 ml-8"> 
-                    <button pButton pRipple label="Change my Information" class="p-button p-button-warning my-2" (click)="GoProfile()"></button>
+                    <button pButton pRipple label="Change my Information" class="p-button p-button-warning my-2" (click)="goProfile()" *ngIf="!isGuest"></button>
                   </div>
                 </div>
               </form>
@@ -57,6 +57,17 @@
         <div class="mt-5 flex justify-content-center">
             <button  pButton pRipple class="p-button-success" label="Place order" (click)="placeOrder()"></button>
         </div>
+      </div>
+  </div>
+</div>
+
+<div class="grid mt-8" *ngIf="goThankYouPage">
+  <div class="col-8 col-offset-2 bg-white-alpha-60 p-5 border-round shadow-3 text-center">
+      <h1>Thank you for choosing our Shop</h1>
+      <h2>Your order is been placed, you'll receive your products soon</h2>
+      <div class="pt-4 flex justify-content-around">
+          <button pButton label="Go back to shop" (click)="goShopping()" icon="pi pi-arrow-circle-left" ></button>
+          <button pButton label="Check my Order" icon="pi pi-arrow-circle-right" iconPos="right" (click)="goProfile()" class=" p-button-warning" *ngIf="!isGuest"></button>
       </div>
   </div>
 </div>

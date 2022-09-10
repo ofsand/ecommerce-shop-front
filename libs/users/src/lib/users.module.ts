@@ -17,6 +17,7 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {TableModule} from 'primeng/table';
 
+
 const routes: Routes = [
   {
     path: 'login',
