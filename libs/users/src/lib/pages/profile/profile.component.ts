@@ -96,7 +96,7 @@ export class ProfileComponent implements OnInit {
           this.orders = orders;
           this.ordersNumber = orders.length;
           this.user = orders[0].user;
-          console.log(this.user.phone);
+
           this.form.controls['name'].setValue(this.user.name);
           this.form.controls['phone'].setValue(this.user.phone);
           this.form.controls['email'].setValue(this.user.email);
