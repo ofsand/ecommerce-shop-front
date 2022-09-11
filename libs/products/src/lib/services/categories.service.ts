@@ -22,12 +22,12 @@ export class CategoriesService {
     return this.http.get<Category>(`${this.apiUrlCategories}/${categoryId}`);
   }
 
-  createCategory(category: Category):Observable<Category>{
+  createCategory(category: FormData):Observable<Category>{
     return this.http.post<Category>(`${this.apiUrlCategories}`, category);
   }
 
-  updateCategory(category: Category):Observable<Category>{
-    return this.http.put<Category>(`${this.apiUrlCategories}/${category.id}`, category);
+  updateCategory(category: FormData, categoryId):Observable<Category>{
+    return this.http.put<Category>(`${this.apiUrlCategories}/${categoryId}`, category);
   }
 
   deleteCategory(categoryId: string):Observable<Object>{

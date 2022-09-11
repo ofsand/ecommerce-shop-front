@@ -21,15 +21,20 @@
                             <input formControlName="name" id="name" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                             <small *ngIf="form.controls['name'].invalid && isSubmitted" class="p-error" >Name is required</small>
                         </div>
-                        <div class="field col">
-                            <label for="icon">Icon</label>
-                            <input formControlName="icon" id="icon" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                            <small *ngIf="form.controls['icon'].invalid && isSubmitted" class="p-error" >Icon is required</small>
-                        </div>
-                        <div class="field col">
-                            <label for="color">Color</label><br>
-                            <p-colorPicker formControlName="color"></p-colorPicker>
-                        </div>
+                        <div class="p-ui-field p-col-12 mt-5">
+                            <label for="name">Main Image</label>
+                            <input
+                              class="ml-4" 
+                              type="file"
+                              class="p-inputtext"
+                              accept="image/*"
+                              (change)="onImageUpload($event)"
+                            />
+                            <small *ngIf="form.controls['image'].invalid && isSubmitted" class="p-error  ml-3">Image is required</small>
+                            <div style="width:300px;" class="p-col-2 p-mt-2 p-pl-0 mt-4">
+                              <img style="width: 100%" [src]="imageDisplay" alt="" />
+                            </div>
+                          </div>
                     </div>
                </form>
             </div>

@@ -21,6 +21,7 @@ export class CategoriesFormComponent implements OnInit {
   isSubmitted: boolean = false;
   editMode: boolean = false;
   currentCategoryId: string = '';
+  imageDisplay: string | ArrayBuffer | null;
 
   constructor(
         private location: Location,
@@ -33,8 +34,7 @@ export class CategoriesFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      icon: ['', Validators.required],
-      color: ['#fff']
+      image: ['', Validators.required]
     });
 
     this._checkEditMode();
@@ -47,26 +47,22 @@ export class CategoriesFormComponent implements OnInit {
       return;
     }
 
-    const category : Category = {
-      id: this.currentCategoryId,
-      name: this.form.controls['name'].value,
-      icon: this.form.controls['icon'].value,
-      color: this.form.controls['color'].value
-    }
+    const categoryFormData = new FormData();
+    Object.keys(this.form.controls).map((key) => {
+      categoryFormData.append(key, this.form.controls[key].value);
+    });
+
 
     if(this.editMode) {
-        this._editCategory(category);
+        this._editCategory(categoryFormData, this.currentCategoryId);
     }else {
-        this._addCategory(category);
+        this._addCategory(categoryFormData);
     }
 
-
-    console.log(this.form.controls['name'].value);
-    console.log(this.form.controls['icon'].value);
   }
 
-  private _addCategory(category: Category) {
-    this.categoriesService.createCategory(category).subscribe((category: Category) => {
+  private _addCategory(categoryFormData: FormData) {
+    this.categoriesService.createCategory(categoryFormData).subscribe((category: Category) => {
       this.messageService.add({
               severity:'success',
               summary:'Success', 
@@ -86,8 +82,8 @@ export class CategoriesFormComponent implements OnInit {
     });
   }
 
-  private _editCategory(category: Category) {
-    this.categoriesService.updateCategory(category).subscribe((category: Category) => {
+  private _editCategory(categoryFormData: FormData, categoryId: string) {
+    this.categoriesService.updateCategory(categoryFormData, categoryId).subscribe((category: Category) => {
       this.messageService.add({
               severity:'success', 
               summary:'Success', 
@@ -115,11 +111,25 @@ export class CategoriesFormComponent implements OnInit {
         this.currentCategoryId = params['id'];
         this.categoriesService.getCategory(params['id']).subscribe(category => {
           this.form.controls['name'].setValue(category.name);
-          this.form.controls['icon'].setValue(category.icon);
-          this.form.controls['color'].setValue(category.color);
+          this.form.controls['image'].setValidators([]);
+          this.form.controls['image'].updateValueAndValidity();
         })
       }
     })
+  }
+
+  onImageUpload(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const f = this.form.get('image');
+      this.form.patchValue({ image: file });
+      if(f!=null) f.updateValueAndValidity();
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        this.imageDisplay = fileReader.result;
+      };
+      fileReader.readAsDataURL(file);
+    }
   }
 
 }
