@@ -66,7 +66,7 @@ export class UserLoginComponent implements OnInit {
           summary: 'Success',
           detail: `Your account is created Successfully, you can log in now !`
         });
-        timer(2000)
+        timer(800)
           .toPromise()
           .then(() => {
             this.accCreated = true;
@@ -101,13 +101,11 @@ export class UserLoginComponent implements OnInit {
 
   goLogin() {
     this.registerMode = false;
-  }
-
-  createAnotherAcc() {
-    this.accCreated = false;
     this._initUserForm();
+    this.accCreated = false;
     this.formisSubmitted = false;
   }
+
 
   get userForm() {
     return this.form.controls;
