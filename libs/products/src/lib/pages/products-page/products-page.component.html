@@ -8,7 +8,7 @@
             <div class="col-5 ml-6 product-details">
                 <div class="col-12 text-left flex flex-row justify-content-between align-items-center">
                     <h3 class="col-8 title">{{product.name}}</h3>
-                    <p-rating class="reviews text-right col-5" [(ngModel)]="ratingVale" [cancel]="false" [readonly]="true" ></p-rating>
+                    <p-rating class="reviews text-right col-5" [(ngModel)]="productRatingValue" [cancel]="false" [readonly]="true" ></p-rating>
                 </div>
                 <p class="col-11 desc">{{product.description}}</p>
                 <div class="col-12 colors">
@@ -55,7 +55,7 @@
                                 <div class="formgrid grid">
                                     <div class="field col-12 text-left mt-3">
                                         <label for="name">Please rate this product from 1 to 5 !</label><br/>
-                                        <p-rating class="reviews col-5" [cancel]="false" [(ngModel)]="ratingValue" (onRate)="handleRate($event)"></p-rating>
+                                        <p-rating class="reviews col-5" [cancel]="false" (onRate)="handleRate($event)"></p-rating>
                                         <label for="name" class="mt-4">Please add your review here !</label><br/>
                                         <textarea class="ml-1 w-full" formControlName="text" id="text" type="text" [rows]="3" pInputTextarea [autoResize]="autoResize"></textarea><br/>
                                         <small *ngIf="reviewForm.controls['text'].invalid && isSubmitted" class="p-error"

@@ -23,7 +23,6 @@ import { timer } from 'rxjs';
 })
 export class ProductsPageComponent implements OnInit {
   product?: Product;
-  ratingVale: any;
   val: number = 1;
   reviews?: Review[];
   userId: string;
@@ -36,7 +35,10 @@ export class ProductsPageComponent implements OnInit {
   isSubmitted : boolean;
   autoResize = true;
   currentUser: User;
-  ratingValue: number
+  //ratingValue is the value got from the rating stars Event
+  ratingValue: number;
+  productRatingValue: number;
+  numReviews: number;
 
   constructor(
     private productsService: ProductsService,
@@ -57,6 +59,9 @@ export class ProductsPageComponent implements OnInit {
         this._getReviews(productId);
         this._initReviewForm();
         this.getAuthenticatedUser();
+        //this.updateProductsRating();
+        this.productRatingValue = 0;
+        this.numReviews = 0;
       }
     })
     this.warningMessage = [{severity:'warn', summary: `You can't leave a review`, detail: this.msg}];
@@ -75,17 +80,31 @@ export class ProductsPageComponent implements OnInit {
   private _getProduct(productId: string) {
     this.productsService.getProduct(productId).subscribe( product => {
       this.product = product;
-      this.ratingVale = product.rating;
     })
   }
 
+  //We are getting all reviews at once then filter to find the reviews related to the current product, which is not a good practice at all !!!!
   private _getReviews(productId: string) {
     this.reviewsService.getAllReviews().subscribe( reviews => {
       //this.reviews = reviews.filter( prodId => prodId === productId);
       const productsReviews: Review[] = reviews.filter(review => review.product === productId).map(review => review);
-      this.reviews = productsReviews;
-      
-      console.log(this.reviews);
+      //console.log(productsReviews);
+      if(productsReviews)  
+      {
+        this.reviews = productsReviews;
+        let productsRat = 0;
+        productsReviews.forEach(review => productsRat += review?.rating);
+        this.numReviews = productsReviews.length;
+        //console.log(this.numReviews, productsRat);
+        productsRat = productsRat / this.numReviews
+        //console.log(productsRat);
+        this.productRatingValue = productsRat;
+      }
+      else {
+        this.numReviews = 0;
+        this.reviews = [];
+        this.productRatingValue = 0;
+      }
     })
   }
 
@@ -154,6 +173,7 @@ export class ProductsPageComponent implements OnInit {
           .then(() => {
             this._getReviews(this.product?.id);
             this.cancelForm();
+            this.updateProductsRating();
           });
       },
       () => {
@@ -173,4 +193,14 @@ export class ProductsPageComponent implements OnInit {
     this.ratingValue = event.value;
   }
 
+  updateProductsRating() {
+
+    const productFormData = new FormData();
+    productFormData.append("rating", `${this.productRatingValue}`);
+    productFormData.append("numReviews", `${this.numReviews}`);
+    productFormData.append("category", `${this.product?.category?.id}`);
+    
+    this.productsService.updateProduct(productFormData, this.product?.id).subscribe();
+  }
+  
 }
