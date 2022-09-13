@@ -7,5 +7,7 @@ export class Review {
     reviewer?: string;
     rating?: number;
     text?: string;
+    product?: Product;
     user?: User
+    created_on?: Date
 }

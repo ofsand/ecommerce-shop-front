@@ -12,7 +12,6 @@ export class Product {
     rating?: number;
     price?: number;
     numReviews?: number;
-    reviews?: Review[];
     isFeatured?: boolean;
     category?: Category;
     countInStock?: number;

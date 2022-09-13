@@ -37,7 +37,7 @@
         <hr class="mb-5">
         <div class="grid desc-reviews">
             
-            <p-tabView>
+            <p-tabView class="col-12">
                 <p-tabPanel header="description">
                     <hr>
                     <div class="col-12 desc my-5" [innerHTML]="product.richDescription"></div>
@@ -53,14 +53,14 @@
                                 <h5>{{review.reviewer}}</h5>
                             </div>
                             <div class="rating">
-                                <p>{{review.text}}</p>
+                                <p>{{review.rating}}</p>
                             </div>
                         </div>
                         <div class="review-text">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem labore quis earum similique, veritatis dignissimos, eos voluptate, corporis doloremque excepturi perspiciatis pariatur. Velit eveniet, ipsum natus nemo nostrum dolorem ab.</p>
+                            <p>{{review.text}}</p>
                         </div>
-                        <div class="review-date">
-                            <p>Date 21/22/201</p>
+                        <div class="review-date align-self-end">
+                            <p>{{review.created_on | date: 'short'}}</p>
                         </div>
                     </div>
                 </p-tabPanel>

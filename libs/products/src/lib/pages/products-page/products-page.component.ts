@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -5,6 +6,7 @@ import { CartItem, CartService } from '@ecommerce-brands/orders';
 import { Product } from '../../models/product';
 import { Review } from '../../models/review';
 import { ProductsService } from '../../services/products.service';
+import { ReviewsService } from '../../services/reviews.service';
 
 @Component({
   selector: 'products-products-page',
@@ -21,7 +23,8 @@ export class ProductsPageComponent implements OnInit {
   constructor(
     private productsService: ProductsService,
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
+    private reviewsService: ReviewsService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +32,7 @@ export class ProductsPageComponent implements OnInit {
       if(params['id']) {
         const productId = params['id'];
         this._getProduct(productId);
+        this._getReviews(productId);
       }
     })
   }
@@ -47,9 +51,17 @@ export class ProductsPageComponent implements OnInit {
     this.productsService.getProduct(productId).subscribe( product => {
       this.product = product;
       this.ratingVale = product.rating;
-      this.reviews = product.reviews;
     })
   }
 
+  private _getReviews(productId: string) {
+    this.reviewsService.getAllReviews().subscribe( reviews => {
+      //this.reviews = reviews.filter( prodId => prodId === productId);
+      const productsReviews: Review[] = reviews.filter(review => review.product === productId).map(review => review);
+      this.reviews = productsReviews;
+      
+      console.log(this.reviews);
+    })
+  }
 
 }
