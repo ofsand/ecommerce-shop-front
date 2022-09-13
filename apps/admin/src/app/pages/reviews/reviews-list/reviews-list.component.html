@@ -1,0 +1,35 @@
+<p-toast></p-toast>
+<div class="admin-page">
+    <p-card header="Reviews" subheader="Lists of all reviews">
+        <div class="p-grid mt-4 reviews-list" >
+            <div class="col-12 grid align-items-center" *ngFor="let review of reviews">
+                    <div class="col-11">
+                        <div class="review-item flex flex-column bg-white-alpha-60 shadow-2 my-4 py-1 px-5 col-10 col-offset-1" >
+                            <div class="header flex flex-row justify-content-between">
+                                <div class="username">
+                                    <h5>{{review.reviewer}}</h5>
+                                </div>
+                                <div class="rating">
+                                    <p-rating class="reviews text-right col-5" [(ngModel)]="review.rating" [cancel]="false" [readonly]="true" ></p-rating>
+                                </div>
+                            </div>
+                            <div class="review-text">
+                                <p>{{review.text}}</p>
+                            </div>
+                            <div class="review-date align-self-end">
+                                <p>{{review.created_on | date : 'short'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 flex justify-content-start">
+                        <p-button (click)="deleteReview(review.id)" styleClass="p-button-danger mr-2" icon="pi pi-trash"></p-button>
+                    </div> 
+                <hr class="col-12 p-0">
+            </div>
+        </div>
+    </p-card>
+</div>
+
+<!-- Confirmation Dialgog -->
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>

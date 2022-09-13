@@ -41,6 +41,8 @@ import { TagModule } from 'primeng/tag';
 import {InputMaskModule} from 'primeng/inputmask';
 import {FieldsetModule} from 'primeng/fieldset';
 import { AppRoutingModule } from './app-routing.module';
+import { ReviewsListComponent } from './pages/reviews/reviews-list/reviews-list.component';
+import {RatingModule} from 'primeng/rating';
 
 
 const UX_MODULE = [
@@ -66,7 +68,7 @@ const UX_MODULE = [
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoryListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent, UserListComponent, UserFormComponent, OrderListComponent, OrderDetailsComponent],
+  declarations: [AppComponent, DashboardComponent, ShellComponent, SidebarComponent, CategoryListComponent, CategoriesFormComponent, ProductsListComponent, ProductsFormComponent, UserListComponent, UserFormComponent, OrderListComponent, OrderDetailsComponent, ReviewsListComponent],
   imports: [
     BrowserModule,
     UX_MODULE, 
@@ -74,9 +76,14 @@ const UX_MODULE = [
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AppRoutingModule],
+    AppRoutingModule,
+    RatingModule
+  ],
   providers: [UsersService, CategoriesService, MessageService, ConfirmationService,
               { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent],
+  exports: [
+    ReviewsListComponent
+  ],
 })
 export class AppModule {}

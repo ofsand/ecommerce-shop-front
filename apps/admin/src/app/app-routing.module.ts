@@ -9,6 +9,7 @@ import { OrderDetailsComponent } from './pages/orders/order-details/order-detail
 import { OrderListComponent } from './pages/orders/order-list/order-list.component';
 import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ReviewsListComponent } from './pages/reviews/reviews-list/reviews-list.component';
 import { UserFormComponent } from './pages/users/user-form/user-form.component';
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { ShellComponent } from './shared/shell/shell.component';
@@ -91,7 +92,12 @@ const routes: Routes = [
       {
         path:'orders/:id',
         component: OrderDetailsComponent
-      }
+      },
+      //Reviews routes
+      {
+        path:'reviews',
+        component: ReviewsListComponent
+      },
     ]
   }
 ];
