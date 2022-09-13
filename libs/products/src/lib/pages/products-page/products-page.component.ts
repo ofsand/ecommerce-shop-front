@@ -36,6 +36,7 @@ export class ProductsPageComponent implements OnInit {
   isSubmitted : boolean;
   autoResize = true;
   currentUser: User;
+  ratingValue: number
 
   constructor(
     private productsService: ProductsService,
@@ -54,6 +55,7 @@ export class ProductsPageComponent implements OnInit {
         const productId = params['id'];
         this._getProduct(productId);
         this._getReviews(productId);
+        this._initReviewForm();
         this.getAuthenticatedUser();
       }
     })
@@ -118,7 +120,6 @@ export class ProductsPageComponent implements OnInit {
   }
 
   showReviewForm() {
-    this._initReviewForm();
     this.showForm = true;
   }
 
@@ -139,7 +140,7 @@ export class ProductsPageComponent implements OnInit {
       text: this.reviewForm.controls['text'].value,
       product: this.product,
       user: this.currentUser,
-      rating: 4
+      rating: this.ratingValue
     };
     this.productsService.createReview(this.product?.id, review).subscribe(      
       (review) => {
@@ -166,6 +167,10 @@ export class ProductsPageComponent implements OnInit {
 
   cancelForm() {
     this.showForm = false;
+  }
+
+  handleRate(event) {
+    this.ratingValue = event.value;
   }
 
 }

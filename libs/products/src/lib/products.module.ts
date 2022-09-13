@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {ToastModule} from 'primeng/toast';
 
+
 const routes: Routes = [
   {
     path: 'products',
@@ -60,7 +61,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     InputTextareaModule,
-    ToastModule
+    ToastModule   
   ],
   providers: [
     MessageService

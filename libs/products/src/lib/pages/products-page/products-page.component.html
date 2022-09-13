@@ -53,10 +53,10 @@
                         <div class="review-form bg-white-alpha-60 shadow-2 my-3 py-1 px-5 col-10 col-offset-1" *ngIf="showForm">
                             <form [formGroup]="reviewForm" >
                                 <div class="formgrid grid">
-                                    <div class="field col-12 text-left">
+                                    <div class="field col-12 text-left mt-3">
                                         <label for="name">Please rate this product from 1 to 5 !</label><br/>
-                                        
-                                        <label for="name">Please add your review here !</label><br/>
+                                        <p-rating class="reviews col-5" [cancel]="false" [(ngModel)]="ratingValue" (onRate)="handleRate($event)"></p-rating>
+                                        <label for="name" class="mt-4">Please add your review here !</label><br/>
                                         <textarea class="ml-1 w-full" formControlName="text" id="text" type="text" [rows]="3" pInputTextarea [autoResize]="autoResize"></textarea><br/>
                                         <small *ngIf="reviewForm.controls['text'].invalid && isSubmitted" class="p-error"
                                         >Review is required</small
@@ -70,13 +70,13 @@
                             </form>
                         </div>
                     </div>
-                    <div class="review-item flex flex-column bg-white-alpha-60 shadow-2 my-3 py-1 px-5 col-10 col-offset-1" *ngFor="let review of reviews">
+                    <div class="review-item flex flex-column bg-white-alpha-60 shadow-2 my-4 py-1 px-5 col-10 col-offset-1" *ngFor="let review of reviews">
                         <div class="header flex flex-row justify-content-between">
                             <div class="username">
                                 <h5>{{review.reviewer}}</h5>
                             </div>
                             <div class="rating">
-                                <p>{{review.rating}}</p>
+                                <p-rating class="reviews text-right col-5" [(ngModel)]="review.rating" [cancel]="false" [readonly]="true" ></p-rating>
                             </div>
                         </div>
                         <div class="review-text">

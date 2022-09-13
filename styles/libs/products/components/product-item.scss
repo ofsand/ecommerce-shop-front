@@ -3,7 +3,10 @@
         padding: 0px 15px 15px 15px;
         .p-rating-icon {
             margin-left: 4px;
-            color: rgb(232, 224, 5);
+            color: #fbd62d;
+        }
+        .p-rating-icon.pi-star-fill {
+            color: #fbd62d !important;
         }
         .product-image {
             
