@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="product-page">
     <div class="min-h-full w-full my-5 mx-auto px-4 py-4 md:px-6 lg:px-8 bg-white-alpha-60">
         <div class="grid ">
@@ -45,7 +46,29 @@
                 <p-tabPanel header="Reviews">
                     <hr>
                     <div class="text-right mb-4 mt-5">
-                        <p-button styleClass="p-button-success align-self-end" label="Leave a review" icon="pi pi-pencil" routerLink="form"></p-button>
+                        <div *ngIf="(isGuest && isAuth) || !isAuth">
+                            <p-messages [(value)]="warningMessage" [enableService]="false"></p-messages>
+                        </div>
+                        <p-button styleClass="p-button-success align-self-end mb-2" label="Leave a review" icon="pi pi-comment" *ngIf="!isGuest && isAuth" (click)="showReviewForm()"></p-button>
+                        <div class="review-form bg-white-alpha-60 shadow-2 my-3 py-1 px-5 col-10 col-offset-1" *ngIf="showForm">
+                            <form [formGroup]="reviewForm" >
+                                <div class="formgrid grid">
+                                    <div class="field col-12 text-left">
+                                        <label for="name">Please rate this product from 1 to 5 !</label><br/>
+                                        
+                                        <label for="name">Please add your review here !</label><br/>
+                                        <textarea class="ml-1 w-full" formControlName="text" id="text" type="text" [rows]="3" pInputTextarea [autoResize]="autoResize"></textarea><br/>
+                                        <small *ngIf="reviewForm.controls['text'].invalid && isSubmitted" class="p-error"
+                                        >Review is required</small
+                                        >
+                                    </div>
+                                </div>
+                                <div class="flex justify-content-around">
+                                    <p-button styleClass="p-button-secondary align-self-start mb-2" label="Cancel" icon="pi pi-arrow-circle-left" (click)="cancelForm()"></p-button>
+                                    <p-button styleClass="p-button-success align-self-end mb-2" label="Add review" icon="pi pi-plus" iconPos="right" (click)="onSubmit()"></p-button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="review-item flex flex-column bg-white-alpha-60 shadow-2 my-3 py-1 px-5 col-10 col-offset-1" *ngFor="let review of reviews">
                         <div class="header flex flex-row justify-content-between">

@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import {CheckboxModule} from 'primeng/checkbox';
-import { FormsModule } from '@angular/forms';
 import { CategoriesBannerComponent } from './components/categories-banner/categories-banner.component';
 import {CarouselModule} from 'primeng/carousel';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';;
@@ -16,7 +15,12 @@ import {RatingModule} from 'primeng/rating';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { UiModule } from '@ecommerce-brands/ui';
 import {TabViewModule} from 'primeng/tabview';
-
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import { MessageService } from 'primeng/api';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {ToastModule} from 'primeng/toast';
 
 const routes: Routes = [
   {
@@ -29,6 +33,10 @@ const routes: Routes = [
   },
   {
     path: 'products/:id',
+    component: ProductsPageComponent
+  },
+  {
+    path:'products/form/:id/reviews',
     component: ProductsPageComponent
   }
 ];
@@ -46,9 +54,17 @@ const routes: Routes = [
     RatingModule,
     InputNumberModule,
     UiModule,
-    TabViewModule
-  ]
-    ,
+    TabViewModule,
+    MessageModule,
+    MessagesModule,
+    ReactiveFormsModule,
+    FormsModule,
+    InputTextareaModule,
+    ToastModule
+  ],
+  providers: [
+    MessageService
+  ],
   declarations: [
     ProductsSearchComponent,
     FeaturedProductsComponent,

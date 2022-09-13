@@ -58,5 +58,26 @@
         .review-item {
             border-radius: 8px;
         }
+
+        .p-messages {
+            .p-message-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                .p-message-icon {
+                    text-align: left;
+                }
+                .p-message-summary {
+                    text-align: left;
+                }
+                .p-message-detail {
+                    margin-top: 10px;
+                    text-align: left;
+                }
+                .p-message-close {
+                    bottom: 50px;
+                }
+            }
+        }
     }
 }
