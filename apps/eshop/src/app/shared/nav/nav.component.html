@@ -1,5 +1,5 @@
 <ul class="nav">
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/products">Products</a></li>
-    <li><a routerLink="/contact">Contact</a></li>
+    <li><a routerLink="/" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
+    <li><a routerLink="/products" [routerLinkActive]="'active'">Products</a></li>
+    <li><a routerLink="/contact" [routerLinkActive]="'active'">Contact</a></li>
 </ul>

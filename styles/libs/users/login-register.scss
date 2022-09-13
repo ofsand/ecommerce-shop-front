@@ -1,5 +1,5 @@
 .login-register {
-    background: linear-gradient(to right, rgba(130, 138, 142, 0.6), rgba(224, 221, 253, 0.6)), url("../../../apps/eshop/src/assets/images/abstract-blur.jpg") no-repeat fixed;
+    background: linear-gradient(to right, rgba(130, 138, 142, 0.6), rgba(224, 221, 253, 0.6)), url("../../../apps/admin/src/assets/images/business-meeting.jpg") no-repeat fixed;
     background-size: cover;
     height: 100vh;
 
@@ -13,10 +13,17 @@
         border-radius: 8px;
 
         .image-container {
-            background-image: url('../../../apps/admin/src/assets/images/login.jpg');
+            background-image: url('../../../apps/admin/src/assets/images/stack-knitted-sweaters-min.jpg');
             height: 100%;
             border-radius: 8px 0px 0px 8px;
             background-size: cover;
+            background-position: right;
+            .login-admin-auth {
+                background-color: rgba(240, 248, 255, 0.8);
+                padding: 25px 10px;
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349);
+                border-radius: 8px;
+            }
         }
     }
 }

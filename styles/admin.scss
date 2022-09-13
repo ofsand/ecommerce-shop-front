@@ -22,4 +22,36 @@
 // Pages
 @import './libs/users/login-register.scss';
 
+p-card{
+    .p-card {
+        background-color: rgba(255, 255, 255, 0.733) !important;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.26) !important;
+        border-radius: 5px !important;
+        padding: 0px 10px;
+    }
+}
 
+p-toolbar{
+    .p-toolbar{
+        background-color: rgba(255, 255, 255, 0.575) !important;
+    }
+}
+p-table{
+    .p-datatable{
+        .p-datatable-tbody {
+            tr{
+                background-color: transparent !important;
+            }
+        }
+        .p-datatable-thead {
+            tr{
+                th{
+                    background-color: rgba(255, 255, 255, 0.575) !important;
+                }
+            }
+        }
+        .p-paginator {
+            background-color: transparent !important;
+        }
+    }
+}

@@ -15,6 +15,7 @@ import { ProductsPageComponent } from './pages/products-page/products-page.compo
 import {RatingModule} from 'primeng/rating';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { UiModule } from '@ecommerce-brands/ui';
+import {TabViewModule} from 'primeng/tabview';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
     CarouselModule,
     RatingModule,
     InputNumberModule,
-    UiModule
+    UiModule,
+    TabViewModule
   ]
     ,
   declarations: [

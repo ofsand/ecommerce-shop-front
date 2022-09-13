@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartItem, CartService } from '@ecommerce-brands/orders';
 import { Product } from '../../models/product';
+import { Review } from '../../models/review';
 import { ProductsService } from '../../services/products.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class ProductsPageComponent implements OnInit {
   product: Product;
   ratingVale: any;
   val: number = 1;
+  reviews?: Review[];
 
   constructor(
     private productsService: ProductsService,
@@ -45,6 +47,7 @@ export class ProductsPageComponent implements OnInit {
     this.productsService.getProduct(productId).subscribe( product => {
       this.product = product;
       this.ratingVale = product.rating;
+      this.reviews = product.reviews;
     })
   }
 

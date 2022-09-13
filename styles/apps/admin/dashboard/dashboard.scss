@@ -3,21 +3,21 @@
     display: flex;
     justify-content: space-between;
     .pi{
-        font-size: 2.5em;
+        font-size: 2.4em;
         margin-bottom: 10px;
-        margin-left: 5px;
+        margin-left: 3px;
     }
     .name {
         font-size: 1.2em;
-        margin-left: 5px;
+        margin-left: 3px;
     }
     .number {
-        font-size: 2.5em;
-        margin: 25px 10px 0px 0px;
+        font-size: 2.3em;
+        margin: 25px 5px 0px 0px;
     }
     .sales-number {
-        font-size: 2em;
-        margin: 25px 10px 0px 0px;
+        font-size: 1.8em;
+        margin: 25px 5px 0px 0px;
     }
 }
 
@@ -47,26 +47,29 @@
 
 .dashboard-card {
     box-shadow: rgba(0,0,0,0.4) 5px 5px 10px;
+    margin: 0 5px;
     &:hover {
         box-shadow: rgba(0,0,0,0.4) 2px 2px 15px;
-        transform: scale(1.15);
+        transform: scale(1.10);
         transition: 0.8s;
         .d-item {
             .pi{
                 font-size: 1.8em;
                 margin-bottom: 10px;
+                margin-left: 1px;
                 transition: 0.8s;
             }
             .name {
-                font-size: 0.8em;
+                font-size: 0.9em;
                 transition: 0.8s;
+                margin-left: 1px;
             }
             .number {
                 font-size: 2.5em;
                 transition: 0.8s;
             }
             .sales-number {
-                font-size: 2.5em;
+                font-size: 2em;
                 transition: 0.8s;
             }
         }

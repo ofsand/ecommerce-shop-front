@@ -26,7 +26,7 @@ export class CategoriesService {
     return this.http.post<Category>(`${this.apiUrlCategories}`, category);
   }
 
-  updateCategory(category: FormData, categoryId):Observable<Category>{
+  updateCategory(category: FormData, categoryId: string):Observable<Category>{
     return this.http.put<Category>(`${this.apiUrlCategories}/${categoryId}`, category);
   }
 

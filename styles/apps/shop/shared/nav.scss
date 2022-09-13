@@ -6,11 +6,15 @@
     }
 
     a {
-        color: rgb(62, 55, 55);
+        font-weight: bold;
+        color: rgb(255, 255, 255);
         font-size: 1em;
         &:hover {
-            color: red;
+            color: rgb(62, 55, 55);
             cursor: pointer;
         }
+    }
+    .active {
+        color: rgb(62, 55, 55);
     }
 }

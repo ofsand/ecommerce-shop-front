@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { Product } from '../models/product';
+import { Review } from '../models/review';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,8 @@ export class ProductsService {
     return this.http.get<Product[]>(`${this.apiURLProducts}/get/featured/${count}`)
   }
 
-  
+  createReview(productId: string, review: Review): Observable<Review> {
+    return this.http.post<Review>(`${this.apiURLProducts}/${productId}/reviews`, review)
+  }
 
 }

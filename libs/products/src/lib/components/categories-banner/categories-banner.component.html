@@ -1,16 +1,17 @@
 <div class="categories-banner my-4">
     <p-carousel [value]="categories"  styleClass="custom-carousel" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" >
         <ng-template pTemplate="header">
-            <h2 class="categories-banner-title m-5">Cats</h2>
+            
         </ng-template>
-        <ng-template let-cat pTemplate="item" >
+        <ng-template let-cat pTemplate="item" class="mt-5">
             <div class="category-item h-full mx-5 ">
-                <div class="category-item-content flex flex-column shadow-2 h-full text-center justify-content-between align-items-center flex-wrap bg-white-alpha-60" 
+                <div class="category-item-content flex flex-column h-full text-center justify-content-between align-items-center flex-wrap" 
                     style="border-radius: 6px"
                     [routerLink]="'categories/' + cat.id">
                     <div>
-                        <h3 class="category-name cursor-pointer p-3" >{{cat.name}}</h3>
+                        <h3 class="category-name cursor-pointer" >{{cat.name}}</h3>
                     </div>
+                    <div style="max-width: 200px;"><img [src]="cat.image" style="width: 80%" alt="" class="shadow-4"></div>
                 </div>
             </div>
         </ng-template>
