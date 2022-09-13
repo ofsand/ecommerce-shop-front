@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartItem, CartService } from '@ecommerce-brands/orders';
 import { LocalStorageService, User, UsersService } from '@ecommerce-brands/users';
 import { Message } from 'primeng/api';
@@ -48,7 +48,8 @@ export class ProductsPageComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
-    private usersServices: UsersService
+    private usersServices: UsersService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -201,6 +202,11 @@ export class ProductsPageComponent implements OnInit {
     productFormData.append("category", `${this.product?.category?.id}`);
     
     this.productsService.updateProduct(productFormData, this.product?.id).subscribe();
+  }
+
+  buyNow() {
+    this.addProductToCart();
+    this.router.navigate(['/cart']);
   }
   
 }
