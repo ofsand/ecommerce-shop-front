@@ -43,6 +43,7 @@ import {FieldsetModule} from 'primeng/fieldset';
 import { AppRoutingModule } from './app-routing.module';
 import { ReviewsListComponent } from './pages/reviews/reviews-list/reviews-list.component';
 import {RatingModule} from 'primeng/rating';
+import {ChartModule} from 'primeng/chart';
 
 
 const UX_MODULE = [
@@ -77,7 +78,8 @@ const UX_MODULE = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    RatingModule
+    RatingModule,
+    ChartModule
   ],
   providers: [UsersService, CategoriesService, MessageService, ConfirmationService,
               { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],

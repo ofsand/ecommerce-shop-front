@@ -48,5 +48,16 @@
                 </div>
             </div>
         </div>
+
+        <div class="content-section implementation grid mt-5">
+            <div class="col-7 mx-3">
+                <h5>Revenues's Improvement</h5>
+                <p-chart type="line" [data]="basicData" ></p-chart>
+            </div>
+            <div class="col-4 mx-3">
+                <h5>Sold products By categories</h5>
+                <p-chart type="polarArea" [data]="data" [style]="{'width': '40%'}"></p-chart>
+            </div>
+        </div>
     </p-card>
 </div>

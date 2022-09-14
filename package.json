@@ -25,6 +25,7 @@
     "@ngrx/router-store": "~14.0.0",
     "@ngrx/store": "~14.0.0",
     "@nrwl/angular": "14.5.7",
+    "chart.js": "^3.9.1",
     "normalize.css": "^8.0.1",
     "primeflex": "^3.2.1",
     "primeicons": "^5.0.0",
