@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrdersService } from '@ecommerce-brands/orders';
 import { UsersService } from '@ecommerce-brands/users';
 import { ProductsService } from '@ecommerce-brands/products';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'admin-dashboard',
@@ -13,8 +14,13 @@ export class DashboardComponent implements OnInit {
   usersCount: number;
   productsCount: number;
   totalSales: number;
+  
   basicData: any;
   data: any;
+  ordersDates = [];
+  ordersTotals = []
+
+  pipe = new DatePipe('en-US');
   
   constructor(
     private ordersService: OrdersService,
@@ -27,7 +33,16 @@ export class DashboardComponent implements OnInit {
     this._getUsersCount();
     this._getProductsCount();
     this._getTotalSales();
-
+    
+    this.ordersService.getOrders().subscribe( orders => {
+      //orders.forEach(order => order.dateOrdered)
+      const dates: Date[] = [];
+      orders.map(order => dates.push(order.dateOrdered));
+      dates.forEach( d => this.ordersDates.push(this.pipe.transform(d, 'shortDate')));
+      console.log(this.ordersDates.reverse());
+      orders.map(order => this.ordersTotals.push(order.totalPrice));
+      console.log(this.ordersTotals)
+    })
     //
     this.basicData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -75,6 +90,7 @@ export class DashboardComponent implements OnInit {
         "Blue"
     ]
 };
+
   }
 
   _getUsersCount() {

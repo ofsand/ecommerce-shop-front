@@ -8,7 +8,13 @@
         </div>
         <div class="p-grid mt-4">
             <div class="p-col-12">
-                <p-table [value]="orders" responsiveLayout="scroll">
+                <p-table 
+                [value]="orders" 
+                responsiveLayout="scroll"
+                [paginator]="true"
+                responsiveLayout="scroll"
+                [rowsPerPageOptions]="[5,10,20,30]"
+                [rows]="10" >
                     <ng-template pTemplate="header">
                         <tr>
                             <!--<th>Id</th>-->
