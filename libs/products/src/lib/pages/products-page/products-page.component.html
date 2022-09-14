@@ -2,10 +2,10 @@
 <div class="product-page">
     <div class="min-h-full w-full my-5 mx-auto px-4 py-4 md:px-6 lg:px-8 bg-white-alpha-60">
         <div class="grid ">
-            <div class="col-6 image-holder">
+            <div class=" ml-1 col-7 image-holder">
                 <ui-gallery [images] = "product.images"></ui-gallery>
             </div>
-            <div class="col-5 ml-6 product-details">
+            <div class="col-4 mr-1 product-details">
                 <div class="col-12 text-left flex flex-row justify-content-between align-items-center">
                     <h3 class="col-8 title">{{product.name}}</h3>
                     <p-rating class="reviews text-right col-5" [(ngModel)]="productRatingValue" [cancel]="false" [readonly]="true" ></p-rating>
