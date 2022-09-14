@@ -39,6 +39,7 @@ export class ProductsPageComponent implements OnInit {
   ratingValue: number;
   productRatingValue: number;
   numReviews: number;
+  noReviews: boolean;
 
   constructor(
     private productsService: ProductsService,
@@ -63,6 +64,7 @@ export class ProductsPageComponent implements OnInit {
         //this.updateProductsRating();
         this.productRatingValue = 0;
         this.numReviews = 0;
+        this.noReviews = true;
       }
     })
     this.warningMessage = [{severity:'warn', summary: `You can't leave a review`, detail: this.msg}];
@@ -100,11 +102,13 @@ export class ProductsPageComponent implements OnInit {
         productsRat = productsRat / this.numReviews
         //console.log(productsRat);
         this.productRatingValue = productsRat;
+        if(this.numReviews > 0) this.noReviews = false;
       }
       else {
         this.numReviews = 0;
         this.reviews = [];
         this.productRatingValue = 0;
+        this.noReviews = true;
       }
     })
   }
@@ -140,6 +144,7 @@ export class ProductsPageComponent implements OnInit {
   }
 
   showReviewForm() {
+    this._initReviewForm();
     this.showForm = true;
   }
 
@@ -195,7 +200,6 @@ export class ProductsPageComponent implements OnInit {
   }
 
   updateProductsRating() {
-
     const productFormData = new FormData();
     productFormData.append("rating", `${this.productRatingValue}`);
     productFormData.append("numReviews", `${this.numReviews}`);

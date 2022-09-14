@@ -70,6 +70,10 @@
                             </form>
                         </div>
                     </div>
+                    <div *ngIf="noReviews" class="text-center my-5">
+                        <h4 >This product has no reviews yet !</h4>
+                        <i class="pi pi-exclamation-triangle text-6xl"></i>
+                    </div>
                     <div class="review-item flex flex-column bg-white-alpha-60 shadow-2 my-4 py-1 px-5 col-10 col-offset-1" *ngFor="let review of reviews">
                         <div class="header flex flex-row justify-content-between">
                             <div class="username">
