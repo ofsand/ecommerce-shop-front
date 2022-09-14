@@ -20,7 +20,7 @@ export class UserListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._getUsers();
+    this._getUsers();    
   }
 
 

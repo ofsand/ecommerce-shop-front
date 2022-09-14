@@ -44,7 +44,8 @@
               <td>
               <p-tag styleClass="mr-2" [icon]="user.isAdmin ? 'pi pi-check' : 'pi pi-times' " [severity]="user.isAdmin ? 'success' : 'danger'" [rounded]="true"></p-tag>
               </td>
-              <td>
+              <td 
+                *ngIf="!(user.id === '6310cb9d40899c7e2c30f890' || user.id === '630671bc4f64ef4e4d103dbf')">
                 <p-button
                   (click)="deleteUser(user.id)"
                   styleClass="p-button-danger mr-3"
@@ -54,6 +55,7 @@
                   (click)="updateUser(user.id)"
                   styleClass="p-button-success"
                   icon="pi pi-pencil"
+                  
                 ></p-button>
               </td>
             </tr>
