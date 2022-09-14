@@ -174,7 +174,7 @@ export class ProductsPageComponent implements OnInit {
           summary: 'Success',
           detail: `Your review is well Added`,
         });
-        timer(1000)
+        timer(600)
           .toPromise()
           .then(() => {
             this._getReviews(this.product?.id);

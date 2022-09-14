@@ -26,7 +26,7 @@ export class CartIconComponent implements OnInit {
 
   _getCartItemsNumber() {
     this.cartService.cart$.subscribe(cart => {
-      this.cartCount = cart?.items?.length ?? 0;
+      this.cartCount = cart?.items?.length;
       this.messageService.add(
         { severity:'success'
         });

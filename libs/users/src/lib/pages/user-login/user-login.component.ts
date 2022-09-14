@@ -66,7 +66,7 @@ export class UserLoginComponent implements OnInit {
           summary: 'Success',
           detail: `Your account is created Successfully, you can log in now !`
         });
-        timer(800)
+        timer(600)
           .toPromise()
           .then(() => {
             this.accCreated = true;

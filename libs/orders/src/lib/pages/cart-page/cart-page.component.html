@@ -25,8 +25,8 @@
                             <h3>{{cartItem.product.price | currency}}</h3>
                         </div>
                         <div class="cart-item-remove-btn mt-2">
-                            <button pButton class="p-button-danger">
-                                <i class="pi pi-trash" (click)="deleteCartItem(cartItem)"></i>
+                            <button pButton class="p-button-danger" (click)="deleteCartItem(cartItem)">
+                                <i class="pi pi-trash"></i>
                             </button>
                         </div>
                     </div>
