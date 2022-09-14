@@ -20,7 +20,7 @@
         <p-table
           [paginator]="true"
           responsiveLayout="scroll"
-          [rowsPerPageOptions]="[5,10,20,30]"
+          [rowsPerPageOptions]="[2,3,5,10,20,30]"
           [rows]="10"
           [value]="products"
           [globalFilterFields]="['name']"
@@ -42,7 +42,7 @@
           </ng-template>
           <ng-template pTemplate="body" let-product>
             <tr>
-              <td>{{ product.name }}</td>
+              <td class="product-name">{{ product.name }}</td>
               <td style="max-width: 145px;"><img [src]="product.image" style="width: 80%" alt="" class="shadow-4"></td>
               <td class="text-center">{{ product.price | currency}}</td>
               <td class="text-center">{{ product.countInStock }}</td>
