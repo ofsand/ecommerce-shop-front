@@ -62,6 +62,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: flex-start;
+                position: relative;
                 .p-message-icon {
                     text-align: left;
                 }
@@ -74,6 +75,9 @@
                 }
                 .p-message-close {
                     bottom: 38px;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
                 }
             }
         }

@@ -1,28 +1,36 @@
-.user-login-register {
-    background-color: rgba(255, 255, 255, 0.742);
-    height: 70%;
-    width: 50%;
+.login-container{
+    background-color: rgba(0, 0, 0, 0.742);
+    height: calc(100% + 66.4px);
+    width: 100%;
+    top: 0;
+    left: 0;
     position: absolute;
-    left: 25%;
-    top: 20%;
-    border-radius: 8px;
+    .user-login-register {
+        background-color: rgba(255, 255, 255, 0.9);
+        height: 70%;
+        width: 50%;
+        position: absolute;
+        left: 25%;
+        top: 20%;
+        border-radius: 8px;
 
-    .login-cpmnt {
-        padding: 0px;
-    }
+        .login-cpmnt {
+            padding: 0px;
+        }
 
-    .image-container {
-        background-image: url('../../../apps/eshop/src/assets/images/user-login.jpg');
-        height: 100%;
-        border-radius: 8px 0px 0px 8px;
-        background-size: cover;
-    }
+        .image-container {
+            background-image: url('../../../apps/eshop/src/assets/images/user-login.jpg');
+            height: 100%;
+            border-radius: 8px 0px 0px 8px;
+            background-size: cover;
+        }
 
-    .form-container {
-        .admin-btn {
-            position:absolute;
-            top: 2px;
-            right: 10px;
+        .form-container {
+            .admin-btn {
+                position:absolute;
+                top: 2px;
+                right: 10px;
+            }
         }
     }
 }
