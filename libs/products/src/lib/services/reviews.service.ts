@@ -14,8 +14,12 @@ export class ReviewsService {
 
   constructor(private http: HttpClient) {}
 
-  getAllReviews(): Observable<Review[]> {
-    return this.http.get<Review[]>(`${this.apiURLReviews}`);
+  getAllReviews(productFilter?: string): Observable<Review[]> {
+    let params = new HttpParams();
+    if (productFilter) {
+      params = params.append('product', productFilter);
+    }
+    return this.http.get<Review[]>(this.apiURLReviews, { params: params });
   }
 
   deleteReview(reviewId: string): Observable<any> {

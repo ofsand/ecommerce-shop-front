@@ -1,7 +1,15 @@
 <p-toast></p-toast>
 <div class="admin-page">
     <p-card header="Reviews" subheader="Lists of all reviews">
+        <div class="grid reviews-filter">
+            <h4 class="col-12">You can filter reviews by products:</h4>
+            <p-dropdown class="col-3 dropdown-filter" [options]="products" [(ngModel)]="selectedProduct" placeholder="Select a Product" optionLabel="name" [showClear]="true" (onChange)="productFilter()"></p-dropdown>
+        </div>
         <div class="p-grid mt-4 reviews-list" >
+            <div class="text-center my-5" *ngIf="noReviews">
+                    <h4 >This product has no reviews yet !</h4>
+                    <i class="pi pi-exclamation-triangle text-6xl"></i>
+            </div>
             <div class="col-12 grid align-items-center review-item" *ngFor="let review of reviews">
                     <div class="col-11">
                         <div class="review-item flex flex-column bg-white-alpha-60 shadow-2 my-4 py-1 px-5 col-10 col-offset-1" >

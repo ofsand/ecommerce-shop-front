@@ -1,4 +1,5 @@
 .reviews-list {
+
     .review-item{
         &:hover {
             background-color: rgba(255, 255, 255, 0.4);
@@ -9,6 +10,17 @@
         }
         .p-rating-icon.pi-star-fill {
             color: #ffd311 !important;
+        }
+    }
+}
+
+//Admin revviews list
+.admin-page {
+    .reviews-filter {
+        .dropdown-filter {
+            .p-dropdown {
+                width: 100% !important;
+            }
         }
     }
 }
