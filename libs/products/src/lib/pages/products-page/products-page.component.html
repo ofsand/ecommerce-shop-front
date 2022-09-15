@@ -9,7 +9,7 @@
                 <div class="col-12 text-left flex flex-row justify-content-between align-items-center">
                     <div style="word-break: break-word;"><h3 class="title">{{product.name}}</h3></div>
                 </div>
-                <div style=""><p-rating class="reviews text-right" [(ngModel)]="productRatingValue" [cancel]="false" [readonly]="true" ></p-rating></div>
+                <div class="product-rating" ><p-rating class="reviews text-right" [(ngModel)]="productRatingValue" [cancel]="false" [readonly]="true" ></p-rating></div>
                 <p class="col-12 desc">{{product.description}}</p>
                 <hr>
                 <div class="flex flex-row justify-content-around align-items-center">
@@ -73,7 +73,7 @@
                             <div class="username">
                                 <h5>{{review.reviewer}}</h5>
                             </div>
-                            <div class="rating">
+                            <div class="reviews-rating">
                                 <p-rating class="reviews text-right col-5" [(ngModel)]="review.rating" [cancel]="false" [readonly]="true" ></p-rating>
                             </div>
                         </div>

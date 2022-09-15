@@ -1,7 +1,15 @@
 .product-page {
     box-shadow: 0px 4px 10px rgb(0 0 0 / 3%), 0px 0px 2px rgb(0 0 0 / 6%), 0px 2px 6px rgb(0 0 0 / 12%) !important;
     .product-details {
-
+        
+        .product-rating {
+            .p-rating-icon {
+                color: #ffff00;
+            }
+            .p-rating-icon.pi-star-fill {
+                color: #ffff00 !important;
+            }
+        }
         .price-before {
             text-decoration: line-through;
             color: red;
@@ -83,10 +91,13 @@
         }
     }
 
-    .p-rating-icon {
-        color: #fbd62d;
-    }
-    .p-rating-icon.pi-star-fill {
-        color: #fbd62d !important;
+
+    .reviews-rating {
+        .p-rating-icon {
+            color: #ffd311;
+        }
+        .p-rating-icon.pi-star-fill {
+            color: #ffd311 !important;
+        }
     }
 }

@@ -1,8 +1,14 @@
 .reviews-list {
-    .p-rating-icon {
-        color: #fbd62d;
-    }
-    .p-rating-icon.pi-star-fill {
-        color: #fbd62d !important;
+    .review-item{
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .p-rating-icon {
+            color: #ffd311;
+        }
+        .p-rating-icon.pi-star-fill {
+            color: #ffd311 !important;
+        }
     }
 }
