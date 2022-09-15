@@ -63,7 +63,7 @@ export class ProductsFormComponent implements OnInit {
           summary: 'Success',
           detail: `Product ${product.name} is created!`
         });
-        timer(2000)
+        timer(800)
           .toPromise()
           .then(() => {
             this.location.back();
@@ -87,7 +87,7 @@ export class ProductsFormComponent implements OnInit {
           summary: 'Success',
           detail: 'Product is updated!'
         });
-        timer(2000)
+        timer(800)
           .toPromise()
           .then(() => {
             this.location.back();

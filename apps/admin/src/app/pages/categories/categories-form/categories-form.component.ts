@@ -54,7 +54,7 @@ export class CategoriesFormComponent implements OnInit {
 
 
     if(this.editMode) {
-        this._editCategory(categoryFormData, this.currentCategoryId);
+        this._editCategory(categoryFormData);
     }else {
         this._addCategory(categoryFormData);
     }
@@ -69,7 +69,7 @@ export class CategoriesFormComponent implements OnInit {
               detail:`Category ${category.name} added successfully`
             });
 
-      timer(1500).toPromise().then( done => {
+      timer(800).toPromise().then( done => {
         this.location.back()
       });
     },
@@ -82,15 +82,15 @@ export class CategoriesFormComponent implements OnInit {
     });
   }
 
-  private _editCategory(categoryFormData: FormData, categoryId: string) {
-    this.categoriesService.updateCategory(categoryFormData, categoryId).subscribe((category: Category) => {
+  private _editCategory(categoryFormData: FormData) {
+    this.categoriesService.updateCategory(categoryFormData, this.currentCategoryId).subscribe((category: Category) => {
       this.messageService.add({
               severity:'success', 
               summary:'Success', 
               detail:`Category ${category.name} updated successfully`
             });
 
-      timer(1500).toPromise().then( done => {
+      timer(800).toPromise().then( done => {
         this.location.back()
       });
     },

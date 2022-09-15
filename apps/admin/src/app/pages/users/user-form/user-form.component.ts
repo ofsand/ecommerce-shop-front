@@ -51,7 +51,7 @@ export class UserFormComponent implements OnInit {
           summary: 'Success',
           detail: `User ${user.name} is created!`
         });
-        timer(2000)
+        timer(800)
           .toPromise()
           .then(() => {
             this.location.back();
@@ -75,7 +75,7 @@ export class UserFormComponent implements OnInit {
           summary: 'Success',
           detail: 'User is updated!'
         });
-        timer(2000)
+        timer(800)
           .toPromise()
           .then(() => {
             this.location.back();
