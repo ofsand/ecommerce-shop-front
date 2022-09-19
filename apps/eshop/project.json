@@ -40,8 +40,8 @@
           ],
           "fileReplacements": [
             {
-              "replace": "apps/eshop/src/environments/environment.ts",
-              "with": "apps/eshop/src/environments/environment.prod.ts"
+              "replace": "apps/environments/environment.ts",
+              "with": "apps/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all"
