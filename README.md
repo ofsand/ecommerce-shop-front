@@ -1,4 +1,7 @@
-# MEAN Stack ecommerce website!
+## MEAN Stack ecommerce website!
+
+ Click to see the <a href="https://github.com/ofsand/Ecommerce-brands-website-backend-NodeJS-ExpressJs-">BACK END PART REPO</a>
+
 ### Content
 - ##### How to use this project ?
 - ##### Overview
@@ -74,9 +77,12 @@ One of the best things about NX is the ability to generate modules, services Lib
 The important things I did about the architecture of the project is avoiding the traditional way of Angular where every TS file is followed by its own CSS or SCSS file, instead i've created a global folder called Styles and placed all SCSS files inside with the same hierarchy, also i avoided generating Test file because i was focusing just on Developement without testing.
  Here is a clear idea about the architecture of the project:
  
-<img src="https://ibb.co/51YYjrW/11" alt="11" border="0">
-<img src="https://ibb.co/p05Jk30/22" alt="22" border="0">
-<img src="https://ibb.co/NyKFM9y/333" alt="333" border="0">
+<a href="https://postimg.cc/ppYx0kbJ" target="_blank"><img src="https://i.postimg.cc/ppYx0kbJ/11.jpg" alt="11"/></a>
+
+<a href="https://postimg.cc/210YY65q" target="_blank"><img src="https://i.postimg.cc/210YY65q/22.jpg" alt="22"/></a>
+
+<a href="https://postimg.cc/8F3VF0MN" target="_blank"><img src="https://i.postimg.cc/8F3VF0MN/333.jpg" alt="333"  width="200"/></a>
+
 
 ### Frontend
 In the front end part I've used
@@ -100,9 +106,10 @@ http://primefaces.org/primeng/setup
 ### API’s testing
 For API Testing, Ive user the most famous Postman, and I've organized my api's requests as follows:
 
-<img src="https://i.ibb.co/nRSrwvM/111.jpg" alt="111" border="0">
+<a href="https://postimg.cc/BLKf2BBD" target="_blank"><img src="https://i.postimg.cc/BLKf2BBD/222.jpg" alt="222" width="200"/></a>
 
-<img src="https://i.ibb.co/GW5GrZC/222.jpg" alt="222" border="0">
+
+<a href="https://postimg.cc/8F3VF0MN" target="_blank"><img src="https://i.postimg.cc/8F3VF0MN/333.jpg" alt="333" width="200"/></a>
 
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
