@@ -63,8 +63,9 @@ In this project you can find, the following:
 TO BE NOTED:  the admin can not have access to the shop and buy products as an admin, it is denied from this functionnality, ans vice versa !
 ### Architecture
 The Project's architecture is based on the MonoRepo NX Architecture:
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></p>
+<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="150"></p>
 One of the best things about NX is the ability to generate modules, services Libraries etc.. without CLI command.
+
 ##### Quick Start & Documentation Of NX
 [Nx Documentation](https://nx.dev/angular)
 [10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
@@ -73,9 +74,9 @@ One of the best things about NX is the ability to generate modules, services Lib
 The important things I did about the architecture of the project is avoiding the traditional way of Angular where every TS file is followed by its own CSS or SCSS file, instead i've created a global folder called Styles and placed all SCSS files inside with the same hierarchy, also i avoided generating Test file because i was focusing just on Developement without testing.
  Here is a clear idea about the architecture of the project:
  
-<img src="https://ibb.co/51YYjrW">
-<img src="https://ibb.co/p05Jk30">
-<img src="https://ibb.co/NyKFM9y">
+<img src="https://ibb.co/51YYjrW/11" alt="11" border="0">
+<img src="https://ibb.co/p05Jk30/22" alt="22" border="0">
+<img src="https://ibb.co/NyKFM9y/333" alt="333" border="0">
 
 ### Frontend
 In the front end part I've used
@@ -98,8 +99,10 @@ http://primefaces.org/primeng/setup
 
 ### API’s testing
 For API Testing, Ive user the most famous Postman, and I've organized my api's requests as follows:
-<img src="https://ibb.co/nRSrwvM">
-<img src="https://ibb.co/GW5GrZC">
+
+<img src="https://i.ibb.co/nRSrwvM/111.jpg" alt="111" border="0">
+
+<img src="https://i.ibb.co/GW5GrZC/222.jpg" alt="222" border="0">
 
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
