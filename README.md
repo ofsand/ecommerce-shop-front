@@ -1,105 +1,107 @@
+# MEAN Stack ecommerce website!
+### Content
+- ##### How to use this project ?
+- ##### Overview
+- ##### Features
+- ##### Architecture
+- ##### Frontend
+- ##### Backend
+- ##### Styling
+- ##### API's testing
 
+### How to use this project ?
+- make sure you clone the project from the stable-main branch, then install node modules with npm:
 
-# EcommerceBrands
+```sh
+npm install
+```
+- due to the use of monorepo, the shop and admin app are devided, you can run each of them with the following commands:
 
-This project was generated using [Nx](https://nx.dev).
+```sh
+nx serve eshop
+```
+```sh
+nx serve admin
+```
+- Don't hesitate to fork the project and add more functionnalities and send a pull request on the project
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+### Overview
+First of all my motivations that let me go for this project, and commit every single functionnality, is having a clear idea about how the MEAN stack works and how a Monorepo can affect the organization of my project.
+The project is an ecommerce platform, with all functionnalities but payment, you can see it as a Cash on Delivery Platform.
 
-🔎 **Smart, Fast and Extensible Build System**
+### Features
+In this project you can find, the following:
 
-## Quick Start & Documentation
+- ##### JWT Authentication and Authorization
+    -  Admin user: Super admin Role
+    -  Guest user: Can be used to buy without ccreating personal account
+    -  Normal users: Personal accounts users's create 
+- ##### Models: Products, Categories, Users, Reviews, Orders
+- ##### Rest API's by Role
+    - Get, Add, update, delete
+    - Admin can:
+        - Get (Products, users, categories, orders),
+        - Add (Products, users, categories),
+        - Update (Products, users, categories),
+        - Delete (Products, users, categories, reviews, orders)
+    - Guest can:
+        - Get (Products, categories),
+        - Add (order),
+        - Update (),
+        - Delete ()
+    - Normal User can:
+        - Get (Products, categories, orders, user(Only himself) ),
+        - Add (order),
+        - Update ( user(Only himself) ),
+        - Delete ()
+    - Visitors with no account:
+        - Get (Products, categories),
+        - Add (),
+        - Update (),
+        - Delete ()
 
+TO BE NOTED:  the admin can not have access to the shop and buy products as an admin, it is denied from this functionnality, ans vice versa !
+### Architecture
+The Project's architecture is based on the MonoRepo NX Architecture:
+<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></p>
+One of the best things about NX is the ability to generate modules, services Libraries etc.. without CLI command.
+##### Quick Start & Documentation Of NX
 [Nx Documentation](https://nx.dev/angular)
-
 [10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
-
 [Interactive Tutorial](https://nx.dev/react-tutorial/01-create-application)
 
-## Adding capabilities to your workspace
+The important things I did about the architecture of the project is avoiding the traditional way of Angular where every TS file is followed by its own CSS or SCSS file, instead i've created a global folder called Styles and placed all SCSS files inside with the same hierarchy, also i avoided generating Test file because i was focusing just on Developement without testing.
+ Here is a clear idea about the architecture of the project:
+ 
+<img src="https://ibb.co/51YYjrW">
+<img src="https://ibb.co/p05Jk30">
+<img src="https://ibb.co/NyKFM9y">
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+### Frontend
+In the front end part I've used
+- ANGULAR 14.5.7,
+- typescript 4.7.2,
+- Node v16.15.1,
+- Npm 8.13.2,
+- Nx 14.5.7,
+### Backend
+In the back end part I've used
+- Node v16.15.1,
+- Express JS 4.18.1, 
+- Npm 8.13.2, 
+- Nodemon 2.0.19
+### Styling
+For tyling I've used something very new for me,NG PRIME by PRIME FACES which i didn't know it even exist xD,
+It is so good, and can replace MATERIAL UI and TAILWIND, You can check it out here: 
+https://www.primefaces.org/
+http://primefaces.org/primeng/setup
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/community) you could add.
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@ecommerce-brands/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+### API’s testing
+For API Testing, Ive user the most famous Postman, and I've organized my api's requests as follows:
+<img src="https://ibb.co/nRSrwvM">
+<img src="https://ibb.co/GW5GrZC">
 
 
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+##### Take Care, and one last thing, STAY IN YOUR Magic! ✨
