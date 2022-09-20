@@ -19,6 +19,7 @@ import { FooterSecondComponent } from './shared/footer-second/footer-second.comp
 import { JwtInterceptor, UsersModule } from '@ecommerce-brands/users';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from "ngx-ui-loader";
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
     UiModule, 
     OrdersModule, 
     UsersModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    })
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent],
