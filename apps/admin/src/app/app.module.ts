@@ -44,6 +44,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReviewsListComponent } from './pages/reviews/reviews-list/reviews-list.component';
 import {RatingModule} from 'primeng/rating';
 import {ChartModule} from 'primeng/chart';
+import {FileUploadModule} from 'primeng/fileupload';
+
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from "ngx-ui-loader";
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 
 const UX_MODULE = [
@@ -64,7 +69,9 @@ const UX_MODULE = [
   InputSwitchModule,
   InputMaskModule,
   FieldsetModule,
-  UsersModule
+  UsersModule,
+  MessagesModule,
+  MessageModule
 ];
 
 
@@ -79,13 +86,18 @@ const UX_MODULE = [
     BrowserAnimationsModule,
     AppRoutingModule,
     RatingModule,
-    ChartModule
+    ChartModule,
+    FileUploadModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    })
   ],
   providers: [UsersService, CategoriesService, MessageService, ConfirmationService,
               { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent],
   exports: [
     ReviewsListComponent
-  ],
+    ],
 })
 export class AppModule {}

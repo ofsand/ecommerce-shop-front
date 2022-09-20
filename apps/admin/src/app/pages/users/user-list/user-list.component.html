@@ -46,7 +46,7 @@
               <p-tag styleClass="mr-2" [icon]="user.isAdmin ? 'pi pi-check' : 'pi pi-times' " [severity]="user.isAdmin ? 'success' : 'danger'" [rounded]="true"></p-tag>
               </td>
               <td 
-                *ngIf="user.id !== '6310cb9d40899c7e2c30f890' && user.id !== '630671bc4f64ef4e4d103dbf'">
+                *ngIf="user.id !== '6310cb9d40899c7e2c30f890' && user.id !== '630671bc4f64ef4e4d103dbf' && user.id !== '630650fb4f64ef4e4d103daf'">
                 <p-button
                   (click)="deleteUser(user.id)"
                   styleClass="p-button-danger mr-3"

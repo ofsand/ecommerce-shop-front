@@ -48,7 +48,9 @@
               <td class="text-center">{{ product.countInStock }}</td>
               <td>{{ product.category.name }}</td>
               <td>{{ product.dateCreated | date: 'short' }}</td>
-              <td>
+              <td
+              *ngIf="product.id !== '630e1c7d24a4eef1ef63027f' && product.id !== '630e1d9724a4eef1ef63028c' "
+              >
                 <p-button
                   (click)="deleteProduct(product.id)"
                   styleClass="p-button-danger mr-3"

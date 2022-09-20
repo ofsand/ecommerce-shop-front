@@ -48,13 +48,13 @@ export class ProductsFormComponent implements OnInit {
       isFeatured: [false]
     });
   }
-
+  
   private _getCategories() {
     this.categoriesService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
   }
-
+  
   private _addProduct(productData: FormData) {
     this.productsService.createProduct(productData).subscribe(
       (product: Product) => {
@@ -153,6 +153,7 @@ export class ProductsFormComponent implements OnInit {
       fileReader.readAsDataURL(file);
     }
   }
+
 
   get productForm() {
     return this.form.controls;

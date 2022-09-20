@@ -30,33 +30,32 @@
       <div class="p-col-12">
         <form [formGroup]="form">
           <div class="p-ui-fluid p-formgrid p-grid mt-5">
-            <div class="p-field p-col mt-5">
-              <label for="name">Name</label>
-              <input class="ml-4" formControlName="name" id="name" type="text" pInputText />
+            <div class="p-field p-col mt-5 mx-5">
+              <label for="name">Name</label><br/>
+              <input class="mt-3" formControlName="name" id="name" type="text" pInputText />
               <small *ngIf="productForm['name'].invalid && isSubmitted" class="p-error ml-3">Name is required</small>
             </div>
-            <div class="p-field p-col mt-5">
-              <label for="brand">Brand</label>
-              <input class="ml-4" formControlName="brand" id="brand" type="text" pInputText />
+            <div class="p-field p-col mt-5 ml-5">
+              <label for="brand">Brand</label><br/>
+              <input class="mt-3" formControlName="brand" id="brand" type="text" pInputText />
               <small *ngIf="productForm['brand'].invalid && isSubmitted" class="p-error  ml-3">Brand is required</small>
             </div>
-            <div class="p-field p-col mt-5">
-              <label for="price">Price</label>
-              <p-inputNumber class="ml-4" formControlName="price" mode="decimal" [useGrouping]="false"></p-inputNumber>
+            <div class="p-field p-col mt-5 ml-5">
+              <label for="price">Price</label><br/>
+              <p-inputNumber class="mt-3" formControlName="price" mode="decimal" [useGrouping]="false"></p-inputNumber>
               <small *ngIf="productForm['price'].invalid && isSubmitted" class="p-error  ml-3">Price is required</small>
             </div>
           </div>
           <div class="p-ui-fluid p-formgrid p-grid">
-            <div class="p-field p-col mt-5">
-              <label for="countInStock">countInStock</label>
-              <p-inputNumber class="ml-4" formControlName="countInStock" mode="decimal" [useGrouping]="false"></p-inputNumber>
+            <div class="p-field p-col mt-5 ml-5">
+              <label for="countInStock">countInStock</label><br/>
+              <p-inputNumber class="mt-3" formControlName="countInStock" mode="decimal" [useGrouping]="false"></p-inputNumber>
               <small *ngIf="productForm['countInStock'].invalid && isSubmitted" class="p-error  ml-3"
                 >Count in stock is required</small>
             </div>
-            <div class="p-field p-col-4 mt-5">
-              <label for="category">category</label>
+            <div class="p-field p-col-4 mt-5 ml-5">
+              <label for="category">category</label><br/><br/>
               <p-dropdown
-                class="ml-4"
                 [options]="categories"
                 formControlName="category"
                 optionLabel="name"
@@ -66,18 +65,18 @@
                 [showClear]="true"
                 placeholder="Select a Category"
               ></p-dropdown>
-
               <small *ngIf="productForm['category'].invalid && isSubmitted" class="p-error  ml-3"
                 >Category is required</small>
+
             </div>
-            <div class="p-ui-field p-col-4 mt-5">
-              <label for="isFeatured">Is Featured</label>
-              <p-inputSwitch class="ml-4" formControlName="isFeatured"></p-inputSwitch>
+            <div class="p-ui-field p-col-4 mt-5 ml-5">
+              <label for="isFeatured">Is Featured</label><br/><br/>
+              <p-inputSwitch formControlName="isFeatured"></p-inputSwitch>
             </div>
-            <div class="p-ui-field p-col-12 mt-5">
+            <div class="p-ui-field p-col-12 mt-5 ml-5">
               <label for="description">Description</label><br/>
               <textarea
-                class="ml-4 mt-3"
+                class="mt-3"
                 pInputTextarea
                 formControlName="description"
                 [rows]="7"
@@ -86,10 +85,10 @@
                 <small *ngIf="productForm['description'].invalid && isSubmitted" class="p-error  ml-3"
                 >Description is required</small>
               </div>
-              <div class="p-ui-field p-col-12 mt-5">
-                <label for="name">Main Image</label>
-                <input
-                  class="ml-4" 
+
+              <div class="p-ui-field p-col-12 mt-5 ml-5">
+                <label for="name">Main Image</label><br/><br/>
+                <input 
                   type="file"
                   class="p-inputtext"
                   accept="image/*"
@@ -100,9 +99,10 @@
                   <img style="width: 100%" [src]="imageDisplay" alt="" />
                 </div>
               </div>
-              <div class="p-ui-field p-col-12 mt-3">
-                <label for="richDescription">Product Details</label><br />
-                <p-editor class="ml-4" formControlName="richDescription" [style]="{ height: '320px' }"></p-editor>
+
+              <div class="p-ui-field p-col-12 mt-3 mx-5">
+                <label for="richDescription" >Product Details</label><br/><br/>
+                <p-editor formControlName="richDescription" [style]="{ height: '320px' }"></p-editor>
               </div>
           </div>
         </form>
