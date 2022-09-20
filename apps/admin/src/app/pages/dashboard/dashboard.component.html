@@ -9,7 +9,7 @@
                                 <i class="pi pi-shopping-cart"></i><br/>
                                 <span class="name">Orders</span>
                             </div>
-                            <span class="number">{{ordersCount}}</span>
+                            <span class="number">{{ordersCount? ordersCount :0 }}</span>
                         </div>
                     </p-card>
                 </div>
@@ -20,7 +20,7 @@
                                 <i class="pi pi-users"></i><br/>
                                 <span class="name">Users</span>
                             </div>
-                            <span class="number">{{usersCount}}</span>
+                            <span class="number">{{usersCount? usersCount: 0}}</span>
                         </div>
                     </p-card>
                 </div>
@@ -31,7 +31,7 @@
                                 <i class="pi pi-box"></i><br/>
                                 <span class="name">Products</span>
                             </div>
-                            <span class="number">{{productsCount}}</span>
+                            <span class="number">{{productsCount? productsCount : 0}}</span>
                         </div>
                     </p-card>
                 </div>
@@ -42,7 +42,7 @@
                                 <i class="pi pi-dollar"></i><br/>
                                 <span class="name">Revenues</span>
                             </div>
-                            <span class="sales-number">{{totalSales | currency}}</span>
+                            <span class="sales-number">{{totalSales? (totalSales | currency) : (0 | currency) }}</span>
                         </div>
                     </p-card>
                 </div>
