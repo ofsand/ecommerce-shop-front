@@ -1,6 +1,6 @@
 ## MEAN Stack ecommerce website!
 
- Click here to see the <a href="https://github.com/ofsand/ecommerce-shop-backend">BACK END PART</a>
+ Click here to see the <a href="https://github.com/ofsand/ecommerce-shop-backend" target="__blank">BACK END PART</a>
  
 
 ### Content
@@ -14,6 +14,8 @@
 - ##### API's testing
 
 ### How to use this project ?
+- Clone the project in your local
+
 - make sure you clone the project from the stable-main branch, then install node modules with npm:
 
 ```sh
