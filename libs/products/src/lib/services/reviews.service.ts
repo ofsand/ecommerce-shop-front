@@ -22,6 +22,10 @@ export class ReviewsService {
     return this.http.get<Review[]>(this.apiURLReviews, { params: params });
   }
 
+  getReview(reviewId: string): Observable<Review> {
+    return this.http.get<Review>(`${this.apiURLReviews}/${reviewId}`);
+  }
+
   deleteReview(reviewId: string): Observable<any> {
     return this.http.delete<any>(`${this.apiURLReviews}/${reviewId}`);
   }
