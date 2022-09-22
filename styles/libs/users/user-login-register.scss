@@ -5,6 +5,17 @@
     top: 0;
     left: 0;
     position: absolute;
+    .x-btn{
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        cursor: pointer;
+        color: white;
+        &:hover {
+            color: black;
+            background-color: white;
+        }
+    }
     .user-login-register {
         background-color: rgba(255, 255, 255, 0.9);
         height: 70%;
