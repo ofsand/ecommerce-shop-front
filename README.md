@@ -123,6 +123,5 @@ For API Testing, Ive user the most famous Postman, and I've organized my api's r
 
 <a href="https://files.fm/u/gbjja4wvd#/view/222.JPG"><img src="https://files.fm/thumb_show.php?i=vv95b8z9b" height="400"></a>
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 ##### Take Care, and one last thing, STAY IN YOUR Magic! ✨
