@@ -34,11 +34,9 @@
                             <td>
                                 <p-tag  [severity]="orderStatus[order.status].color" [value]="orderStatus[order.status].name"></p-tag>                       
                             </td>
-                            <td
-                            *ngIf="order.id !== '632a36742a22479380ac2257' && order.id !== '6329adbd17d5511a1d8e463f' "
-                            >
+                            <td>
                                 <p-button (click)="showOrder(order.id)" styleClass="p-button-info mr-2" icon="pi pi-eye"></p-button>
-                                <p-button (click)="deleteOrder(order.id)" styleClass="p-button-danger mr-2" icon="pi pi-trash"></p-button>
+                                <p-button (click)="deleteOrder(order.id)" styleClass="p-button-danger mr-2" icon="pi pi-trash" *ngIf="order.id !== '632a36742a22479380ac2257' && order.id !== '6329adbd17d5511a1d8e463f' "></p-button>
                             </td>
                         </tr>
                     </ng-template>
