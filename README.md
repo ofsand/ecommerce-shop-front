@@ -1,6 +1,6 @@
 ## MEAN Stack ecommerce website!
 
- Click here to see the <a href="https://github.com/ofsand/ecommerce-shop-backend" target="__blank">BACK END PART</a>
+ Click here to see the <a href="https://github.com/ofsand/ecommerce-shop-backend" target="_blank">BACK END PART</a>
  
 
 ### Content
